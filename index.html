@@ -83,11 +83,10 @@
       padding:50px 30px 30px;
       border-top:1px solid var(--border);
       margin-top:12px;
-      font-size:10px; /* reduced from 13px */
+      font-size:10px;
     }
     .nav-contact h5{
       padding:20px 0px 0px;
-
       font-size:10px;font-weight:600;color:#fff;text-transform:uppercase;
       letter-spacing:.5px;margin-bottom:10px;display:flex;align-items:center;gap:6px;
     }
@@ -98,7 +97,6 @@
     .nav-contact a{color:var(--text-muted);text-decoration:none;transition:.2s;}
     .nav-contact a:hover{color:var(--accent);}
     .nav-contact i{width:14px;font-size:12px;color:var(--accent);}
-
     /* ---------- MAIN PANEL (scrollable) ---------- */
     .main-panel{
       flex:1;
@@ -248,17 +246,33 @@
     .terminal{padding:60px 20px;background:#000;position:relative;overflow:hidden;}
     .terminal::before{content:'';position:absolute;inset:0;
       background:repeating-linear-gradient(0deg,rgba(0,255,0,.03),rgba(0,255,0,.03)1px,transparent 1px,transparent 2px);}
-    .terminal-window{max-width:100%;margin:auto;background:#000;border-radius:8px;overflow:hidden;
-      box-shadow:0 20px 40px rgba(0,0,0,.5);font-size:13px;}
+    .terminal-window{
+      max-width:100%;margin:auto;background:#000;border-radius:8px;overflow:hidden;
+      box-shadow:0 20px 40px rgba(0,0,0,.5);font-size:13px;
+      min-height:360px;display:flex;flex-direction:column;
+    }
     .terminal-header{background:#333;padding:8px 16px;display:flex;align-items:center;gap:8px;font-size:12px;}
     .terminal-dots{display:flex;gap:6px;}
     .dot{width:12px;height:12px;border-radius:50%;}
     .dot.red{background:#ff5f56}.dot.yellow{background:#ffbd2e}.dot.green{background:#27c93f}
     .terminal-title{margin-left:8px;color:#eee;}
-    .terminal-body{padding:16px;font-family:'JetBrains Mono',monospace;line-height:1.6;}
+    .terminal-body{
+      padding:16px;font-family:'JetBrains Mono',monospace;line-height:1.6;
+      flex:1;overflow-y:auto;position:relative;
+    }
     .prompt{color:#0f0}.command{color:#fff}.output{color:#0f0}
-    .cursor{display:inline-block;width:8px;height:1.2em;background:#0f0;animation:blink 1s infinite;margin-left:2px;}
+    .cursor{
+      display:inline-block;
+      width:8px;height:1.2em;
+      background:#0f0;
+      animation:blink 1s infinite;
+      margin-left:2px;
+      vertical-align:middle;
+    }
     @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+    .typing-line {display:block;white-space:nowrap;overflow:hidden;}
+    .typing-line .prompt {display:inline;}
+    .typing-line .command {display:inline;}
     /* ---------- FOOTER ---------- */
     .footer{padding:60px 20px 40px;background:var(--bg-dark);border-top:1px solid var(--border);}
     .footer-content{max-width:1200px;margin:auto;display:grid;grid-template-columns:2fr;gap:32px;text-align:center;}
@@ -272,7 +286,6 @@
     .footer ul li{margin-bottom:8px}
     .footer ul li a{color:var(--text-muted);text-decoration:none;font-size:13px;transition:.2s}
     .footer ul li a:hover{color:var(--accent)}
-
     /* ---------- TABLET / DESKTOP ---------- */
     @media (min-width:768px){
       .mobile-header,.hamburger{display:none;}
@@ -332,7 +345,6 @@
       <a href="#integrations" class="nav-item" data-section="integrations"><i class="fas fa-plug"></i><span>Integrations</span></a>
       <a href="#grants" class="nav-item" data-section="grants"><i class="fas fa-dollar-sign"></i><span> bilan</a>
       <a href="#contact" class="nav-item" data-section="contact"><i class="fas fa-envelope"></i><span>Contact</span></a>
-
       <!-- CONTACT INFO (reduced font) -->
       <div class="nav-contact">
         <div class="contact-block">
@@ -358,7 +370,6 @@
         </div>
       </div>
     </aside>
-
     <!-- SCROLLABLE MAIN PANEL -->
     <main class="main-panel">
       <!-- Editor Header (desktop only) -->
@@ -369,7 +380,6 @@
         <div class="tab"><i class="fas fa-code-branch"></i><span>SDK-API.md</span><i class="fas fa-times close-tab"></i></div>
         <div class="tab"><i class="fas fa-server"></i><span>Validator-Specs.md</span><i class="fas fa-times close-tab"></i></div>
       </div>
-
       <!-- HERO -->
       <section class="hero" id="hero">
         <div class="hero-content">
@@ -385,7 +395,6 @@
           </div>
         </div>
       </section>
-
       <!-- Why Build -->
       <section class="features" id="build">
         <div class="section-header"><h2>Why Build on ACME?</h2><p>The infrastructure layer for Bitcoin's art ecosystem: Permanent, verifiable, and incentivized.</p></div>
@@ -410,7 +419,6 @@
             <div class="card-icon"><i class="fas fa-code-branch"></i></div><h3>Technical Moat</h3><p>Canonical encoding, domain-specific Merkle trees, Bitcoin upgrade readiness (OP_CTV, OP_CAT). Built for the long term.</p></div>
         </div>
       </section>
-
       <!-- Docs -->
       <section class="docs" id="docs">
         <div class="section-header"><h2>Documentation</h2><p>Everything you need to understand and build on ACME.</p></div>
@@ -420,7 +428,6 @@
           <div class="card"><div class="card-icon"><i class="fas fa-code"></i></div><h3>Examples</h3><p>Code samples in Rust, Go, and JavaScript for indexers and wallets.</p></div>
         </div>
       </section>
-
       <!-- SDK -->
       <section class="sdk" id="sdk">
         <div class="section-header"><h2>SDK & Tools</h2><p>Build fast with our open-source SDKs and CLI.</p></div>
@@ -430,7 +437,6 @@
           <div class="card"><div class="card-icon"><i class="fas fa-cogs"></i></div><h3>Rust & Go Indexers</h3><p>Run your own validator or indexer with full test vectors.</p></div>
         </div>
       </section>
-
       <!-- Security -->
       <section class="security" id="security">
         <div class="section-header"><h2>Security & Audits</h2><p>Battle-tested by top firms. Transparency first.</p></div>
@@ -440,7 +446,6 @@
           <div class="card"><div class="card-icon"><i class="fas fa-lock"></i></div><h3>Slashing Mechanism</h3><p>Validators lose rewards for incorrect state attestation.</p></div>
         </div>
       </section>
-
       <!-- Creator Hub -->
       <section class="creator-hub" id="creator-hub">
         <div class="section-header"><h2>Creator Hub</h2><p>Your one-stop shop for minting, curation, and grants.</p></div>
@@ -450,7 +455,6 @@
           <div class="card"><div class="card-icon"><i class="fas fa-exchange-alt"></i></div><h3>Migration Portal</h3><p>Burn on Ethereum, reissue on ACME with grant support.</p></div>
         </div>
       </section>
-
       <!-- Integrations -->
       <section class="integrations" id="integrations">
         <div class="section-header"><h2>Integrations</h2><p>Works with your favorite tools and wallets.</p></div>
@@ -460,7 +464,6 @@
           <div class="card"><div class="card-icon"><i class="fas fa-university"></i></div><h3>Enterprise APIs</h3><p>Real-time state, provenance, and analytics for galleries.</p></div>
         </div>
       </section>
-
       <!-- Grants -->
       <section class="grants" id="grants">
         <div class="section-header"><h2>Grants Program</h2><p>$50M in funding for builders, artists, and indexers.</p></div>
@@ -470,7 +473,6 @@
           <div class="card"><div class="card-icon"><i class="fas fa-search"></i></div><h3>Validator Grants</h3><p>Run a node, earn rewards + bonus for early adopters.</p></div>
         </div>
       </section>
-
       <!-- Partnership -->
       <section class="partnership" id="partner">
         <div class="section-header"><h2>Join the ACME Ecosystem</h2><p>Partner with us to unify Bitcoin's art landscape: Artists, developers, galleries, and institutions.</p></div>
@@ -481,7 +483,6 @@
           <div class="partner-card"><div class="partner-icon"><i class="fas fa-handshake"></i></div><h3>Wallet & Marketplace Partners</h3><p>Integrate with UniSat/Xverse forks. Offer DEX, royalties, and verifiable state to your users.</p><a href="#" class="btn btn-secondary"><i class="fas fa-arrow-right"></i> Partner Up</a></div>
         </div>
       </section>
-
       <!-- CONTACT FORM SECTION -->
       <section class="contact" id="contact">
         <div class="section-header">
@@ -504,7 +505,6 @@
           <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Message</button>
         </form>
       </section>
-
       <!-- Terminal -->
       <section class="terminal">
         <div class="terminal-window">
@@ -512,22 +512,11 @@
             <div class="terminal-dots"><div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div></div>
             <div class="terminal-title">acme-cli@latest</div>
           </div>
-          <div class="terminal-body">
-            <div><span class="prompt">$</span> <span class="command">acme init my-bitcoin-art</span></div>
-            <div class="output">Project initialized</div>
-            <div class="output">UTXO storage enabled for permanence</div>
-            <div class="output">Merkle proofs generated</div>
-            <div><span class="prompt">$</span> <span class="command">acme mint --tier utxo --file art.png</span></div>
-            <div class="output">Minting on Bitcoin UTXO...</div>
-            <div class="output">Asset etched at A#[BLOCK|TX]</div>
-            <div class="output">Proof: Sparse Merkle Tree verified</div>
-            <div><span class="prompt">$</span> <span class="command">acme validate --state-root</span></div>
-            <div class="output">State correct. Rewards claimed.</div>
-            <div><span class="prompt">$</span> <span class="command"></span><span class="cursor"></span></div>
+          <div class="terminal-body" id="terminalBody">
+            <!-- All lines will be dynamically inserted here by JS -->
           </div>
         </div>
       </section>
-
       <!-- Footer (no description) -->
       <footer class="footer">
         <div class="footer-content">
@@ -620,6 +609,80 @@
         plugins: { legend: { display: false } }
       }
     });
+
+    // TERMINAL TYPING ANIMATION - FINAL CURSOR ONLY
+    const terminalBody = document.getElementById('terminalBody');
+    const commands = [
+      { type: 'command', text: '$ acme init my-bitcoin-art' },
+      { type: 'output', text: 'Project initialized' },
+      { type: 'output', text: 'UTXO storage enabled for permanence' },
+      { type: 'output', text: 'Merkle proofs generated' },
+      { type: 'command', text: '$ acme mint --tier utxo --file art.png' },
+      { type: 'output', text: 'Minting on Bitcoin UTXO...' },
+      { type: 'output', text: 'Asset etched at A#[BLOCK|TX]' },
+      { type: 'output', text: 'Proof: Sparse Merkle Tree verified' },
+      { type: 'command', text: '$ acme validate --state-root' },
+      { type: 'output', text: 'State correct. Rewards claimed.' },
+
+    ];
+
+    let lineIndex = 0;
+    let charIndex = 0;
+    let currentLine = null;
+    let typingSpeed = 30;
+    let lineDelay = 200;
+
+    function typeNextChar() {
+      if (lineIndex >= commands.length) {
+        // All done — add final cursor on the last empty command line
+        const lastLine = document.createElement('div');
+        lastLine.className = 'typing-line';
+        lastLine.innerHTML = `<span class="prompt">$</span> <span class="command"></span><span class="cursor"></span>`;
+        terminalBody.appendChild(lastLine);
+        return;
+      }
+
+      if (!currentLine) {
+        currentLine = document.createElement('div');
+        currentLine.className = 'typing-line';
+        terminalBody.appendChild(currentLine);
+
+        const cmd = commands[lineIndex];
+        if (cmd.type === 'command') {
+          currentLine.innerHTML = `<span class="prompt">$</span> <span class="command"></span>`;
+        } else {
+          currentLine.innerHTML = `<span class="output"></span>`;
+        }
+      }
+
+      const cmd = commands[lineIndex];
+      const targetSpan = currentLine.querySelector(cmd.type === 'command' ? '.command' : '.output');
+      const fullText = cmd.text;
+
+      if (charIndex < fullText.length) {
+        targetSpan.textContent += fullText[charIndex];
+        charIndex++;
+        setTimeout(typeNextChar, typingSpeed);
+      } else {
+        charIndex = 0;
+        currentLine = null;
+        lineIndex++;
+        setTimeout(typeNextChar, lineDelay);
+      }
+    }
+
+    // Start when terminal is in view
+    const terminalSection = document.querySelector('.terminal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          typeNextChar();
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    observer.observe(terminalSection);
   </script>
 </body>
 </html>
