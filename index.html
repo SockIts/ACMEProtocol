@@ -6,6 +6,7 @@
   <title>ACME Protocol - Art Coded on the Monetary Engine</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     :root {
       --bg: #1e1e1e;
@@ -20,9 +21,7 @@
       --mobile-menu-height: 60px;
       --sidebar-width: 260px;
     }
-
     *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
-
     body {
       font-family:'JetBrains Mono',monospace;
       background:var(--bg);
@@ -31,7 +30,6 @@
       overflow-x:hidden;
       -webkit-tap-highlight-color:transparent;
     }
-
     /* ---------- MOBILE HEADER ---------- */
     .mobile-header{
       display:flex;align-items:center;justify-content:space-between;
@@ -46,14 +44,12 @@
     .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
     .hamburger.active span:nth-child(2){opacity:0;}
     .hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(7px,-6px);}
-
     /* ---------- LAYOUT ---------- */
     .layout{
       display:flex;
       min-height:100vh;
       position:relative;
     }
-
     /* ---------- SIDEBAR (fixed) ---------- */
     .sidebar{
       width:var(--sidebar-width);
@@ -68,11 +64,9 @@
       transition:left .3s ease;
     }
     .sidebar.open{left:0;}
-
     .logo{padding:0 20px 20px;border-bottom:1px solid var(--border);margin-bottom:20px;}
     .logo h1{font-size:18px;font-weight:700;color:#fff;display:flex;align-items:center;gap:10px;}
     .logo i{color:var(--accent);font-size:24px;}
-
     .nav-item{
       padding:12px 20px;cursor:pointer;transition:.2s;
       display:flex;align-items:center;gap:12px;font-size:14px;color:#fff;
@@ -80,21 +74,18 @@
     .nav-item:hover{background:rgba(255,255,255,.05);}
     .nav-item.active{background:var(--accent);color:#fff !important;}
     .nav-item i{width:16px;font-size:14px;}
-
     .section-title{
       color:var(--text-muted);font-size:11px;text-transform:uppercase;letter-spacing:.5px;
       padding:15px 20px 5px;font-weight:600;
     }
-
     /* ---------- MAIN PANEL (scrollable) ---------- */
     .main-panel{
       flex:1;
-      margin-left:0;               /* mobile – no offset */
+      margin-left:0; /* mobile – no offset */
       padding-top:var(--mobile-menu-height);
       overflow-y:auto;
       height:100vh;
     }
-
     .editor-header{
       display:none;
       height:50px;background:var(--bg-dark);border-bottom:1px solid var(--border);
@@ -107,7 +98,6 @@
       padding:0 12px;height:100%;display:flex;align-items:center;
       background:rgba(255,255,255,.05);border-right:1px solid var(--border);position:relative;
       min-width:max-content;cursor:pointer;
-
     }
     .tab.active{background:var(--bg);}
     .tab::after{
@@ -117,21 +107,26 @@
     .tab.active::after{opacity:1;}
     .close-tab{margin-left:8px;opacity:.6;cursor:pointer;}
     .close-tab:hover{opacity:1;}
-
     /* ---------- HERO ---------- */
     .hero{
       min-height:calc(100vh - var(--mobile-menu-height));
-      padding:40px 20px 60px;background:linear-gradient(135deg,#0a0a0a 0%,#1a1a1a 100%);
+      padding:40px 20px 60px;
+      background:url('https://static.vecteezy.com/system/resources/previews/015/649/120/non_2x/abstract-background-digital-concept-modern-digital-circle-bitcoin-cryptocurrency-decentralized-blockchain-on-black-and-blue-background-futuristic-vector.jpg') no-repeat center center/cover;
       position:relative;overflow:hidden;text-align:center;
     }
     .hero::before{
       content:'';position:absolute;inset:0;
-      background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%231e1e1e"/><path d="M0 50h100M50 0v100" stroke="%23252526" stroke-width="0.5"/></svg>') repeat;
-      opacity:.5;
+      background:linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)); /* Overlay for readability */
+      z-index:1;
     }
     .hero-content{
       display:flex;flex-direction:column;justify-content:flex-start;gap:16px;
       position:relative;z-index:2;
+      animation:fadeIn 1.5s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from {opacity:0; transform:translateY(20px);}
+      to {opacity:1; transform:translateY(0);}
     }
     .badge{
       display:inline-flex;align-items:center;gap:8px;background:var(--success);
@@ -155,20 +150,20 @@
       transition:.2s;display:inline-flex;align-items:center;justify-content:center;gap:8px;
       text-decoration:none;min-height:48px;width:100%;max-width:280px;
     }
+    .btn:hover{transform:scale(1.05);}
     .btn-primary{background:var(--accent);color:#fff;border:none;}
-    .btn-primary:hover{background:var(--accent-hover);transform:translateY(-1px);}
+    .btn-primary:hover{background:var(--accent-hover);transform:scale(1.05);}
     .btn-secondary{background:transparent;color:var(--text);border:1px solid var(--border);}
-    .btn-secondary:hover{border-color:var(--accent);color:var(--accent);}
+    .btn-secondary:hover{border-color:var(--accent);color:var(--accent);transform:scale(1.05);}
     .stats{
       display:flex;flex-wrap:wrap;justify-content:center;gap:40px;margin-top:40px;
+      max-width:800px;margin:40px auto;
     }
-    .stat{text-align:center;}
-    .stat-value{font-size:38px;font-weight:700;color:var(--accent);}
-    .stat-label{font-size:12px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.5px;}
-
+    #statsChart {max-height:300px;}
     /* ---------- SECTIONS ---------- */
     .features,.docs,.sdk,.security,.creator-hub,.integrations,.grants,.partnership,.contact,.terminal,.footer{
       padding:60px 20px;background:var(--bg);
+      animation:fadeIn 1s ease-in-out;
     }
     .partnership{background:var(--bg-dark);}
     .section-header{text-align:center;margin-bottom:48px;}
@@ -180,8 +175,10 @@
     .card,.partner-card{
       background:var(--bg-dark);border:1px solid var(--border);border-radius:8px;
       padding:20px;transition:.3s;
+      box-shadow:0 4px 8px rgba(0,0,0,.2);
     }
-    .card:hover,.partner-card:hover{border-color:var(--accent);transform:translateY(-4px);}
+    .card:hover,.partner-card:hover{border-color:var(--accent);transform:translateY(-4px) scale(1.02);}
+    .card-image {width:100%;height:150px;object-fit:cover;border-radius:8px;margin-bottom:16px;}
     .card-icon,.partner-icon{
       width:44px;height:44px;background:var(--accent);border-radius:8px;
       display:flex;align-items:center;justify-content:center;margin-bottom:16px;
@@ -191,7 +188,6 @@
     .card h3,.partner-card h3{font-size:18px;margin-bottom:10px;}
     .card p,.partner-card p{font-size:14px;color:var(--text-muted);}
     .partner-card .btn{margin:16px auto 0;}
-
     /* ---------- CONTACT FORM ---------- */
     .contact-form {
       max-width: 600px;
@@ -227,7 +223,6 @@
     .contact-form button {
       margin-top: 12px;
     }
-
     /* ---------- TERMINAL ---------- */
     .terminal{padding:60px 20px;background:#000;position:relative;overflow:hidden;}
     .terminal::before{content:'';position:absolute;inset:0;
@@ -243,7 +238,6 @@
     .prompt{color:#0f0}.command{color:#fff}.output{color:#0f0}
     .cursor{display:inline-block;width:8px;height:1.2em;background:#0f0;animation:blink 1s infinite;margin-left:2px;}
     @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-
     /* ---------- FOOTER ---------- */
     .footer{padding:60px 20px 40px;background:var(--bg-dark);border-top:1px solid var(--border);}
     .footer-content{max-width:1200px;margin:auto;display:grid;grid-template-columns:2fr;gap:32px;text-align:center;}
@@ -258,7 +252,6 @@
     .footer ul li{margin-bottom:8px}
     .footer ul li a{color:var(--text-muted);text-decoration:none;font-size:13px;transition:.2s}
     .footer ul li a:hover{color:var(--accent)}
-
     /* ---------- TABLET / DESKTOP ---------- */
     @media (min-width:768px){
       .mobile-header,.hamburger{display:none;}
@@ -285,7 +278,7 @@
       }
       .partner-grid{grid-template-columns:repeat(2,1fr);}
       .features,.docs,.sdk,.security,.creator-hub,.integrations,.grants,.partnership,.contact,.terminal,.footer{
-        padding:30px 30px;
+        padding:80px 60px;
       }
       .footer-content{grid-template-columns:2fr 1fr 1fr 1fr;text-align:left;}
       .footer-logo{justify-content:flex-start;}
@@ -297,34 +290,28 @@
   </style>
 </head>
 <body>
-
   <!-- MOBILE HEADER -->
   <header class="mobile-header">
     <div class="logo-mobile"><i class="fas fa-palette"></i><h1>ACME</h1></div>
     <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
   </header>
-
   <!-- LAYOUT -->
   <div class="layout">
-
     <!-- FIXED SIDEBAR -->
     <aside class="sidebar" id="sidebar">
       <div class="logo"><h1><i class="fas fa-palette"></i> ACME</h1></div>
-
       <div class="section-title">Explorer</div>
       <a href="#" class="nav-item active" data-section="hero"><i class="fas fa-home"></i><span>Home</span></a>
       <a href="#docs" class="nav-item" data-section="docs"><i class="fas fa-book"></i><span>Docs</span></a>
       <a href="#sdk" class="nav-item" data-section="sdk"><i class="fas fa-code"></i><span>SDK</span></a>
       <a href="#partner" class="nav-item" data-section="partner"><i class="fas fa-handshake"></i><span>Partners</span></a>
       <a href="#security" class="nav-item" data-section="security"><i class="fas fa-shield-alt"></i><span>Security</span></a>
-
       <div class="section-title">Build</div>
       <a href="#creator-hub" class="nav-item" data-section="creator-hub"><i class="fas fa-tools"></i><span>Creator Hub</span></a>
       <a href="#integrations" class="nav-item" data-section="integrations"><i class="fas fa-plug"></i><span>Integrations</span></a>
       <a href="#grants" class="nav-item" data-section="grants"><i class="fas fa-dollar-sign"></i><span>Grants</span></a>
       <a href="#contact" class="nav-item" data-section="contact"><i class="fas fa-envelope"></i><span>Contact</span></a>
     </aside>
-
     <!-- SCROLLABLE MAIN PANEL -->
     <main class="main-panel">
       <!-- Editor Header (desktop only) -->
@@ -335,7 +322,6 @@
         <div class="tab"><i class="fas fa-code-branch"></i><span>SDK-API.md</span><i class="fas fa-times close-tab"></i></div>
         <div class="tab"><i class="fas fa-server"></i><span>Validator-Specs.md</span><i class="fas fa-times close-tab"></i></div>
       </div>
-
       <!-- HERO -->
       <section class="hero" id="hero">
         <div class="hero-content">
@@ -347,27 +333,34 @@
             <a href="#partner" class="btn btn-secondary"><i class="fas fa-handshake"></i> Become a Partner</a>
           </div>
           <div class="stats">
-            <div class="stat"><div class="stat-value">$4B</div><div class="stat-label">Ordinals Volume</div></div>
-            <div class="stat"><div class="stat-value">50k+</div><div class="stat-label">Bitcoin Nodes</div></div>
-            <div class="stat"><div class="stat-value">70%</div><div class="stat-label">Creators on ETH</div></div>
-            <div class="stat"><div class="stat-value">2025</div><div class="stat-label">Mainnet Launch</div></div>
+            <canvas id="statsChart"></canvas>
           </div>
         </div>
       </section>
-
       <!-- Why Build -->
       <section class="features" id="build">
         <div class="section-header"><h2>Why Build on ACME?</h2><p>The infrastructure layer for Bitcoin's art ecosystem: Permanent, verifiable, and incentivized.</p></div>
         <div class="features-grid">
-          <div class="card"><div class="card-icon"><i class="fas fa-database"></i></div><h3>UTXO Fortress</h3><p>Etch your art into Bitcoin's UTXO set using OLGA chunking. Permanent storage synced by every full node—over 50,000 globally.</p></div>
-          <div class="card"><div class="card-icon"><i class="fas fa-check-circle"></i></div><h3>Deterministic Verifiability</h3><p>Sparse Merkle Trees and Canonical State Roots for cryptographic proofs. Verify ownership without trusting indexers.</p></div>
-          <div class="card"><div class="card-icon"><i class="fas fa-trophy"></i></div><h3>Mineable-UTXO Rewards</h3><p>Fee pools reward validators for correct state computation. Turn indexing into a permissionless mining game with slashing for dishonesty.</p></div>
-          <div class="card"><div class="card-icon"><i class="fas fa-paint-brush"></i></div><h3>Artist-Centered UX</h3><p>Simple minting tools with tiered storage: UTXO for permanence, IPFS for efficiency. No Merkle trees for creators—just click and own.</p></div>
-          <div class="card"><div class="card-icon"><i class="fas fa-link"></i></div><h3>Ecosystem Interoperability</h3><p>Index and unify Ordinals, Runes, Stamps, Counterparty. Migration tools with grants for seamless transitions.</p></div>
-          <div class="card"><div class="card-icon"><i class="fas fa-code-branch"></i></div><h3>Technical Moat</h3><p>Canonical encoding, domain-specific Merkle trees, Bitcoin upgrade readiness (OP_CTV, OP_CAT). Built for the long term.</p></div>
+          <div class="card">
+            <img src="https://live-production.wcms.abc-cdn.net.au/cbe346eee79d3e08dee5e8eb04284438?impolicy=wcms_crop_resize&cropH=1680&cropW=2983&xPos=17&yPos=574&width=862&height=485" alt="Digital Art Example" class="card-image">
+            <div class="card-icon"><i class="fas fa-database"></i></div><h3>UTXO Fortress</h3><p>Etch your art into Bitcoin's UTXO set using OLGA chunking. Permanent storage synced by every full node—over 50,000 globally.</p></div>
+          <div class="card">
+            <img src="https://online.stanford.edu/sites/default/files/inline-images/1600X900-How-does-blockchain-work.jpg" alt="NFT Illustration" class="card-image">
+            <div class="card-icon"><i class="fas fa-check-circle"></i></div><h3>Deterministic Verifiability</h3><p>Sparse Merkle Trees and Canonical State Roots for cryptographic proofs. Verify ownership without trusting indexers.</p></div>
+          <div class="card">
+            <img src="https://media.licdn.com/dms/image/v2/C4D12AQFwl9tsQ4vNKg/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1530913777981?e=2147483647&v=beta&t=cqBLPg0iwOOiatsNpwnw5iGBHXfRy-FomQDZBU-37z0" alt="NFT Mona Lisa" class="card-image">
+            <div class="card-icon"><i class="fas fa-trophy"></i></div><h3>Mineable-UTXO Rewards</h3><p>Fee pools reward validators for correct state computation. Turn indexing into a permissionless mining game with slashing for dishonesty.</p></div>
+          <div class="card">
+                        <img src="https://stampchain.io/stamps/e6a477b1d2de58a743e7998b22d14b896e44d29ba6e7491bf290711ff556d0fc.jpeg" alt="NFT Illustration" class="card-image">
+            <div class="card-icon"><i class="fas fa-paint-brush"></i></div><h3>Artist-Centered UX</h3><p>Simple minting tools with tiered storage: UTXO for permanence, IPFS for efficiency. No Merkle trees for creators—just click and own.</p></div>
+          <div class="card">
+                        <img src="https://specials-images.forbesimg.com/imageserve/640b6922875f52d9e07aa269/960x0.jpg" alt="NFT Illustration" class="card-image">
+            <div class="card-icon"><i class="fas fa-link"></i></div><h3>Ecosystem Interoperability</h3><p>Index and unify Ordinals, Runes, Stamps, Counterparty. Migration tools with grants for seamless transitions.</p></div>
+          <div class="card">
+                        <img src="https://bernardmarr.com/wp-content/uploads/2021/07/Bitcoin-Blockchain-Splits-And-What-It-Means-For-Business-Reszied.png" alt="NFT Illustration" class="card-image">
+            <div class="card-icon"><i class="fas fa-code-branch"></i></div><h3>Technical Moat</h3><p>Canonical encoding, domain-specific Merkle trees, Bitcoin upgrade readiness (OP_CTV, OP_CAT). Built for the long term.</p></div>
         </div>
       </section>
-
       <!-- Docs -->
       <section class="docs" id="docs">
         <div class="section-header"><h2>Documentation</h2><p>Everything you need to understand and build on ACME.</p></div>
@@ -377,7 +370,6 @@
           <div class="card"><div class="card-icon"><i class="fas fa-code"></i></div><h3>Examples</h3><p>Code samples in Rust, Go, and JavaScript for indexers and wallets.</p></div>
         </div>
       </section>
-
       <!-- SDK -->
       <section class="sdk" id="sdk">
         <div class="section-header"><h2>SDK & Tools</h2><p>Build fast with our open-source SDKs and CLI.</p></div>
@@ -387,7 +379,6 @@
           <div class="card"><div class="card-icon"><i class="fas fa-cogs"></i></div><h3>Rust & Go Indexers</h3><p>Run your own validator or indexer with full test vectors.</p></div>
         </div>
       </section>
-
       <!-- Security -->
       <section class="security" id="security">
         <div class="section-header"><h2>Security & Audits</h2><p>Battle-tested by top firms. Transparency first.</p></div>
@@ -397,7 +388,6 @@
           <div class="card"><div class="card-icon"><i class="fas fa-lock"></i></div><h3>Slashing Mechanism</h3><p>Validators lose rewards for incorrect state attestation.</p></div>
         </div>
       </section>
-
       <!-- Creator Hub -->
       <section class="creator-hub" id="creator-hub">
         <div class="section-header"><h2>Creator Hub</h2><p>Your one-stop shop for minting, curation, and grants.</p></div>
@@ -407,7 +397,6 @@
           <div class="card"><div class="card-icon"><i class="fas fa-exchange-alt"></i></div><h3>Migration Portal</h3><p>Burn on Ethereum, reissue on ACME with grant support.</p></div>
         </div>
       </section>
-
       <!-- Integrations -->
       <section class="integrations" id="integrations">
         <div class="section-header"><h2>Integrations</h2><p>Works with your favorite tools and wallets.</p></div>
@@ -417,7 +406,6 @@
           <div class="card"><div class="card-icon"><i class="fas fa-university"></i></div><h3>Enterprise APIs</h3><p>Real-time state, provenance, and analytics for galleries.</p></div>
         </div>
       </section>
-
       <!-- Grants -->
       <section class="grants" id="grants">
         <div class="section-header"><h2>Grants Program</h2><p>$50M in funding for builders, artists, and indexers.</p></div>
@@ -427,7 +415,6 @@
           <div class="card"><div class="card-icon"><i class="fas fa-search"></i></div><h3>Validator Grants</h3><p>Run a node, earn rewards + bonus for early adopters.</p></div>
         </div>
       </section>
-
       <!-- Partnership -->
       <section class="partnership" id="partner">
         <div class="section-header"><h2>Join the ACME Ecosystem</h2><p>Partner with us to unify Bitcoin's art landscape: Artists, developers, galleries, and institutions.</p></div>
@@ -438,34 +425,28 @@
           <div class="partner-card"><div class="partner-icon"><i class="fas fa-handshake"></i></div><h3>Wallet & Marketplace Partners</h3><p>Integrate with UniSat/Xverse forks. Offer DEX, royalties, and verifiable state to your users.</p><a href="#" class="btn btn-secondary"><i class="fas fa-arrow-right"></i> Partner Up</a></div>
         </div>
       </section>
-
       <!-- CONTACT FORM SECTION -->
       <section class="contact" id="contact">
         <div class="section-header">
           <h2>Contact Us</h2>
           <p>Let us know how you'd like to get involved with ACME.</p>
         </div>
-
         <!-- FORMSPREE INTEGRATION -->
         <form class="contact-form" action="https://formspree.io/f/xnnoewqp" method="POST">
           <!-- Anti-spam honeypot (hidden from users) -->
           <input type="text" name="_gotcha" style="display:none" />
-
           <div>
             <label for="name">Name</label>
             <input type="text" id="name" name="name" placeholder="Your full name" required>
           </div>
-
           <div>
             <label for="email">Email</label>
             <input type="email" id="email" name="email" placeholder="you@example.com" required>
           </div>
-
           <div>
             <label for="social">Social Handle</label>
             <input type="text" id="social" name="social" placeholder="@btc_socks">
           </div>
-
           <div>
             <label for="interest">I am interested in</label>
             <select id="interest" name="interest" required>
@@ -475,13 +456,11 @@
               <option value="partners">Becoming a Partner</option>
             </select>
           </div>
-
           <button type="submit" class="btn btn-primary">
             <i class="fas fa-paper-plane"></i> Send Message
           </button>
         </form>
       </section>
-
       <!-- Terminal -->
       <section class="terminal">
         <div class="terminal-window">
@@ -504,7 +483,6 @@
           </div>
         </div>
       </section>
-
       <!-- Footer -->
       <footer class="footer">
         <div class="footer-content">
@@ -526,16 +504,13 @@
       </footer>
     </main>
   </div>
-
   <script>
     const hamburger = document.getElementById('hamburger');
     const sidebar = document.getElementById('sidebar');
-
     hamburger.addEventListener('click', () => {
       hamburger.classList.toggle('active');
       sidebar.classList.toggle('open');
     });
-
     document.querySelectorAll('.nav-item').forEach(item => {
       item.addEventListener('click', () => {
         if (window.innerWidth < 768) {
@@ -548,14 +523,12 @@
         }
       });
     });
-
     document.addEventListener('click', e => {
       if (!sidebar.contains(e.target) && !hamburger.contains(e.target) && sidebar.classList.contains('open')) {
         hamburger.classList.remove('active');
         sidebar.classList.remove('open');
       }
     });
-
     // Tab switching
     document.querySelectorAll('.tab').forEach(tab => {
       tab.addEventListener('click', function () {
@@ -563,7 +536,6 @@
         this.classList.add('active');
       });
     });
-
     // Close tab
     document.querySelectorAll('.close-tab').forEach(close => {
       close.addEventListener('click', e => {
@@ -571,7 +543,6 @@
         close.parentElement.style.display = 'none';
       });
     });
-
     // Redirect all non-active tabs to #contact
     document.querySelectorAll('.tab').forEach(tab => {
       const isActive = tab.classList.contains('active');
@@ -582,6 +553,29 @@
           this.classList.add('active');
           document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' });
         });
+      }
+    });
+    // Chart.js for stats
+    const ctx = document.getElementById('statsChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Ordinals Volume', 'Bitcoin Nodes', 'Creators on ETH'],
+        datasets: [{
+          label: 'Key Stats',
+          data: [4000000000, 50000, 70],
+          backgroundColor: ['var(--accent)', 'var(--success)', 'var(--text-muted)'],
+          borderColor: ['var(--accent)', 'var(--success)', 'var(--text-muted)'],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: { beginAtZero: true }
+        },
+        plugins: {
+          legend: { display: false }
+        }
       }
     });
   </script>
