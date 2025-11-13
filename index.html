@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -185,7 +183,7 @@
     
     
     /* ---------- SECTIONS ---------- */
-    .features,.docs,.sdk,.security,.creator-hub,.integrations,.grants,.partnership,.contact,.terminal,.footer{
+    .features,.partnership,.contact,.terminal,.footer,.whitepaper,.ecosystem{
       padding:60px 20px;background:var(--bg);
       animation:fadeIn 1s ease-in-out;
     }
@@ -193,7 +191,7 @@
     .section-header{text-align:center;margin-bottom:48px;}
     .section-header h2{font-size:28px;margin-bottom:12px;}
     .section-header p{color:var(--text-muted);max-width:600px;margin:auto;font-size:15px;}
-    .features-grid,.docs-grid,.sdk-grid,.security-grid,.hub-grid,.integrations-grid,.grants-grid,.partner-grid{
+    .features-grid,.partner-grid{
       display:grid;grid-template-columns:1fr;gap:20px;margin-top:32px;
     }
     .card,.partner-card{
@@ -291,6 +289,105 @@
     .footer ul li{margin-bottom:8px}
     .footer ul li a{color:var(--text-muted);text-decoration:none;font-size:13px;transition:.2s}
     .footer ul li a:hover{color:var(--accent)}
+
+    /* ---------- WHITEPAPER SECTION STYLES ---------- */
+    .whitepaper, .ecosystem {
+      padding: 60px 20px;
+      background: var(--bg);
+    }
+    .wp-container, .eco-container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .wp-abstract {
+      margin-bottom: 32px;
+      background: var(--bg-dark);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+    }
+    .wp-abstract h3 {
+      font-size: 18px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent);
+    }
+    .wp-tabs, .eco-tabs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .wp-tablink, .eco-tablink {
+      background: var(--bg-dark);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 12px 16px;
+      font-size: 13px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: .2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-family: inherit;
+    }
+    .wp-tablink:hover, .eco-tablink:hover {
+      border-color: var(--accent);
+      background: rgba(0,122,204,.1);
+    }
+    .wp-tablink.active, .eco-tablink.active {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+    .wp-tabcontent, .eco-tabcontent {
+      display: none;
+      background: var(--bg-dark);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+    .wp-tabcontent ul, .eco-tabcontent ul {
+      padding-left: 20px;
+    }
+    .wp-tabcontent li, .eco-tabcontent li {
+      margin-bottom: 8px;
+    }
+    .wp-tabcontent li::marker, .eco-tabcontent li::marker {
+      color: var(--accent);
+    }
+    .eco-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .eco-card {
+      background: rgba(255,255,255,.03);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 16px;
+      font-size: 13px;
+    }
+    .eco-card h4 {
+      color: var(--accent);
+      margin-bottom: 8px;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .eco-card p {
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
     /* ---------- TABLET / DESKTOP ---------- */
     @media (min-width:768px){
       .mobile-header,.hamburger{display:none;}
@@ -312,16 +409,15 @@
       .cta-buttons{flex-direction:row;justify-content:flex-start;margin-bottom:60px;}
       .btn{width:auto;}
       .stats{justify-content:flex-start;}
-      .features-grid,.docs-grid,.sdk-grid,.security-grid,.hub-grid,.integrations-grid,.grants-grid{
-        grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-      }
+      .features-grid{grid-template-columns:repeat(auto-fit,minmax(300px,1fr));}
       .partner-grid{grid-template-columns:repeat(2,1fr);}
-      .features,.docs,.sdk,.security,.creator-hub,.integrations,.grants,.partnership,.contact,.terminal,.footer{
+      .features,.partnership,.contact,.terminal,.footer,.whitepaper,.ecosystem{
         padding:80px 60px;
       }
       .footer-content{grid-template-columns:2fr 1fr 1fr 1fr;text-align:left;}
       .footer-logo{justify-content:flex-start;}
       .social-links{justify-content:flex-start;}
+      .wp-tabs, .eco-tabs { grid-template-columns: repeat(6, 1fr); }
     }
     @media (min-width:1024px){
       .partner-grid{grid-template-columns:repeat(4,1fr);}
@@ -341,14 +437,10 @@
       <div class="logo"><h1><i class="fas fa-palette"></i> ACME</h1></div>
       <div class="section-title">Explorer</div>
       <a href="#" class="nav-item active" data-section="hero"><i class="fas fa-home"></i><span>Home</span></a>
-      <a href="#docs" class="nav-item" data-section="docs"><i class="fas fa-book"></i><span>Docs</span></a>
-      <a href="#sdk" class="nav-item" data-section="sdk"><i class="fas fa-code"></i><span>SDK</span></a>
+      <a href="#whitepaper" class="nav-item" data-section="whitepaper"><i class="fas fa-file-alt"></i><span>Whitepaper</span></a>
+      <a href="#ecosystem" class="nav-item" data-section="ecosystem"><i class="fas fa-cubes"></i><span>Ecosystem</span></a>
       <a href="#partner" class="nav-item" data-section="partner"><i class="fas fa-handshake"></i><span>Partners</span></a>
-      <a href="#security" class="nav-item" data-section="security"><i class="fas fa-shield-alt"></i><span>Security</span></a>
       <div class="section-title">Build</div>
-      <a href="#creator-hub" class="nav-item" data-section="creator-hub"><i class="fas fa-tools"></i><span>Creator Hub</span></a>
-      <a href="#integrations" class="nav-item" data-section="integrations"><i class="fas fa-plug"></i><span>Integrations</span></a>
-      <a href="#grants" class="nav-item" data-section="grants"><i class="fas fa-dollar-sign"></i><span>Grants</a>
       <a href="#contact" class="nav-item" data-section="contact"><i class="fas fa-envelope"></i><span>Contact</span></a>
       <!-- CONTACT INFO (reduced font) -->
       <div class="nav-contact">
@@ -385,14 +477,15 @@
         <div class="tab"><i class="fas fa-code-branch"></i><span>SDK-API.md</span><i class="fas fa-times close-tab"></i></div>
         <div class="tab"><i class="fas fa-server"></i><span>Validator-Specs.md</span><i class="fas fa-times close-tab"></i></div>
       </div>
-<!-- HERO -->
+
+      <!-- HERO -->
       <section class="hero" id="hero">
         <div class="hero-content">
           <div class="badge"><i class="fas fa-circle"></i><span>Testnet Live</span></div>
           <h1>ACME Protocol</h1>
           <p class="subtitle">Art Coded on the Monetary Engine: The Bitcoin-native metaprotocol solving fragmentation, verifiability, and permanence for digital art.</p>
           <div class="cta-buttons">
-            <a href="#creator-hub" class="btn btn-primary"><i class="fas fa-palette"></i> Start Creating</a>
+            <a href="#ecosystem" class="btn btn-primary"><i class="fas fa-cubes"></i> Explore Ecosystem</a>
             <a href="#partner" class="btn btn-secondary"><i class="fas fa-handshake"></i> Become a Partner</a>
           </div>
           <div class="stats">
@@ -403,6 +496,7 @@
           </div>
         </div>
       </section>
+
       <!-- Why Build -->
       <section class="features" id="build">
         <div class="section-header"><h2>Why Build on ACME?</h2><p>The infrastructure layer for Bitcoin's art ecosystem: Permanent, verifiable, and incentivized.</p></div>
@@ -427,71 +521,267 @@
             <div class="card-icon"><i class="fas fa-code-branch"></i></div><h3>Technical Moat</h3><p>Canonical encoding, domain-specific Merkle trees, Bitcoin upgrade readiness (OP_CTV, OP_CAT). Built for the long term.</p></div>
         </div>
       </section>
-      <!-- Docs -->
-      <section class="docs" id="docs">
-        <div class="section-header"><h2>Documentation</h2><p>Everything you need to understand and build on ACME.</p></div>
-        <div class="docs-grid">
-          <div class="card"><div class="card-icon"><i class="fas fa-scroll"></i></div><h3>Protocol Spec</h3><p>Full technical specification including OLGA, CSR, and Merkle proofs.</p></div>
-          <div class="card"><div class="card-icon"><i class="fas fa-book-open"></i></div><h3>Tutorials</h3><p>Step-by-step guides for minting, validating, and migrating assets.</p></div>
-          <div class="card"><div class="card-icon"><i class="fas fa-code"></i></div><h3>Examples</h3><p>Code samples in Rust, Go, and JavaScript for indexers and wallets.</p></div>
+
+      <!-- WHITEPAPER SUMMARY -->
+      <section class="whitepaper" id="whitepaper">
+        <div class="section-header">
+          <h2>Whitepaper Summary</h2>
+          <p>Technical deep dive: Decentralized infrastructure for Bitcoin-native art and asset indexing.</p>
+        </div>
+
+        <div class="wp-container">
+          <!-- Abstract -->
+          <div class="wp-abstract card">
+            <h3><i class="fas fa-scroll"></i> Abstract</h3>
+            <p>The ACME Protocol creates a new foundation on top of Bitcoin for managing digital art and assets in a decentralized way. It focuses on two key features: a system that helps users reliably find and connect to verified service providers using Bitcoin's blockchain, and a way to distribute fees fairly among those providers without needing extra tokens or outside help. This approach uses group signatures to ensure rewards go only to honest participants, making the system resistant to cheating or failures. By sticking to Bitcoin's own rules and tools, it avoids complexity and external dependencies. The result is a scalable, secure network that aligns with Bitcoin's principles of trustlessness and efficiency. It's designed to handle growing transaction volumes while keeping everything verifiable on the blockchain.</p>
+          </div>
+
+          <!-- Tabs -->
+          <div class="wp-tabs">
+            <button class="wp-tablink active" onclick="openWPTab(event, 'wp-section1')" id="wpDefaultOpen"><i class="fas fa-book"></i> Introduction</button>
+            <button class="wp-tablink" onclick="openWPTab(event, 'wp-section2')"><i class="fas fa-cogs"></i> Architecture</button>
+            <button class="wp-tablink" onclick="openWPTab(event, 'wp-section3')"><i class="fas fa-globe"></i> DNS Routing</button>
+            <button class="wp-tablink" onclick="openWPTab(event, 'wp-section4')"><i class="fas fa-money"></i> Fee Distribution</button>
+            <button class="wp-tablink" onclick="openWPTab(event, 'wp-section5')"><i class="fas fa-random"></i> Flow & Examples</button>
+            <button class="wp-tablink" onclick="openWPTab(event, 'wp-section6')"><i class="fas fa-bar-chart"></i> Efficiency</button>
+            <button class="wp-tablink" onclick="openWPTab(event, 'wp-section7')"><i class="fas fa-shield"></i> Security</button>
+            <button class="wp-tablink" onclick="openWPTab(event, 'wp-section8')"><i class="fas fa-balance-scale"></i> Comparison</button>
+            <button class="wp-tablink" onclick="openWPTab(event, 'wp-section9')"><i class="fas fa-wrench"></i> Implementation</button>
+            <button class="wp-tablink" onclick="openWPTab(event, 'wp-section10')"><i class="fas fa-check"></i> Conclusion</button>
+          </div>
+
+          <!-- Tab Content -->
+          <div id="wp-section1" class="wp-tabcontent" style="display: block;">
+            <ul>
+              <li>The growth of off-chain protocols and sidechains on Bitcoin has highlighted the need for reliable infrastructure to connect clients to protocol nodes without central points of failure.</li>
+              <li>Traditional platforms like Infura create single points of failure, leading to potential outages, censorship, or corrupt communication.</li>
+              <li>Protocols outside Bitcoin's native layer must address economic incentives for indexers and sequencers providing services.</li>
+              <li>Existing solutions often use separate token economies or centralized reward distribution, which undermine decentralization principles.</li>
+              <li>ACME aims to create a self-reinforcing ecosystem where trustworthiness is verifiable and economically aligned.</li>
+              <li>Key contributions include a hybrid node discovery system combining blockchain naming with peer networks.</li>
+              <li>It introduces trustless fee aggregation using Bitcoin scripting for conditional payments without external systems.</li>
+              <li>Integration of periodic validation and real-time monitoring ensures long-term correctness and responsiveness.</li>
+            </ul>
+          </div>
+
+          <div id="wp-section2" class="wp-tabcontent">
+            <ul>
+              <li>The protocol operates across three layers: Bitcoin blockchain for immutable commitments, off-chain protocol for execution, and node network for operations.</li>
+              <li>Layer 1 (Bitcoin Blockchain) handles rewards, distributions, and verification recorded on Bitcoin for an objective truth source.</li>
+              <li>Layer 2 (Off-Chain Protocol State) manages transaction ordering, state mutations, and user operations with security from periodic commitments.</li>
+              <li>Layer 3 (Node Network) involves indexers participating in state finalization, proving correctness, and serving API requests.</li>
+              <li>The architecture includes a client layer for wallets and apps querying via DNS resolution.</li>
+              <li>Decentralized resolution layer uses blockchain registry and peer discovery for verified node endpoints.</li>
+              <li>Node verification layer checks real-time health, periodic proofs, and measures response times.</li>
+              <li>Nodes maintain protocol availability and performance collectively.</li>
+            </ul>
+          </div>
+
+          <div id="wp-section3" class="wp-tabcontent">
+            <ul>
+              <li>Traditional DNS is vulnerable to single points of failure, regulatory pressure, and man-in-the-middle attacks; ACME eliminates these by distributing both the registry and resolution.</li>
+              <li>Blockchain-based registry maps stable domain names to dynamically updated verified node endpoints, requiring cryptographic authorization for updates.</li>
+              <li>Client resolution process involves querying the registry, verifying signatures, extracting active endpoints, and selecting based on strategies like load balancing.</li>
+              <li>On-chain commitments use Merkle roots to anchor state, with threshold signatures ensuring majority honesty.</li>
+              <li>Periodic validation confirms data correctness on-chain, while real-time monitoring checks node liveness and health.</li>
+              <li>Load balancing distributes traffic using weights adjusted by health metrics, supporting geographic optimization via anycast.</li>
+              <li>Client-side failover switches endpoints quickly if failures occur, enhancing reliability without central coordination.</li>
+              <li>The system tolerates Byzantine faults up to a threshold, protecting against malicious nodes.</li>
+            </ul>
+          </div>
+
+          <div id="wp-section4" class="wp-tabcontent">
+            <ul>
+              <li>Distribution must be trustless, enforced by Bitcoin's consensus rules, not off-chain agreements.</li>
+              <li>Fees aggregate into UTXOs locked with timelocks, requiring threshold signatures for release.</li>
+              <li>State commitments anchor canonical state via Merkle roots embedded in Bitcoin transactions.</li>
+              <li>Direct payout option sends rewards immediately to recipients; HTLC option uses hash-time locks for added security with secrets.</li>
+              <li>Single-winner model selects one recipient based on performance or lottery; multi-recipient distributes to several.</li>
+              <li>Treasury allocation reserves a share for protocol development, redeemable via simple scripts.</li>
+              <li>Fallback logic reverts unclaimed rewards to treasury after timelocks, preventing permanent lockup.</li>
+              <li>The architecture ensures efficiency with minimal on-chain complexity and low fees.</li>
+            </ul>
+          </div>
+
+          <div id="wp-section5" class="wp-tabcontent">
+            <ul>
+              <li>Preparation phase sets governance, reward splits, and winner criteria before fee collection begins.</li>
+              <li>Fee collection aggregates user payments into UTXOs over blocks, consolidated for distribution.</li>
+              <li>State finalization computes canonical state from ordered transactions and performance metrics.</li>
+              <li>Commitment transaction broadcasts aggregated state with signatures if threshold met.</li>
+              <li>Reward claim phase allows winners to unlock outputs post-confirmation.</li>
+              <li>In offline failure, treasury recovers unclaimed funds after timelock without permanent loss.</li>
+              <li>Byzantine collusion attempt fails if signatures don't meet threshold, preventing invalid distributions.</li>
+              <li>Monitoring detects anomalies like unexpected outputs for community response.</li>
+            </ul>
+          </div>
+
+          <div id="wp-section6" class="wp-tabcontent">
+            <ul>
+              <li>On-chain overhead amortizes fees across many transactions, with per-commitment cost around 300 bytes.</li>
+              <li>For high-frequency epochs, more secure proofs increase costs but remain viable.</li>
+              <li>Large indexer sets raise signature size but can split into subgroups for scalability.</li>
+              <li>Many recipients increase transaction size proportionally, potentially hitting block limits.</li>
+              <li>Trade-offs: Shorter epochs offer faster accumulation but higher fees; HTLC vs direct adds cryptographic guarantees at extra cost per recipient.</li>
+              <li>Overall, batching via epochs makes periodic commitments economically sustainable.</li>
+            </ul>
+          </div>
+
+          <div id="wp-section7" class="wp-tabcontent">
+            <ul>
+              <li>Threat model assumes adversaries control up to M-1 indexers, operate malicious nodes, or experience partitions.</li>
+              <li>DNS security authenticates endpoints with threshold signatures, tolerating temporary failures.</li>
+              <li>Fee distribution integrity uses timelocks to prevent premature withdrawal, with proofs ensuring only valid claims.</li>
+              <li>Byzantine tolerance requires M signatures, protecting against dishonest minorities.</li>
+              <li>Failure mitigations include fallbacks for no commitments and governance for persistent issues.</li>
+              <li>Bitcoin consensus prevents distinguishing valid from invalid off-chain without cryptographic checks.</li>
+            </ul>
+          </div>
+
+          <div id="wp-section8" class="wp-tabcontent">
+            <ul>
+              <li>Centralized (Infura): Simple but single failure point and censorship risks; ACME distributes to avoid this.</li>
+              <li>Federated (Polkadot/Cosmos): Decentralized validators but requires external chains; ACME uses Bitcoin directly.</li>
+              <li>DAO Treasury: Transparent logic but adds dependency on other chains; ACME is Bitcoin-native with no tokens.</li>
+            </ul>
+          </div>
+
+          <div id="wp-section9" class="wp-tabcontent">
+            <ul>
+              <li>Key management for thresholds uses multi-party computation to generate keys securely.</li>
+              <li>Clients cache endpoints, implement failover, and verify proofs for security.</li>
+              <li>Monitoring pings nodes, tracks uptime, and alerts on degradations or invalid signatures.</li>
+              <li>Signing coordinator could automate but remains optional for decentralization.</li>
+            </ul>
+          </div>
+
+          <div id="wp-section10" class="wp-tabcontent">
+            <ul>
+              <li>ACME demonstrates feasible, practical decentralized infrastructure on Bitcoin without external dependencies.</li>
+              <li>It enables trustless API discovery and fee distribution scalable with transaction volume.</li>
+              <li>Byzantine fault tolerance protects against malicious actors while remaining practical.</li>
+              <li>Verifiable correctness through on-chain commitments provides objective proofs.</li>
+              <li>Economic sustainability batches rewards to minimize fees, aligning incentives.</li>
+            </ul>
+          </div>
         </div>
       </section>
-      <!-- SDK -->
-      <section class="sdk" id="sdk">
-        <div class="section-header"><h2>SDK & Tools</h2><p>Build fast with our open-source SDKs and CLI.</p></div>
-        <div class="sdk-grid">
-          <div class="card"><div class="card-icon"><i class="fas fa-terminal"></i></div><h3>acme-cli</h3><p>Command-line tool for minting, validating, and managing assets.</p></div>
-          <div class="card"><div class="card-icon"><i class="fas fa-box"></i></div><h3>JavaScript SDK</h3><p>Integrate ACME into web apps and marketplaces.</p></div>
-          <div class="card"><div class="card-icon"><i class="fas fa-cogs"></i></div><h3>Rust & Go Indexers</h3><p>Run your own validator or indexer with full test vectors.</p></div>
+
+      <!-- TECHNICAL & ECOSYSTEM OVERVIEW -->
+      <section class="ecosystem" id="ecosystem">
+        <div class="section-header">
+          <h2>Technical & Ecosystem Overview</h2>
+          <p>Everything you need to build, create, and scale on ACME — in one place.</p>
+        </div>
+
+        <div class="eco-container">
+          <div class="eco-tabs">
+            <button class="eco-tablink active" onclick="openEcoTab(event, 'eco-docs')" id="ecoDefaultOpen"><i class="fas fa-book"></i> Docs</button>
+            <button class="eco-tablink" onclick="openEcoTab(event, 'eco-sdk')"><i class="fas fa-code"></i> SDK & Tools</button>
+            <button class="eco-tablink" onclick="openEcoTab(event, 'eco-security')"><i class="fas fa-shield-alt"></i> Security</button>
+            <button class="eco-tablink" onclick="openEcoTab(event, 'eco-hub')"><i class="fas fa-tools"></i> Creator Hub</button>
+            <button class="eco-tablink" onclick="openEcoTab(event, 'eco-integrations')"><i class="fas fa-plug"></i> Integrations</button>
+            <button class="eco-tablink" onclick="openEcoTab(event, 'eco-grants')"><i class="fas fa-dollar-sign"></i> Grants</button>
+          </div>
+
+          <!-- Docs -->
+          <div id="eco-docs" class="eco-tabcontent" style="display: block;">
+            <ul>
+              <li><strong>Protocol Specification</strong>: Full OLGA encoding, CSR roots, Merkle proofs, and state transitions.</li>
+              <li><strong>Tutorials</strong>: Minting, validating, migrating assets from ETH/Ordinals.</li>
+              <li><strong>Code Examples</strong>: Rust, Go, JavaScript indexers and wallet integrations.</li>
+              <li><strong>API Reference</strong>: REST and WebSocket endpoints for real-time state.</li>
+            </ul>
+            <div class="eco-grid">
+              <div class="eco-card"><h4><i class="fas fa-scroll"></i> Core Spec</h4><p>OLGA chunking, deterministic state, proof formats.</p></div>
+              <div class="eco-card"><h4><i class="fas fa-graduation-cap"></i> Guides</h4><p>From zero to minting in 5 minutes.</p></div>
+            </div>
+          </div>
+
+          <!-- SDK & Tools -->
+          <div id="eco-sdk" class="eco-tabcontent">
+            <ul>
+              <li><strong>acme-cli</strong>: Mint, validate, and manage assets from terminal.</li>
+              <li><strong>JavaScript SDK</strong>: Web-first integration for marketplaces and dApps.</li>
+              <li><strong>Rust & Go Indexers</strong>: Run your own validator with full test vectors.</li>
+              <li><strong>Testnet Faucet</strong>: Free test BTC and assets for development.</li>
+            </ul>
+            <div class="eco-grid">
+              <div class="eco-card"><h4><i class="fas fa-terminal"></i> CLI</h4><p><code>acme mint --tier utxo art.png</code></p></div>
+              <div class="eco-card"><h4><i class="fab fa-js"></i> JS SDK</h4><p>npm install @acme-protocol/sdk</p></div>
+            </div>
+          </div>
+
+          <!-- Security -->
+          <div id="eco-security" class="eco-tabcontent">
+            <ul>
+              <li><strong>Audited Core</strong>: State machine and OLGA parser by top security firms.</li>
+              <li><strong>Bug Bounty</strong>: Up to $100K for critical vulnerabilities.</li>
+              <li><strong>Slashing</strong>: Validators lose rewards for dishonest state proofs.</li>
+              <li><strong>Transparent Monitoring</strong>: Public dashboards for node health and attestations.</li>
+            </ul>
+            <div class="eco-grid">
+              <div class="eco-card"><h4><i class="fas fa-shield-check"></i> Audit Status</h4><p>100% core modules audited</p></div>
+              <div class="eco-card"><h4><i class="fas fa-bug"></i> Bounty Program</h4><p>Active on Immunefi</p></div>
+            </div>
+          </div>
+
+          <!-- Creator Hub -->
+          <div id="eco-hub" class="eco-tabcontent">
+            <ul>
+              <li><strong>Mint Studio</strong>: Drag & drop minting with UTXO/Taproot/IPFS tiers.</li>
+              <li><strong>ARTCORE Curation</strong>: Museum-grade collections with provenance.</li>
+              <li><strong>Migration Portal</strong>: Burn on ETH → reissue on ACME with grant.</li>
+              <li><strong>Creator Dashboard</strong>: Analytics, royalties, and provenance tracking.</li>
+            </ul>
+            <div class="eco-grid">
+              <div class="eco-card"><h4><i class="fas fa-paint-brush"></i> Mint</h4><p>No code. Just art.</p></div>
+              <div class="eco-card"><h4><i class="fas fa-gem"></i> ARTCORE</h4><p>Curated collections</p></div>
+            </div>
+          </div>
+
+          <!-- Integrations -->
+          <div id="eco-integrations" class="eco-tabcontent">
+            <ul>
+              <li><strong>UniSat / Xverse</strong>: Native ACME support in forked wallets.</li>
+              <li><strong>Marketplaces</strong>: DEX, royalties, order books via CSR proofs.</li>
+              <li><strong>Enterprise APIs</strong>: Real-time provenance and analytics.</li>
+              <li><strong>Cross-Protocol Indexing</strong>: Ordinals, Runes, Stamps, Counterparty.</li>
+            </ul>
+            <div class="eco-grid">
+              <div class="eco-card"><h4><i class="fas fa-wallet"></i> Wallets</h4><p>UniSat, Xverse, Leather</p></div>
+              <div class="eco-card"><h4><i class="fas fa-store"></i> Markets</h4><p>Magic Eden, Gamma</p></div>
+            </div>
+          </div>
+
+          <!-- Grants -->
+          <div id="eco-grants" class="eco-tabcontent">
+            <ul>
+              <li><strong>Creator Grants</strong>: Up to $50K for migration and new collections.</li>
+              <li><strong>Dev Grants</strong>: Build tools, indexers, wallets — get funded.</li>
+              <li><strong>Validator Grants</strong>: Early node operators earn bonus rewards.</li>
+              <li><strong>Application Portal</strong>: Open year-round with rolling reviews.</li>
+            </ul>
+            <div class="eco-grid">
+              <div class="eco-card"><h4><i class="fas fa-hand-holding-usd"></i> Creators</h4><p>Migrate & mint free</p></div>
+              <div class="eco-card"><h4><i class="fas fa-code"></i> Builders</h4><p>Get paid to ship</p></div>
+            </div>
+          </div>
         </div>
       </section>
-      <!-- Security -->
-      <section class="security" id="security">
-        <div class="section-header"><h2>Security & Audits</h2><p>Battle-tested by top firms. Transparency first.</p></div>
-        <div class="security-grid">
-          <div class="card"><div class="card-icon"><i class="fas fa-shield-check"></i></div><h3>Audited Parsers</h3><p>Core state machine and OLGA encoding audited by [Firm].</p></div>
-          <div class="card"><div class="card-icon"><i class="fas fa-bug"></i></div><h3>Bug Bounty</h3><p>Earn bounties for critical vulnerabilities in protocol or indexers.</p></div>
-          <div class="card"><div class="card-icon"><i class="fas fa-lock"></i></div><h3>Slashing Mechanism</h3><p>Validators lose rewards for incorrect state attestation.</p></div>
-        </div>
-      </section>
-      <!-- Creator Hub -->
-      <section class="creator-hub" id="creator-hub">
-        <div class="section-header"><h2>Creator Hub</h2><p>Your one-stop shop for minting, curation, and grants.</p></div>
-        <div class="hub-grid">
-          <div class="card"><div class="card-icon"><i class="fas fa-paint-brush"></i></div><h3>Mint Studio</h3><p>Drag, drop, and mint with UTXO, Taproot, or IPFS storage.</p></div>
-          <div class="card"><div class="card-icon"><i class="fas fa-gem"></i></div><h3>ARTCORE Curation</h3><p>Museum-grade collections with verified provenance.</p></div>
-          <div class="card"><div class="card-icon"><i class="fas fa-exchange-alt"></i></div><h3>Migration Portal</h3><p>Burn on Ethereum, reissue on ACME with grant support.</p></div>
-        </div>
-      </section>
-      <!-- Integrations -->
-      <section class="integrations" id="integrations">
-        <div class="section-header"><h2>Integrations</h2><p>Works with your favorite tools and wallets.</p></div>
-        <div class="integrations-grid">
-          <div class="card"><div class="card-icon"><i class="fas fa-wallet"></i></div><h3>UniSat / Xverse</h3><p>Forked wallets with ACME support in development.</p></div>
-          <div class="card"><div class="card-icon"><i class="fas fa-store"></i></div><h3>Marketplaces</h3><p>DEX, royalties, and order matching via CSR proofs.</p></div>
-          <div class="card"><div class="card-icon"><i class="fas fa-university"></i></div><h3>Enterprise APIs</h3><p>Real-time state, provenance, and analytics for galleries.</p></div>
-        </div>
-      </section>
-      <!-- Grants -->
-      <section class="grants" id="grants">
-        <div class="section-header"><h2>Grants Program</h2><p>ACME funding for builders, artists, and validators.</p></div>
-        <div class="grants-grid">
-          <div class="card"><div class="card-icon"><i class="fas fa-hand-holding-usd"></i></div><h3>Creator Grants</h3><p>ACME funded for Artists and Creators migration and new collections on ARTCORE.</p></div>
-          <div class="card"><div class="card-icon"><i class="fas fa-code"></i></div><h3>Dev Grants</h3><p>Build indexers, wallets, or tools. Get funded.</p></div>
-          <div class="card"><div class="card-icon"><i class="fas fa-search"></i></div><h3>Validator Grants</h3><p>Run a node, earn rewards + bonus for early adopters.</p></div>
-        </div>
-      </section>
+
       <!-- Partnership -->
       <section class="partnership" id="partner">
         <div class="section-header"><h2>Join the ACME Ecosystem</h2><p>Partner with us to unify Bitcoin's art landscape: Artists, developers, galleries, and institutions.</p></div>
         <div class="partner-grid">
-          <div class="partner-card"><div class="partner-icon"><i class="fas fa-palette"></i></div><h3>Artists & Creators</h3><p>Migrate from Ethereum or other protocols with grants. Use ARTCORE for curation and white-glove onboarding.</p><a href="#" class="btn btn-secondary"><i class="fas fa-arrow-right"></i> Apply for Grants</a></div>
-          <div class="partner-card"><div class="partner-icon"><i class="fas fa-code"></i></div><h3>Developers & Builders</h3><p>Open-source indexers in Rust/Go, SDKs, test vectors. Build wallets, marketplaces, and tools on our deterministic state.</p><a href="#" class="btn btn-secondary"><i class="fas fa-arrow-right"></i> Get SDK</a></div>
-          <div class="partner-card"><div class="partner-icon"><i class="fas fa-university"></i></div><h3>Galleries & Institutions</h3><p>Enterprise APIs for provenance, curation slots in ARTCORE, museum-grade verification for collections.</p><a href="#" class="btn btn-secondary"><i class="fas fa-arrow-right"></i> Integrate APIs</a></div>
-          <div class="partner-card"><div class="partner-icon"><i class="fas fa-handshake"></i></div><h3>Wallet & Marketplace Partners</h3><p>Integrate with UniSat/Xverse forks. Offer DEX, royalties, and verifiable state to your users.</p><a href="#" class="btn btn-secondary"><i class="fas fa-arrow-right"></i> Partner Up</a></div>
+          <div class="partner-card"><div class="partner-icon"><i class="fas fa-palette"></i></div><h3>Artists & Creators</h3><p>Migrate from Ethereum or other protocols with grants. Use ARTCORE for curation and white-glove onboarding.</p><a href="#ecosystem" class="btn btn-secondary"><i class="fas fa-arrow-right"></i> Apply for Grants</a></div>
+          <div class="partner-card"><div class="partner-icon"><i class="fas fa-code"></i></div><h3>Developers & Builders</h3><p>Open-source indexers in Rust/Go, SDKs, test vectors. Build wallets, marketplaces, and tools on our deterministic state.</p><a href="#ecosystem" class="btn btn-secondary"><i class="fas fa-arrow-right"></i> Get SDK</a></div>
+          <div class="partner-card"><div class="partner-icon"><i class="fas fa-university"></i></div><h3>Galleries & Institutions</h3><p>Enterprise APIs for provenance, curation slots in ARTCORE, museum-grade verification for collections.</p><a href="#ecosystem" class="btn btn-secondary"><i class="fas fa-arrow-right"></i> Integrate APIs</a></div>
+          <div class="partner-card"><div class="partner-icon"><i class="fas fa-handshake"></i></div><h3>Wallet & Marketplace Partners</h3><p>Integrate with UniSat/Xverse forks. Offer DEX, royalties, and verifiable state to your users.</p><a href="#ecosystem" class="btn btn-secondary"><i class="fas fa-arrow-right"></i> Partner Up</a></div>
         </div>
-        
-              <!-- Terminal -->
+      </section>
+
+      <!-- Terminal -->
       <section class="terminal">
         <div class="terminal-window">
           <div class="terminal-header">
@@ -503,8 +793,7 @@
           </div>
         </div>
       </section>
-        
-      </section>
+
       <!-- CONTACT FORM SECTION -->
       <section class="contact" id="contact">
         <div class="section-header">
@@ -528,7 +817,7 @@
         </form>
       </section>
 
-      <!-- Footer (no description) -->
+      <!-- Footer -->
       <footer class="footer">
         <div class="footer-content">
           <div>
@@ -542,8 +831,8 @@
               <a href="#"><i class="fab fa-medium"></i></a>
             </div>
           </div>
-          <div><h4>Creators</h4><ul><li><a href="#">Minting Guide</a></li><li><a href="#">Storage Tiers</a></li><li><a href="#">Migration Tools</a></li><li><a href="#">ARTCORE Curation</a></li><li><a href="#">Grants Program</a></li></ul></div>
-          <div><h4>Developers</h4><ul><li><a href="#">Documentation</a></li><li><a href="#">SDK & APIs</a></li><li><a href="#">Testnet</a></li><li><a href="#">Indexer Specs</a></li><li><a href="#">Bug Bounty</a></li></ul></div>
+          <div><h4>Creators</h4><ul><li><a href="#ecosystem">Minting Guide</a></li><li><a href="#ecosystem">Storage Tiers</a></li><li><a href="#ecosystem">Migration Tools</a></li><li><a href="#ecosystem">ARTCORE Curation</a></li><li><a href="#ecosystem">Grants Program</a></li></ul></div>
+          <div><h4>Developers</h4><ul><li><a href="#ecosystem">Documentation</a></li><li><a href="#ecosystem">SDK & APIs</a></li><li><a href="#">Testnet</a></li><li><a href="#">Indexer Specs</a></li><li><a href="#">Bug Bounty</a></li></ul></div>
           <div><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Blog</a></li><li><a href="#">Roadmap</a></li><li><a href="#">Team</a></li><li><a href="#contact">Contact</a></li></ul></div>
         </div>
       </footer>
@@ -551,6 +840,7 @@
   </div>
 
   <script>
+    // Hamburger Menu
     const hamburger = document.getElementById('hamburger');
     const sidebar = document.getElementById('sidebar');
     hamburger.addEventListener('click', () => {
@@ -575,6 +865,7 @@
         sidebar.classList.remove('open');
       }
     });
+
     // Tab switching
     document.querySelectorAll('.tab').forEach(tab => {
       tab.addEventListener('click', function () {
@@ -602,7 +893,37 @@
       }
     });
 
-    // TERMINAL TYPING ANIMATION - FINAL CURSOR ONLY
+    // Whitepaper Tabs
+    function openWPTab(evt, tabName) {
+      const contents = document.getElementsByClassName('wp-tabcontent');
+      const links = document.getElementsByClassName('wp-tablink');
+      for (let i = 0; i < contents.length; i++) {
+        contents[i].style.display = 'none';
+      }
+      for (let i = 0; i < links.length; i++) {
+        links[i].className = links[i].className.replace(' active', '');
+      }
+      document.getElementById(tabName).style.display = 'block';
+      evt.currentTarget.className += ' active';
+    }
+    document.getElementById('wpDefaultOpen').click();
+
+    // Ecosystem Tabs
+    function openEcoTab(evt, tabName) {
+      const contents = document.getElementsByClassName('eco-tabcontent');
+      const links = document.getElementsByClassName('eco-tablink');
+      for (let i = 0; i < contents.length; i++) {
+        contents[i].style.display = 'none';
+      }
+      for (let i = 0; i < links.length; i++) {
+        links[i].className = links[i].className.replace(' active', '');
+      }
+      document.getElementById(tabName).style.display = 'block';
+      evt.currentTarget.className += ' active';
+    }
+    document.getElementById('ecoDefaultOpen').click();
+
+    // TERMINAL TYPING ANIMATION
     const terminalBody = document.getElementById('terminalBody');
     const commands = [
       { type: 'command', text: '$ acme init my-bitcoin-art' },
@@ -615,7 +936,6 @@
       { type: 'output', text: 'Proof: Sparse Merkle Tree verified' },
       { type: 'command', text: '$ acme validate --state-root' },
       { type: 'output', text: 'State correct. Rewards claimed.' },
-
     ];
 
     let lineIndex = 0;
@@ -626,7 +946,6 @@
 
     function typeNextChar() {
       if (lineIndex >= commands.length) {
-        // All done — add final cursor on the last empty command line
         const lastLine = document.createElement('div');
         lastLine.className = 'typing-line';
         lastLine.innerHTML = `<span class="prompt">$</span> <span class="command"></span><span class="cursor"></span>`;
@@ -663,7 +982,6 @@
       }
     }
 
-    // Start when terminal is in view
     const terminalSection = document.querySelector('.terminal');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
