@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,230 +5,219 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
   <title>ACME Protocol - Art Coded on the Monetary Engine</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
-  :root {
-    /* Core page colors – keep the dark VS-Code-like base */
-    --bg: #1e1e1e;
-    --bg-dark: #0e0e0e;
-    --sidebar: #252526;
-    --border: #3c3c3c;
-    --text: #d4d4d4;
-    --text-muted: #858585;
-    --success: #3c9d3c;
-
-    /* Logo-based accent palette */
-    --color-a: Yellow;
-    --color-c: Gold;
-    --color-m: orange;
-    --color-e: Orange;
-
-    /* Primary accent */
-    --accent: #ffcc00;
-    --accent-hover: #e6b800;
-
-    --mobile-menu-height: 60px;
-    --sidebar-width: 260px;
-  }
-
-  *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
-  body {
-    font-family:'JetBrains Mono',monospace;
-    background:var(--bg);
-    color:var(--text);
-    line-height:1.5;
-    overflow-x:hidden;
-    -webkit-tap-highlight-color:transparent;
-  }
-
-  /* ---------- MOBILE HEADER ---------- */
-  .mobile-header{
-    display:flex;align-items:center;justify-content:space-between;
-    padding:0 16px;height:var(--mobile-menu-height);
-    background:var(--bg-dark);border-bottom:1px solid var(--border);
-    position:fixed;top:0;left:0;right:0;z-index:1000;
-  }
-  .logo-mobile h1{font-size:18px;font-weight:700;color:#fff;display:flex;align-items:center;gap:8px;}
-  .logo-mobile img{width:35px;height:auto;}
-  .hamburger{width:24px;height:44px;display:flex;flex-direction:column;justify-content:center;align-items:center;cursor:pointer;gap:4px;}
-  .hamburger span{width:25px;height:2px;background:var(--text);border-radius:1px;transition:.3s;}
-  .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
-  .hamburger.active span:nth-child(2){opacity:0;}
-  .hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(7px,-6px);}
-
-  /* ---------- LAYOUT ---------- */
-  .layout{display:flex;min-height:100vh;position:relative;}
-
-  /* ---------- SIDEBAR (fixed) ---------- */
-  .sidebar{
-    width:var(--sidebar-width);
-    background:var(--sidebar);
-    border-right:1px solid var(--border);
-    padding:20px 0;
-    position:fixed;top:0;left:-100%;height:100vh;
-    overflow-y:auto;z-index:999;transition:left .3s ease;
-  }
-  .sidebar.open{left:0;}
-  .logo{padding:0 20px 20px;border-bottom:1px solid var(--border);margin-bottom:20px;}
-  .logo h1{font-size:18px;font-weight:700;color:#fff;display:flex;align-items:center;gap:10px;}
-  .logo img{width:35px;height:auto;}
-  .nav-item{
-    padding:12px 20px;cursor:pointer;transition:.2s;
-    display:flex;align-items:center;gap:12px;font-size:14px;color:#fff;
-  }
-  .nav-item:hover{background:rgba(255,255,255,.05);}
-  .nav-item.active{background:var(--accent);color:#fff !important;}
-  .nav-item i{width:16px;font-size:14px;}
-  .section-title{
-    color:var(--text-muted);font-size:11px;text-transform:uppercase;letter-spacing:.5px;
-    padding:15px 20px 5px;font-weight:600;
-  }
-
-  /* ---------- CONTACT INFO IN SIDEBAR ---------- */
-  .nav-contact{
-    padding:50px 30px 30px;border-top:1px solid var(--border);
-    margin-top:12px;font-size:10px;
-  }
-  .nav-contact h5{
-    padding:20px 0 0;font-size:10px;font-weight:600;color:#fff;
-    text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;
-    display:flex;align-items:center;gap:6px;
-  }
-  .nav-contact ul{list-style:none;}
-  .nav-contact li{margin-bottom:6px;display:flex;align-items:center;gap:6px;color:var(--text-muted);}
-  .nav-contact a{color:var(--text-muted);text-decoration:none;transition:.2s;}
-  .nav-contact a:hover{color:var(--accent);}
-  .nav-contact i{width:14px;font-size:12px;color:var(--accent);}
-
-  /* ---------- MAIN PANEL ---------- */
-  .main-panel{
-    flex:1;margin-left:0;padding-top:var(--mobile-menu-height);
-    overflow-y:auto;height:100vh;
-  }
-  .editor-header{
-    display:none;height:50px;background:var(--bg-dark);border-bottom:1px solid var(--border);
-    padding:0 15px;font-size:13px;gap:8px;align-items:center;
-    flex-wrap:nowrap;overflow-x:hidden;white-space:nowrap;
-  }
-  .tab{
-    padding:0 12px;height:100%;display:flex;align-items:center;
-    background:rgba(255,255,255,.05);border-right:1px solid var(--border);
-    position:relative;min-width:max-content;cursor:pointer;
-  }
-  .tab.active{background:var(--bg);}
-  .tab::after{
-    content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
-    background:var(--accent);opacity:0;
-  }
-  .tab.active::after{opacity:1;}
-  .close-tab{margin-left:8px;opacity:.6;cursor:pointer;}
-  .close-tab:hover{opacity:1;}
-
-  /* ---------- HERO ---------- */
-  .hero{
-    min-height:calc(60vh - var(--mobile-menu-height));
-    padding:40px 20px 60px;
-    background:url('https://thumbs.dreamstime.com/b/chaotic-bitcoin-explosion-colors-abstract-energy-background-331555936.jpg')
-             no-repeat center center/cover;
-    position:relative;overflow:hidden;text-align:center;
-  }
-  .hero::before{
-    content:'';position:absolute;inset:0;
-    background:linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
-    z-index:1;
-  }
-  .hero-content{
-    display:flex;flex-direction:column;justify-content:flex-start;gap:16px;
-    position:relative;z-index:2;animation:fadeIn 1.5s ease-in-out;
-  }
-  @keyframes fadeIn{
-    from{opacity:0;transform:translateY(20px);}
-    to{opacity:1;transform:translateY(0);}
-  }
-  .badge{
-    display:inline-flex;align-items:center;gap:8px;background:var(--success);
-    color:#fff;padding:6px 12px;border-radius:4px;font-size:13px;font-weight:600;
-    width:fit-content;margin:0 auto 16px;
-  }
-  .badge i{animation:pulse 2s infinite;}
-  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
-  h1{
-    font-size:36px;font-weight:700;
-    background:linear-gradient(90deg,var(--color-a),var(--color-c),var(--color-m),var(--color-e));
-    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-    background-clip:text;line-height:1.2;
-  }
-  .subtitle{font-size:16px;color:var(--text-muted);max-width:100%;margin-bottom:24px;}
-  .cta-buttons{
-    display:flex;flex-direction:column;align-items:center;gap:12px;margin-bottom:40px;
-  }
-  .btn{
-    padding:14px 20px;border-radius:4px;font-weight:600;font-size:15px;cursor:pointer;
-    transition:.2s;display:inline-flex;align-items:center;justify-content:center;gap:8px;
-    text-decoration:none;min-height:48px;width:100%;max-width:280px;
-  }
-  .btn-primary{background:var(--accent);color:#fff;border:none;}
-  .btn-primary:hover{background:var(--accent-hover);transform:translateY(-1px);}
-  .btn-secondary{background:transparent;color:var(--text);border:5px solid var(--border);}
-  .btn-secondary:hover{border-color:var(--accent);color:var(--accent);}
-  .stats{
-    display:flex;flex-wrap:wrap;justify-content:center;gap:20px;margin-top:40px;
-  }
-  .stat{text-align:center;}
-  .stat-value{font-size:30px;font-weight:700;color:var(--accent);}
-  .stat-label{font-size:12px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.5px;}
-
-  /* ---------- SECTIONS ---------- */
-  .features,.partnership,.contact,.terminal,.footer,.whitepaper,.ecosystem,.roadmap{
-    padding:60px 20px;background:var(--bg);animation:fadeIn 1s ease-in-out;
-  }
-  .partnership,.roadmap{background:var(--bg-dark);}
-  .section-header{text-align:center;margin-bottom:48px;}
-  .section-header h2{
-    font-size:28px;margin-bottom:12px;
-    background:linear-gradient(90deg,var(--color-a),var(--color-c),var(--color-m),var(--color-e));
-    -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  }
-  .section-header p{color:var(--text-muted);max-width:600px;margin:auto;font-size:15px;}
-  .features-grid,.partner-grid{
-    display:grid;grid-template-columns:1fr;gap:20px;margin-top:32px;
-  }
-  .card,.partner-card{
-    background:var(--bg-dark);border:1px solid var(--border);border-radius:8px;
-    padding:20px;transition:.3s;box-shadow:0 4px 8px rgba(0,0,0,.2);
-  }
-  .card:hover,.partner-card:hover{
-    border-color:var(--accent);transform:translateY(-4px) scale(1.02);
-  }
-  .card-image{width:100%;height:150px;object-fit:cover;border-radius:8px;margin-bottom:16px;}
-  .card-icon,.partner-icon{
-    width:44px;height:44px;background:var(--accent);border-radius:8px;
-    display:flex;align-items:center;justify-content:center;margin-bottom:16px;
-    font-size:18px;color:#fff;
-  }
-  .partner-icon{background:none;width:auto;height:auto;font-size:36px;margin-bottom:20px;}
-  .card h3,.partner-card h3{font-size:18px;margin-bottom:10px;}
-  .card p,.partner-card p{font-size:14px;color:var(--text-muted);}
-  .partner-card .btn{margin:16px auto 0;}
-
-  /* ---------- CONTACT FORM ---------- */
-  .contact-form{
-    max-width:600px;margin:0 auto;display:grid;gap:20px;
-  }
-  .contact-form label{font-size:14px;color:var(--text);font-weight:500;}
-  .contact-form input,.contact-form select{
-    background:var(--bg-dark);border:1px solid var(--border);color:var(--text);
-    padding:12px 14px;border-radius:4px;font-family:inherit;font-size:14px;width:100%;
-  }
-  .contact-form input:focus,.contact-form select:focus{
-    border-color:var(--accent);outline:none;
-    box-shadow:0 0 0 2px rgba(255,204,0,.2);
-  }
-  .contact-form input::placeholder{color:var(--text-muted);}
-  .contact-form button{margin-top:12px;}
-
-  /* ---------- TERMINAL ---------- */
-  .terminal{padding:60px 20px;background:#000;position:relative;overflow:hidden;}
+    :root {
+      /* Core page colors – switched to light theme for pitchdeck match */
+      --bg: #ddd;
+      --bg-dark: #bbb;
+      --sidebar: #cccccc;
+      --border: #dee2e6;
+      --text: #212529;
+      --text-muted: #212529
+      --success: #198754;
+      /* Logo-based accent palette – retained for branding */
+      --color-a: #ffc107;
+      --color-c: #ff2e00;
+      --color-m: #d32600;
+      --color-e: #d32600;
+      /* Primary accent */
+      --accent: #ffcc00;
+      --accent-hover: #ffc107;
+      --mobile-menu-height: 60px;
+      --sidebar-width: 260px;
+    }
+    *, *::before, *::after {
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+    body {
+      font-family:'Inter', sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.5;
+      overflow-x:hidden;
+      -webkit-tap-highlight-color:transparent;
+    }
+    /* ---------- MOBILE HEADER ---------- */
+    .mobile-header{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:0 16px;height:var(--mobile-menu-height);
+      background:var(--bg-dark);border-bottom:1px solid var(--border);
+      position:fixed;top:0;left:0;right:0;z-index:1000;
+    }
+    .logo-mobile h1{font-size:18px;font-weight:700;color:#000;display:flex;align-items:center;gap:8px;}
+    .logo-mobile img{width:35px;height:auto;}
+    .hamburger{width:24px;height:44px;display:flex;flex-direction:column;justify-content:center;align-items:center;cursor:pointer;gap:4px;}
+    .hamburger span{width:25px;height:2px;background:var(--text);border-radius:1px;transition:.3s;}
+    .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+    .hamburger.active span:nth-child(2){opacity:0;}
+    .hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(7px,-6px);}
+    /* ---------- LAYOUT ---------- */
+    .layout{display:flex;min-height:100vh;position:relative;}
+    /* ---------- SIDEBAR (fixed) ---------- */
+    .sidebar{
+      width:var(--sidebar-width);
+      background:var(--sidebar);
+      border-right:1px solid var(--border);
+      padding:20px 0;
+      position:fixed;top:0;left:-100%;height:100vh;
+      overflow-y:auto;z-index:999;transition:left .3s ease;
+    }
+    .sidebar.open{left:0;}
+    .logo{padding:0 20px 20px;border-bottom:1px solid var(--border);margin-bottom:20px;}
+    .logo h1{font-size:18px;font-weight:700;color:#000;display:flex;align-items:center;gap:10px;}
+    .logo img{width:35px;height:auto;}
+    .nav-item{
+      padding:12px 20px;cursor:pointer;transition:.2s;
+      display:flex;align-items:center;gap:12px;font-size:14px;color:#000;
+    }
+    .nav-item:hover{background:rgba(0,0,0,.05);}
+    .nav-item.active{background:var(--accent);color:#000 !important;}
+    .nav-item i{width:16px;font-size:14px;}
+    .section-title{
+      color:var(--text-muted);font-size:11px;text-transform:uppercase;letter-spacing:.5px;
+      padding:15px 20px 5px;font-weight:600;
+    }
+    /* ---------- CONTACT INFO IN SIDEBAR ---------- */
+    .nav-contact{
+      padding:50px 30px 30px;border-top:1px solid var(--border);
+      margin-top:12px;font-size:10px;
+    }
+    .nav-contact h5{
+      padding:20px 0 0;font-size:10px;font-weight:600;color:#000;
+      text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;
+      display:flex;align-items:center;gap:6px;
+    }
+    .nav-contact ul{list-style:none;}
+    .nav-contact li{margin-bottom:6px;display:flex;align-items:center;gap:6px;color:var(--text-muted);}
+    .nav-contact a{color:var(--text-muted);text-decoration:none;transition:.2s;}
+    .nav-contact a:hover{color:var(--accent);}
+    .nav-contact i{width:14px;font-size:12px;color:var(--accent);}
+    /* ---------- MAIN PANEL ---------- */
+    .main-panel{
+      flex:1;margin-left:0;padding-top:var(--mobile-menu-height);
+      overflow-y:auto;height:100vh;
+    }
+    .editor-header{
+      display:none;height:50px;background:var(--bg-dark);border-bottom:1px solid var(--border);
+      padding:0 15px;font-size:13px;gap:8px;align-items:center;
+      flex-wrap:nowrap;overflow-x:hidden;white-space:nowrap;
+    }
+    .tab{
+      padding:0 12px;height:100%;display:flex;align-items:center;
+      background:rgba(0,0,0,.05);border-right:1px solid var(--border);
+      position:relative;min-width:max-content;cursor:pointer;
+    }
+    .tab.active{background:var(--bg);}
+    .tab::after{
+      content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+      background:var(--accent);opacity:0;
+    }
+    .tab.active::after{opacity:1;}
+    .close-tab{margin-left:8px;opacity:.6;cursor:pointer;}
+    .close-tab:hover{opacity:1;}
+    /* ---------- HERO ---------- */
+    .hero{
+      max-height:calc(50vh - var(--mobile-menu-height));
+      padding:40px 20px 60px;
+      background:url('https://thumbs.dreamstime.com/b/chaotic-bitcoin-explosion-colors-abstract-energy-background-331555936.jpg') no-repeat center center/cover;
+      position:relative;overflow:hidden;text-align:center;
+    }
+    .hero::before{
+      content:'';position:absolute;inset:0;
+      background:linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.1)); /* Lightened overlay for light theme */
+      z-index:1;
+    }
+    .hero-content{
+      display:flex;flex-direction:column;justify-content:flex-start;gap:16px;
+      position:relative;z-index:2;animation:fadeIn 1.5s ease-in-out;
+    }
+    @keyframes fadeIn{
+      from{opacity:0;transform:translateY(20px);} to{opacity:1;transform:translateY(0);}
+    }
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;background:var(--success);
+      color:#fff;padding:6px 12px;border-radius:4px;font-size:13px;font-weight:600;
+      width:fit-content;margin:0 auto 16px;
+    }
+    .badge i{animation:pulse 2s infinite;}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+    h1{
+      font-size:36px;font-weight:700;
+      background:linear-gradient(90deg,var(--color-a),var(--color-c),var(--color-m),var(--color-e));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+      background-clip:text;line-height:1.2;
+    }
+    .subtitle{font-size:16px;color:var(--text-muted);max-width:100%;margin-bottom:24px;}
+    .cta-buttons{
+      display:flex;flex-direction:column;align-items:center;gap:12px;margin-bottom:40px;
+    }
+    .btn{
+      padding:14px 20px;border-radius:4px;font-weight:600;font-size:15px;cursor:pointer;
+      transition:.2s;display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      text-decoration:none;min-height:48px;width:100%;max-width:280px;
+    }
+    .btn-primary{background:var(--accent);color:#000;border:none;}
+    .btn-primary:hover{background:var(--accent-hover);transform:translateY(-1px);}
+    .btn-secondary{background:transparent;color:var(--text);border:5px solid var(--border);}
+    .btn-secondary:hover{border-color:var(--accent);color:var(--accent);}
+    .stats{
+      display:flex;flex-wrap:wrap;justify-content:center;gap:20px;margin-top:40px;
+    }
+    .stat{text-align:center;}
+    .stat-value{font-size:30px;font-weight:700;color:var(--accent);}
+    .stat-label{font-size:12px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.5px;}
+    /* ---------- SECTIONS ---------- */
+    .features,.partnership,.contact,.terminal,.footer,.whitepaper,.ecosystem,.roadmap{
+      padding:60px 20px;background:var(--bg);animation:fadeIn 1s ease-in-out;
+    }
+    .partnership,.roadmap{background:var(--bg-dark);}
+    .section-header{text-align:center;margin-bottom:48px;}
+    .section-header h2{
+      font-size:28px;margin-bottom:12px;
+      background:linear-gradient(90deg,var(--color-a),var(--color-c),var(--color-m),var(--color-e));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    }
+    .section-header p{color:var(--text-muted);max-width:600px;margin:auto;font-size:15px;}
+    .features-grid,.partner-grid{
+      display:grid;grid-template-columns:1fr;gap:20px;margin-top:32px;
+    }
+    .card,.partner-card{
+      background:var(--bg-dark);border:1px solid var(--border);border-radius:8px;
+      padding:20px;transition:.3s;box-shadow:0 4px 8px rgba(0,0,0,.1);
+    }
+    .card:hover,.partner-card:hover{
+      border-color:var(--accent);transform:translateY(-4px) scale(1.02);
+    }
+    .card-image{width:100%;height:150px;object-fit:cover;border-radius:8px;margin-bottom:16px;}
+    .card-icon,.partner-icon{
+      width:44px;height:44px;background:var(--accent);border-radius:8px;
+      display:flex;align-items:center;justify-content:center;margin-bottom:16px;
+      font-size:18px;color:#000;
+    }
+    .partner-icon{background:none;width:auto;height:auto;font-size:36px;margin-bottom:20px;}
+    .card h3,.partner-card h3{font-size:18px;margin-bottom:10px;}
+    .card p,.partner-card p{font-size:14px;color:var(--text-muted);}
+    .partner-card .btn{margin:16px auto 0;}
+    /* ---------- CONTACT FORM ---------- */
+    .contact-form{
+      max-width:600px;margin:0 auto;display:grid;gap:20px;
+    }
+    .contact-form label{font-size:14px;color:var(--text);font-weight:500;}
+    .contact-form input,.contact-form select{
+      background:var(--bg-dark);border:1px solid var(--border);color:var(--text);
+      padding:12px 14px;border-radius:4px;font-family:inherit;font-size:14px;width:100%;
+    }
+    .contact-form input:focus,.contact-form select:focus{
+      border-color:var(--accent);outline:none;
+      box-shadow:0 0 0 2px rgba(255,204,0,.2);
+    }
+    .contact-form input::placeholder{color:var(--text-muted);}
+    .contact-form button{margin-top:12px;}
+    /* ---------- TERMINAL ---------- */
+  .terminal{padding:60px 20px;background:#ddd;position:relative;overflow:hidden;}
   .terminal::before{
     content:'';position:absolute;inset:0;
     background:repeating-linear-gradient(0deg,rgba(255,204,0,.03),rgba(255,204,0,.03)1px,transparent 1px,transparent 2px);
@@ -258,226 +246,92 @@
   .typing-line .prompt{display:inline;}
   .typing-line .command{display:inline;}
 
-  /* ---------- FOOTER ---------- */
-  .footer{padding:60px 20px 40px;background:var(--bg-dark);border-top:1px solid var(--border);}
-  .footer-content{
-    max-width:1200px;margin:auto;display:grid;grid-template-columns:2fr;gap:32px;text-align:center;
-  }
-  .footer-logo{
-    font-size:20px;font-weight:700;color:#fff;margin-bottom:16px;
-    display:flex;align-items:center;justify-content:center;gap:10px;
-  }
-  .footer-logo img{width:24px;height:auto;}
-  .social-links{display:flex;justify-content:center;gap:12px;}
-  .social-links a{color:var(--text-muted);font-size:18px;transition:.2s;}
-  .social-links a:hover{color:var(--accent);}
-  .footer h4{font-size:14px;margin-bottom:16px;color:#fff;text-transform:uppercase;letter-spacing:.5px;}
-  .footer ul{list-style:none}
-  .footer ul li{margin-bottom:8px}
-  .footer ul li a{color:var(--text-muted);text-decoration:none;font-size:13px;transition:.2s}
-  .footer ul li a:hover{color:var(--accent)}
-
-  /* ---------- UNIFIED TABS: Whitepaper, Ecosystem, Roadmap ---------- */
-  .wp-tabs,
-  .eco-tabs,
-  .rm-tabs {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-bottom: 24px;
-    overflow-x: hidden;
-    padding: 0 4px;
-  }
-
-  .wp-tablink,
-  .eco-tablink,
-  .rm-tablink {
-    background: var(--bg-dark);
-    border: 1px solid var(--border);
-    color: var(--text);
-    padding: 12px 10px;
-    font-size: 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: .2s;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    font-family: inherit;
-    text-align: center;
-    min-height: 56px;
-    overflow: hidden;
-  }
-
-  .wp-tablink i,
-  .eco-tablink i,
-  .rm-tablink i {
-    font-size: 16px;
-    flex-shrink: 0;
-  }
-
-  .wp-tablink span,
-  .eco-tablink span,
-  .rm-tablink span {
-    display: block;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    font-size: 11px;
-  }
-
-  .wp-tablink:hover,
-  .eco-tablink:hover,
-  .rm-tablink:hover {
-    border-color: var(--accent);
-    background: rgba(255, 204, 0, .1);
-  }
-
-  .wp-tablink.active,
-  .eco-tablink.active,
-  .rm-tablink.active {
-    background: var(--accent);
-    color: #fff;
-    border-color: var(--accent);
-  }
-
-  .wp-tabcontent,
-  .eco-tabcontent,
-  .rm-tabcontent {
-    display: none;
-    background: var(--bg-dark);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 20px;
-    font-size: 14px;
-    line-height: 1.7;
-  }
-
-  .wp-tabcontent ul,
-  .eco-tabcontent ul,
-  .rm-tabcontent ul {
-    padding-left: 20px;
-    margin-top: 12px;
-  }
-
-  .wp-tabcontent li,
-  .eco-tabcontent li,
-  .rm-tabcontent li {
-    margin-bottom: 8px;
-  }
-
-  .wp-tabcontent li::marker,
-  .eco-tabcontent li::marker,
-  .rm-tabcontent li::marker {
-    color: var(--accent);
-  }
-
-  .wp-tabcontent p,
-  .eco-tabcontent p,
-  .rm-tabcontent p {
-    color: var(--text);
-    margin-bottom: 16px;
-  }
-
-  .eco-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 16px;
-    margin-top: 16px;
-  }
-
-  .eco-card {
-    background: rgba(255,255,255,.03);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 16px;
-    font-size: 13px;
-  }
-
-  .eco-card h4 {
-    color: var(--accent);
-    margin-bottom: 8px;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .eco-card p {
-    color: var(--text-muted);
-    font-size: 13px;
-  }
-
-  /* ---------- TABLET / DESKTOP ---------- */
-  @media (min-width: 768px) {
-    .mobile-header,.hamburger{display:none;}
-    .sidebar{position:fixed;top:0;left:0;width:var(--sidebar-width);transition:none;}
-    .main-panel{margin-left:var(--sidebar-width);padding-top:0;height:100vh;overflow-y:auto;}
-    .editor-header{display:flex;}
-    .hero{padding:0 60px;height:calc(100vh - 40px);text-align:left;}
-    .hero-content{justify-content:center;}
-    h1{font-size:70px;}
-    .subtitle{max-width:700px;}
-    .cta-buttons{flex-direction:row;justify-content:flex-start;margin-bottom:60px;}
-    .btn{width:auto;}
-    .stats{justify-content:flex-start;}
-    .features-grid{grid-template-columns:repeat(auto-fit,minmax(300px,1fr));}
-    .partner-grid{grid-template-columns:repeat(2,1fr);}
-    .features,.partnership,.contact,.terminal,.footer,.whitepaper,.ecosystem,.roadmap{
-      padding:80px 60px;
+    /* ---------- FOOTER ---------- */
+    .footer{padding:60px 20px 40px;background:var(--bg-dark);border-top:1px solid var(--border);}
+    .footer-content{
+      max-width:1200px;margin:auto;display:grid;grid-template-columns:2fr;gap:32px;text-align:center;
     }
-    .footer-content{grid-template-columns:2fr 1fr 1fr 1fr;text-align:left;}
-    .footer-logo{justify-content:flex-start;}
-    .social-links{justify-content:flex-start;}
-
-    /* 4 Tabs per row on desktop */
-    .wp-tabs,
-    .eco-tabs,
-    .rm-tabs {
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-      padding: 0;
+    .footer-logo{
+      font-size:20px;font-weight:700;color:#000;margin-bottom:16px;
+      display:flex;align-items:center;justify-content:center;gap:10px;
     }
-
-    .wp-tablink,
-    .eco-tablink,
-    .rm-tablink {
-      padding: 14px 16px;
-      font-size: 13px;
-      min-height: 48px;
-      flex-direction: row;
-      justify-content: flex-start;
+    .footer-logo img{width:24px;height:auto;}
+    .social-links{display:flex;justify-content:center;gap:12px;}
+    .social-links a{color:var(--text-muted);font-size:18px;transition:.2s;}
+    .social-links a:hover{color:var(--accent);}
+    .footer h4{font-size:14px;margin-bottom:16px;color:#000;text-transform:uppercase;letter-spacing:.5px;}
+    .footer ul{list-style:none}
+    .footer ul li{margin-bottom:8px}
+    .footer ul li a{color:var(--text-muted);text-decoration:none;font-size:13px;transition:.2s}
+    .footer ul li a:hover{color:var(--accent)}
+    /* ---------- UNIFIED TABS: Whitepaper, Ecosystem, Roadmap ---------- */
+    .wp-tabs, .eco-tabs, .rm-tabs {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; overflow-x: hidden; padding: 0 4px;
     }
-
-    .wp-tablink i,
-    .eco-tablink i,
-    .rm-tablink i {
-      margin-right: 8px;
+    .wp-tablink, .eco-tablink, .rm-tablink {
+      background: var(--bg-dark); border: 1px solid var(--border); color: var(--text);
+      padding: 12px 10px; font-size: 12px; border-radius: 6px; cursor: pointer; transition: .2s;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+      font-family: inherit; text-align: center; min-height: 56px; overflow: hidden;
     }
-
-    .wp-tablink span,
-    .eco-tablink span,
-    .rm-tablink span {
-      font-size: 13px;
-      white-space: normal;
-      text-overflow: clip;
+    .wp-tablink i, .eco-tablink i, .rm-tablink i { font-size: 16px; flex-shrink: 0; }
+    .wp-tablink span, .eco-tablink span, .rm-tablink span {
+      display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px;
     }
-  }
-
-  @media (min-width: 1024px) {
-    .partner-grid{grid-template-columns:repeat(4,1fr);}
-  }
-</style>
+    .wp-tablink:hover, .eco-tablink:hover, .rm-tablink:hover {
+      border-color: var(--accent); background: rgba(255, 204, 0, .1);
+    }
+    .wp-tablink.active, .eco-tablink.active, .rm-tablink.active {
+      background: var(--accent); color: #000; border-color: var(--accent);
+    }
+    .wp-tabcontent, .eco-tabcontent, .rm-tabcontent {
+      display: none; background: var(--bg-dark); border: 1px solid var(--border);
+      border-radius: 8px; padding: 20px; font-size: 14px; line-height: 1.7;
+    }
+    .wp-tabcontent ul, .eco-tabcontent ul, .rm-tabcontent ul { padding-left: 20px; margin-top: 12px; }
+    .wp-tabcontent li, .eco-tabcontent li, .rm-tabcontent li { margin-bottom: 8px; }
+    .wp-tabcontent li::marker, .eco-tabcontent li::marker, .rm-tabcontent li::marker { color: var(--accent); }
+    .wp-tabcontent p, .eco-tabcontent p, .rm-tabcontent p { color: var(--text); margin-bottom: 16px; }
+    .eco-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 16px; }
+    .eco-card { background: rgba(0,0,0,.03); border: 1px solid var(--border); border-radius: 6px; padding: 16px; font-size: 13px; }
+    .eco-card h4 { color: var(--accent); margin-bottom: 8px; font-size: 14px; display: flex; align-items: center; gap: 6px; }
+    .eco-card p { color: var(--text-muted); font-size: 13px; }
+    /* ---------- TABLET / DESKTOP ---------- */
+    @media (min-width: 768px) {
+      .mobile-header,.hamburger{display:none;}
+      .sidebar{position:fixed;top:0;left:0;width:var(--sidebar-width);transition:none;}
+      .main-panel{margin-left:var(--sidebar-width);padding-top:0;height:100vh;overflow-y:auto;}
+      .editor-header{display:flex;}
+      .hero{padding:0 60px;height:calc(100vh - 40px);text-align:left;}
+      .hero-content{justify-content:center;}
+      h1{font-size:70px;}
+      .subtitle{max-width:700px;}
+      .cta-buttons{flex-direction:row;justify-content:flex-start;margin-bottom:60px;}
+      .btn{width:auto;}
+      .stats{justify-content:flex-start;}
+      .features-grid{grid-template-columns:repeat(auto-fit,minmax(300px,1fr));}
+      .partner-grid{grid-template-columns:repeat(2,1fr);}
+      .features,.partnership,.contact,.terminal,.footer,.whitepaper,.ecosystem,.roadmap{ padding:80px 60px; }
+      .footer-content{grid-template-columns:2fr 1fr 1fr 1fr;text-align:left;}
+      .footer-logo{justify-content:flex-start;}
+      .social-links{justify-content:flex-start;}
+      /* 4 Tabs per row on desktop */
+      .wp-tabs, .eco-tabs, .rm-tabs { grid-template-columns: repeat(4, 1fr); gap: 16px; padding: 0; }
+      .wp-tablink, .eco-tablink, .rm-tablink { padding: 14px 16px; font-size: 13px; min-height: 48px; flex-direction: row; justify-content: flex-start; }
+      .wp-tablink i, .eco-tablink i, .rm-tablink i { margin-right: 8px; }
+      .wp-tablink span, .eco-tablink span, .rm-tablink span { font-size: 13px; white-space: normal; text-overflow: clip; }
+    }
+    @media (min-width: 1024px) {
+      .partner-grid{grid-template-columns:repeat(4,1fr);}
+    }
+  </style>
 </head>
 <body>
   <!-- MOBILE HEADER -->
   <header class="mobile-header">
-      <div class="logo-mobile"><h1><img src="https://raw.githubusercontent.com/SockIts/ACMEProtocol/385cd1427f319a9285328975afe73dd2f580ec57/assets/Logo.svg" alt="ACME Logo"> ACME</h1></div>
+    <div class="logo-mobile"><h1><img src="https://raw.githubusercontent.com/SockIts/ACMEProtocol/385cd1427f319a9285328975afe73dd2f580ec57/assets/Logo.svg" alt="ACME Logo"> ACME</h1></div>
     <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
   </header>
-
   <!-- LAYOUT -->
   <div class="layout">
     <!-- FIXED SIDEBAR -->
@@ -486,18 +340,19 @@
       <div class="section-title">Explorer</div>
       <a href="#" class="nav-item active" data-section="hero"><i class="fas fa-home"></i><span>Home</span></a>
       <a href="#whitepaper" class="nav-item" data-section="whitepaper"><i class="fas fa-file-alt"></i><span>Overview</span></a>
-      <a href="#ecosystem" class="nav-item" data-section="ecosystem"><i class="fas fa-cubes"></i><span>Ecosystem</span></a><a href="#roadmap" class="nav-item" data-section="roadmap"><i class="fas fa-map-signs"></i><span>Roadmap</span></a>
+      <a href="#ecosystem" class="nav-item" data-section="ecosystem"><i class="fas fa-cubes"></i><span>Ecosystem</span></a>
+      <a href="#roadmap" class="nav-item" data-section="roadmap"><i class="fas fa-map-signs"></i><span>Roadmap</span></a>
       <a href="#partner" class="nav-item" data-section="partner"><i class="fas fa-handshake"></i><span>Partners</span></a>
       <div class="section-title">Build</div>
       <a href="#contact" class="nav-item" data-section="contact"><i class="fas fa-envelope"></i><span>Contact</span></a>
-
       <!-- CONTACT INFO -->
       <div class="nav-contact">
         <div class="contact-block">
           <h5><i class="fas fa-dollar-sign"></i> Investment/Partner Inquiries</h5>
           <ul>
-            <li><i class="fas fa-envelope"></i> <a href="mailto:support@acmeprotocol.com">support@acmeprotocol.com</a></li>
-
+            <li><i class="fas fa-envelope"></i> <a href="mailto:team@acmeprotocol.com">team@acmeprotocol.com</a></li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:invest@acmeprotocol.com">invest@acmeprotocol.com</a></li>
+            
           </ul>
         </div>
         <div class="contact-block">
@@ -509,7 +364,6 @@
         </div>
       </div>
     </aside>
-
     <!-- SCROLLABLE MAIN PANEL -->
     <main class="main-panel">
       <!-- Editor Header (desktop only) -->
@@ -520,7 +374,6 @@
         <div class="tab"><i class="fas fa-code-branch"></i><span>SDK-API.md</span><i class="fas fa-times close-tab"></i></div>
         <div class="tab"><i class="fas fa-server"></i><span>Validator-Specs.md</span><i class="fas fa-times close-tab"></i></div>
       </div>
-
       <!-- HERO -->
       <section class="hero" id="hero">
         <div class="hero-content">
@@ -530,9 +383,7 @@
           <div class="cta-buttons">
             <a href="#ecosystem" class="btn btn-primary"><i class="fas fa-cubes"></i> Explore Ecosystem</a>
             <a href="#partner" class="btn btn-secondary"><i class="fas fa-handshake"></i> Become a Partner</a>
-            <a href="#contact" class="btn btn-secondary"><i class="fas fa-scroll"></i> Request White Paper</a>            
-            
-            
+            <a href="#contact" class="btn btn-secondary"><i class="fas fa-scroll"></i> Request White Paper</a>
           </div>
           <div class="stats">
             <div class="stat"><div class="stat-value">$4B+</div><div class="stat-label">BTC NFT Volume</div></div>
@@ -542,7 +393,6 @@
           </div>
         </div>
       </section>
-
       <!-- Why Build -->
       <section class="features" id="build">
         <div class="section-header"><h2>Why Build on ACME?</h2><p>The infrastructure layer for Bitcoin's art ecosystem: Permanent, verifiable, and incentivized.</p></div>
@@ -564,11 +414,9 @@
             <div class="card-icon"><i class="fas fa-link"></i></div><h3>Ecosystem Interoperability</h3><p>Seamless bridges to Ordinals, Runes, Stamps, and Counterparty. One protocol, many assets.</p></div>
         </div>
       </section>
-
       <!-- WHITEPAPER -->
       <section class="whitepaper" id="whitepaper">
         <div class="section-header"><h2>White Paper Overview</h2><p>Deep dive into the ACME architecture, security model, and economic design.</p></div>
-
         <div class="wp-container">
           <div class="wp-tabs">
             <button class="wp-tablink active" onclick="openWPTab(event, 'wp-section1')" id="wpDefaultOpen"><i class="fas fa-scroll"></i><span>Abstract</span></button>
@@ -582,7 +430,6 @@
             <button class="wp-tablink" onclick="openWPTab(event, 'wp-section9')"><i class="fas fa-tools"></i><span>Implementation</span></button>
             <button class="wp-tablink" onclick="openWPTab(event, 'wp-section10')"><i class="fas fa-check-circle"></i><span>Conclusion</span></button>
           </div>
-
           <div id="wp-section1" class="wp-tabcontent" style="display: block;">
             <ul>
               <li>ACME is a Bitcoin-native metaprotocol for digital art, addressing fragmentation, verifiability, and permanence issues in existing BTC NFT solutions.</li>
@@ -592,7 +439,6 @@
               <li>Testnet live; mainnet targeted for 2026, with grants for creators and developers.</li>
             </ul>
           </div>
-
           <div id="wp-section2" class="wp-tabcontent">
             <ul>
               <li>OLGA Chunking: Breaks art data into UTXO-compatible chunks for permanent on-chain storage.</li>
@@ -602,7 +448,6 @@
               <li>Interop Bridges: Atomic swaps and burns for migrating assets from other protocols.</li>
             </ul>
           </div>
-
           <div id="wp-section3" class="wp-tabcontent">
             <ul>
               <li>Traditional DNS is vulnerable to single points of failure, regulatory pressure, and man-in-the-middle attacks; ACME eliminates these by distributing both the registry and resolution.</li>
@@ -615,7 +460,6 @@
               <li>The system tolerates Byzantine faults up to a threshold, protecting against malicious nodes.</li>
             </ul>
           </div>
-
           <div id="wp-section4" class="wp-tabcontent">
             <ul>
               <li>Distribution must be trustless, enforced by Bitcoin's consensus rules, not off-chain agreements.</li>
@@ -628,7 +472,6 @@
               <li>The architecture ensures efficiency with minimal on-chain complexity and low fees.</li>
             </ul>
           </div>
-
           <div id="wp-section5" class="wp-tabcontent">
             <ul>
               <li>Preparation phase sets governance, reward splits, and winner criteria before fee collection begins.</li>
@@ -641,7 +484,6 @@
               <li>Monitoring detects anomalies like unexpected outputs for community response.</li>
             </ul>
           </div>
-
           <div id="wp-section6" class="wp-tabcontent">
             <ul>
               <li>On-chain overhead amortizes fees across many transactions, with per-commitment cost around 300 bytes.</li>
@@ -652,7 +494,6 @@
               <li>Overall, batching via epochs makes periodic commitments economically sustainable.</li>
             </ul>
           </div>
-
           <div id="wp-section7" class="wp-tabcontent">
             <ul>
               <li>Threat model assumes adversaries control up to M-1 indexers, operate malicious nodes, or experience partitions.</li>
@@ -663,7 +504,6 @@
               <li>Bitcoin consensus prevents distinguishing valid from invalid off-chain without cryptographic checks.</li>
             </ul>
           </div>
-
           <div id="wp-section8" class="wp-tabcontent">
             <ul>
               <li>Centralized (Infura): Simple but single failure point and censorship risks; ACME distributes to avoid this.</li>
@@ -671,7 +511,6 @@
               <li>DAO Treasury: Transparent logic but adds dependency on other chains; ACME is Bitcoin-native with no tokens.</li>
             </ul>
           </div>
-
           <div id="wp-section9" class="wp-tabcontent">
             <ul>
               <li>Key management for thresholds uses multi-party computation to generate keys securely.</li>
@@ -680,7 +519,6 @@
               <li>Signing coordinator could automate but remains optional for decentralization.</li>
             </ul>
           </div>
-
           <div id="wp-section10" class="wp-tabcontent">
             <ul>
               <li>ACME demonstrates feasible, practical decentralized infrastructure on Bitcoin without external dependencies.</li>
@@ -692,14 +530,12 @@
           </div>
         </div>
       </section>
-
       <!-- TECHNICAL & ECOSYSTEM OVERVIEW -->
       <section class="ecosystem" id="ecosystem">
         <div class="section-header">
           <h2>Technical & Ecosystem</h2>
           <p>Everything you need to build, create, and scale on ACME — in one place.</p>
         </div>
-
         <div class="eco-container">
           <div class="eco-tabs">
             <button class="eco-tablink active" onclick="openEcoTab(event, 'eco-docs')" id="ecoDefaultOpen"><i class="fas fa-book"></i> Docs</button>
@@ -709,8 +545,7 @@
             <button class="eco-tablink" onclick="openEcoTab(event, 'eco-integrations')"><i class="fas fa-plug"></i> Integrations</button>
             <button class="eco-tablink" onclick="openEcoTab(event, 'eco-grants')"><i class="fas fa-dollar-sign"></i> Grants</button>
           </div>
-
- <!-- Docs -->
+          <!-- Docs -->
           <div id="eco-docs" class="eco-tabcontent" style="display: block;">
             <ul>
               <li><strong>Protocol Specification</strong>: Full OLGA encoding, CSR roots, Merkle proofs, and state transitions.</li>
@@ -723,7 +558,6 @@
               <div class="eco-card"><h4><i class="fas fa-graduation-cap"></i> Guides</h4><p>From zero to minting in 5 minutes.</p></div>
             </div>
           </div>
-
           <!-- SDK & Tools -->
           <div id="eco-sdk" class="eco-tabcontent">
             <ul>
@@ -737,7 +571,6 @@
               <div class="eco-card"><h4><i class="fab fa-js"></i> JS SDK</h4><p>npm install @acme-protocol/sdk</p></div>
             </div>
           </div>
-
           <!-- Security -->
           <div id="eco-security" class="eco-tabcontent">
             <ul>
@@ -751,7 +584,6 @@
               <div class="eco-card"><h4><i class="fas fa-bug"></i> Bounty Program</h4><p>Active on Immunefi</p></div>
             </div>
           </div>
-
           <!-- Creator Hub -->
           <div id="eco-hub" class="eco-tabcontent">
             <ul>
@@ -765,7 +597,6 @@
               <div class="eco-card"><h4><i class="fas fa-gem"></i> ARTCORE</h4><p>Curated collections</p></div>
             </div>
           </div>
-
           <!-- Integrations -->
           <div id="eco-integrations" class="eco-tabcontent">
             <ul>
@@ -779,7 +610,6 @@
               <div class="eco-card"><h4><i class="fas fa-store"></i> Markets</h4><p>Magic Eden, Gamma</p></div>
             </div>
           </div>
-
           <!-- Grants -->
           <div id="eco-grants" class="eco-tabcontent">
             <ul>
@@ -795,64 +625,39 @@
           </div>
         </div>
       </section>
-
       <!-- Partnership -->
       <section class="roadmap" id="roadmap">
-<div class="section-header"><h2>Roadmap</h2><p>Our journey to revolutionize digital art on Bitcoin.</p></div>
-<div class="rm-container">
-<div class="rm-tabs">
-<button class="rm-tablink active" onclick="openRMTab(event, 'rm-section1')" id="rmDefaultOpen"><i class="fas fa-seedling"></i><span>Genesis (Q4 2025)</span></button>
-<button class="rm-tablink" onclick="openRMTab(event, 'rm-section2')"><i class="fas fa-sun"></i><span>Awakening (Q1 2026)</span></button>
-<button class="rm-tablink" onclick="openRMTab(event, 'rm-section3')"><i class="fas fa-fire"></i><span>Ignition (Q1-Q2 2026)</span></button>
-<button class="rm-tablink" onclick="openRMTab(event, 'rm-section4')"><i class="fas fa-unlock"></i><span>Liberation (Q3 2026)</span></button>
-<button class="rm-tablink" onclick="openRMTab(event, 'rm-section5')"><i class="fas fa-globe"></i><span>Fully Open Network (Ongoing)</span></button>
-</div>
-<div id="rm-section1" class="rm-tabcontent" style="display: block;">
-<p>Laying the foundation for the creative revolution. Building the tools that give artists true ownership and永久 permanence on Bitcoin.</p>
-<ul>
-<li>⚡ <strong>MVP Development:</strong> Crafting the core protocol that embeds art directly into Bitcoin's eternal ledger</li>
-<li>🎨 <strong>Angel Round:</strong> Gathering visionaries who believe in empowering creators and building the federation</li>
-<li>✨ <strong>Closed Beta:</strong> First creators experiment with true Bitcoin-native art ownership</li>
-<li>🔮 <strong>Foundation Indexer:</strong> The initial gateway to accessing eternal art on-chain</li>
-</ul>
-</div>
-<div id="rm-section2" class="rm-tabcontent">
-<p>Opening the gates to creators worldwide. Building an unstoppable movement of artists who refuse to compromise on ownership.</p>
-<ul>
-<li>💎 <strong>Presale Launch:</strong> Early believers secure their stake in the creative economy of tomorrow</li>
-<li>🎭 <strong>Public Beta:</strong> Refined tools for seamless art creation and discovery experience</li>
-<li>🌊 <strong>Public Testnet:</strong> Playground for artists, collectors, and builders to experiment freely</li>
-<li>🚀 <strong>Growth Campaigns:</strong> Galxe activations, creator incentives, and building the federation network</li>
-<li>🔥 <strong>Community Fire:</strong> Spreading the gospel of true digital ownership across the creator economy</li>
-</ul>
-</div>
-<div id="rm-section3" class="rm-tabcontent">
-<p>The revolution goes live. Art becomes eternal. Creators become sovereign. Bitcoin becomes the canvas for humanity's creativity.</p>
-<ul>
-<li>💥 <strong>Token Generation Event:</strong> ACME comes alive on Bitcoin, fueling the creative economy</li>
-<li>🌟 <strong>Mainnet Alpha:</strong> The protocol is live, permanent, unstoppable—art on Bitcoin forever</li>
-<li>👑 <strong>Name Registry:</strong> Claim your eternal identity in the Bitcoin art universe</li>
-<li>🎨 <strong>Collections Go Live:</strong> Curate, create, and immortalize your artistic vision on-chain</li>
-<li>🪙 <strong>Fungible Token Creation:</strong> Artists launch their own economies, communities, and currencies</li>
-<li>🌍 <strong>Global Movement:</strong> Onboarding creators, galleries, collectors—the art world discovers Bitcoin</li>
-</ul>
-</div>
-<div id="rm-section4" class="rm-tabcontent">
-<p>Power to the people. The federation emerges. Partners, believers, and creators unite to run the infrastructure that serves everyone.</p>
-<ul>
-<li>🌐 <strong>Federation Activation:</strong> Partners and investors spin up nodes, distributing power globally</li>
-<li>🔗 <strong>Decentralized API:</strong> No single point of control, no single point of failure</li>
-<li>⚖️ <strong>Node Incentives:</strong> Federation members rewarded for serving the creative community</li>
-<li>🗳️ <strong>Governance Framework:</strong> Collective decision-making for protocol evolution</li>
-<li>🚀 <strong>Protocol Evolution:</strong> Community-driven features, optimizations, and innovations</li>
-</ul>
-</div>
-<div id="rm-section5" class="rm-tabcontent">
-<p>The endgame: A completely permissionless, unstoppable creative platform governed by those who believe in it.         No gatekeepers. No middlemen. No compromises. Just artists, collectors, and builders creating the future of digital art on the most secure, most decentralized ledger humanity has ever known.         Run a node. Build tools. Create art. Shape governance. This is the infrastructure that serves creation itself—eternal, immutable, and free.</p>
-</div>
-</div>
-</section>
-<section class="partnership" id="partner">
+        <div class="section-header"><h2>Roadmap</h2><p>Our journey to revolutionize digital art on Bitcoin.</p></div>
+        <div class="rm-container">
+          <div class="rm-tabs">
+            <button class="rm-tablink active" onclick="openRMTab(event, 'rm-section1')" id="rmDefaultOpen"><i class="fas fa-seedling"></i><span>Genesis (Q4 2025)</span></button>
+            <button class="rm-tablink" onclick="openRMTab(event, 'rm-section2')"><i class="fas fa-sun"></i><span>Awakening (Q1 2026)</span></button>
+            <button class="rm-tablink" onclick="openRMTab(event, 'rm-section3')"><i class="fas fa-fire"></i><span>Ignition (Q1-Q2 2026)</span></button>
+            <button class="rm-tablink" onclick="openRMTab(event, 'rm-section4')"><i class="fas fa-unlock"></i><span>Liberation (Q3 2026)</span></button>
+            <button class="rm-tablink" onclick="openRMTab(event, 'rm-section5')"><i class="fas fa-globe"></i><span>Fully Open Network (Ongoing)</span></button>
+          </div>
+          <div id="rm-section1" class="rm-tabcontent" style="display: block;">
+            <p>Laying the foundation for the creative revolution. Building the tools that give artists true ownership and永久 permanence on Bitcoin.</p>
+            <ul><li>⚡ <strong>MVP Development:</strong> Crafting the core protocol that embeds art directly into Bitcoin's eternal ledger</li><li>🎨 <strong>Angel Round:</strong> Gathering visionaries who believe in empowering creators and building the federation</li><li>✨ <strong>Closed Beta:</strong> First creators experiment with true Bitcoin-native art ownership</li><li>🔮 <strong>Foundation Indexer:</strong> The initial gateway to accessing eternal art on-chain</li></ul>
+          </div>
+          <div id="rm-section2" class="rm-tabcontent">
+            <p>Opening the gates to creators worldwide. Building an unstoppable movement of artists who refuse to compromise on ownership.</p>
+            <ul><li>💎 <strong>Presale Launch:</strong> Early believers secure their stake in the creative economy of tomorrow</li><li>🎭 <strong>Public Beta:</strong> Refined tools for seamless art creation and discovery experience</li><li>🌊 <strong>Public Testnet:</strong> Playground for artists, collectors, and builders to experiment freely</li><li>🚀 <strong>Growth Campaigns:</strong> Galxe activations, creator incentives, and building the federation network</li><li>🔥 <strong>Community Fire:</strong> Spreading the gospel of true digital ownership across the creator economy</li></ul>
+          </div>
+          <div id="rm-section3" class="rm-tabcontent">
+            <p>The revolution goes live. Art becomes eternal. Creators become sovereign. Bitcoin becomes the canvas for humanity's creativity.</p>
+            <ul><li>💥 <strong>Token Generation Event:</strong> ACME comes alive on Bitcoin, fueling the creative economy</li><li>🌟 <strong>Mainnet Alpha:</strong> The protocol is live, permanent, unstoppable—art on Bitcoin forever</li><li>👑 <strong>Name Registry:</strong> Claim your eternal identity in the Bitcoin art universe</li><li>🎨 <strong>Collections Go Live:</strong> Curate, create, and immortalize your artistic vision on-chain</li><li>🪙 <strong>Fungible Token Creation:</strong> Artists launch their own economies, communities, and currencies</li><li>🌍 <strong>Global Movement:</strong> Onboarding creators, galleries, collectors—the art world discovers Bitcoin</li></ul>
+          </div>
+          <div id="rm-section4" class="rm-tabcontent">
+            <p>Power to the people. The federation emerges. Partners, believers, and creators unite to run the infrastructure that serves everyone.</p>
+            <ul><li>🌐 <strong>Federation Activation:</strong> Partners and investors spin up nodes, distributing power globally</li><li>🔗 <strong>Decentralized API:</strong> No single point of control, no single point of failure</li><li>⚖️ <strong>Node Incentives:</strong> Federation members rewarded for serving the creative community</li><li>🗳️ <strong>Governance Framework:</strong> Collective decision-making for protocol evolution</li><li>🚀 <strong>Protocol Evolution:</strong> Community-driven features, optimizations, and innovations</li></ul>
+          </div>
+          <div id="rm-section5" class="rm-tabcontent">
+            <p>The endgame: A completely permissionless, unstoppable creative platform governed by those who believe in it. No gatekeepers. No middlemen. No compromises. Just artists, collectors, and builders creating the future of digital art on the most secure, most decentralized ledger humanity has ever known. Run a node. Build tools. Create art. Shape governance. This is the infrastructure that serves creation itself—eternal, immutable, and free.</p>
+          </div>
+        </div>
+      </section>
+      <section class="partnership" id="partner">
         <div class="section-header"><h2>Join the ACME Ecosystem</h2><p>Partner with us to unify Bitcoin's art landscape: Artists, developers, galleries, and institutions.</p></div>
         <div class="partner-grid">
           <div class="partner-card"><div class="partner-icon"><i class="fas fa-palette"></i></div><h3>Artists & Creators</h3><p>Migrate from Ethereum or other protocols with grants. Use ARTCORE for curation and white-glove onboarding.</p><a href="#ecosystem" class="btn btn-secondary"><i class="fas fa-arrow-right"></i> Apply for Grants</a></div>
@@ -861,7 +666,6 @@
           <div class="partner-card"><div class="partner-icon"><i class="fas fa-handshake"></i></div><h3>Wallet & Marketplace Partners</h3><p>Integrate with UniSat/Xverse forks. Offer DEX, royalties, and verifiable state to your users.</p><a href="#ecosystem" class="btn btn-secondary"><i class="fas fa-arrow-right"></i> Partner Up</a></div>
         </div>
       </section>
-
       <!-- Terminal -->
       <section class="terminal">
         <div class="terminal-window">
@@ -874,7 +678,6 @@
           </div>
         </div>
       </section>
-
       <!-- CONTACT FORM SECTION -->
       <section class="contact" id="contact">
         <div class="section-header">
@@ -897,7 +700,6 @@
           <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Message</button>
         </form>
       </section>
-
       <!-- Footer -->
       <footer class="footer">
         <div class="footer-content">
@@ -908,7 +710,6 @@
               <a href="#"><i class="fab fa-twitter"></i></a>
               <a href="#"><i class="fas fa-globe"></i></a>
               <a href="#"><i class="fab fa-github"></i></a>
-
             </div>
           </div>
           <div><h4>Creators</h4><ul><li><a href="#ecosystem">Minting Guide</a></li><li><a href="#ecosystem">Storage Tiers</a></li><li><a href="#ecosystem">Migration Tools</a></li><li><a href="#ecosystem">ARTCORE Curation</a></li><li><a href="#ecosystem">Grants Program</a></li></ul></div>
@@ -918,7 +719,6 @@
       </footer>
     </main>
   </div>
-
   <script>
     // Hamburger Menu
     const hamburger = document.getElementById('hamburger');
@@ -945,7 +745,6 @@
         sidebar.classList.remove('open');
       }
     });
-
     // Tab switching
     document.querySelectorAll('.tab').forEach(tab => {
       tab.addEventListener('click', function () {
@@ -972,7 +771,6 @@
         });
       }
     });
-
     // Whitepaper Tabs
     function openWPTab(evt, tabName) {
       const contents = document.getElementsByClassName('wp-tabcontent');
@@ -983,7 +781,6 @@
       evt.currentTarget.className += ' active';
     }
     document.getElementById('wpDefaultOpen').click();
-
     // Ecosystem Tabs
     function openEcoTab(evt, tabName) {
       const contents = document.getElementsByClassName('eco-tabcontent');
@@ -994,19 +791,16 @@
       evt.currentTarget.className += ' active';
     }
     document.getElementById('ecoDefaultOpen').click();
-
-// Roadmap Tabs
-function openRMTab(evt, tabName) {
-  const contents = document.getElementsByClassName('rm-tabcontent');
-  const links = document.getElementsByClassName('rm-tablink');
-  for (let i = 0; i < contents.length; i++) { contents[i].style.display = 'none'; }
-  for (let i = 0; i < links.length; i++) { links[i].className = links[i].className.replace(' active', ''); }
-  document.getElementById(tabName).style.display = 'block';
-  evt.currentTarget.className += ' active';
-}
-document.getElementById('rmDefaultOpen').click();
-
-
+    // Roadmap Tabs
+    function openRMTab(evt, tabName) {
+      const contents = document.getElementsByClassName('rm-tabcontent');
+      const links = document.getElementsByClassName('rm-tablink');
+      for (let i = 0; i < contents.length; i++) { contents[i].style.display = 'none'; }
+      for (let i = 0; i < links.length; i++) { links[i].className = links[i].className.replace(' active', ''); }
+      document.getElementById(tabName).style.display = 'block';
+      evt.currentTarget.className += ' active';
+    }
+    document.getElementById('rmDefaultOpen').click();
     // TERMINAL TYPING ANIMATION
     const terminalBody = document.getElementById('terminalBody');
     const commands = [
@@ -1021,10 +815,8 @@ document.getElementById('rmDefaultOpen').click();
       { type: 'command', text: '$ acme validate --state-root' },
       { type: 'output', text: 'State correct. Rewards claimed.' },
     ];
-
     let lineIndex = 0, charIndex = 0, currentLine = null;
     const typingSpeed = 30, lineDelay = 200;
-
     function typeNextChar() {
       if (lineIndex >= commands.length) {
         const lastLine = document.createElement('div');
@@ -1033,7 +825,6 @@ document.getElementById('rmDefaultOpen').click();
         terminalBody.appendChild(lastLine);
         return;
       }
-
       if (!currentLine) {
         currentLine = document.createElement('div');
         currentLine.className = 'typing-line';
@@ -1045,21 +836,20 @@ document.getElementById('rmDefaultOpen').click();
           currentLine.innerHTML = `<span class="output"></span>`;
         }
       }
-
       const cmd = commands[lineIndex];
       const targetSpan = currentLine.querySelector(cmd.type === 'command' ? '.command' : '.output');
       const fullText = cmd.text;
-
       if (charIndex < fullText.length) {
         targetSpan.textContent += fullText[charIndex];
         charIndex++;
         setTimeout(typeNextChar, typingSpeed);
       } else {
-        charIndex = 0; currentLine = null; lineIndex++;
+        charIndex = 0;
+        currentLine = null;
+        lineIndex++;
         setTimeout(typeNextChar, lineDelay);
       }
     }
-
     const terminalSection = document.querySelector('.terminal');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
