@@ -1038,23 +1038,56 @@ footer{border-top:1px solid var(--b);padding:1.6rem 36px;display:flex;align-item
 .cd-icon svg{width:13px;height:13px}
 
 /* Form */
-.contact-form{background:var(--card);border:1px solid var(--b);border-radius:16px;padding:2rem;backdrop-filter:blur(18px);position:relative;overflow:hidden}
+.contact-form{background:var(--card);border:1px solid var(--b);border-radius:16px;padding:1.5rem;backdrop-filter:blur(18px);position:relative;overflow:hidden}
 .contact-form::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(242,163,10,.4),transparent)}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.form-group{display:flex;flex-direction:column;gap:6px}
-.form-group.full{grid-column:1/-1}
-.form-label{font-size:.62rem;font-family:var(--mono);color:rgba(238,239,245,.4);letter-spacing:.08em;text-transform:uppercase}
-.form-input{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:8px;padding:10px 12px;font-size:.85rem;font-family:var(--font);color:var(--text);outline:none;transition:border-color .2s,background .2s;width:100%;box-sizing:border-box}
+.form-label{font-size:.6rem;font-family:var(--mono);color:rgba(238,239,245,.4);letter-spacing:.08em;text-transform:uppercase}
+.form-input{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:8px;padding:9px 11px;font-size:.82rem;font-family:var(--font);color:var(--text);outline:none;transition:border-color .2s,background .2s;width:100%;box-sizing:border-box}
 .form-input:focus{border-color:rgba(242,163,10,.4);background:rgba(255,255,255,.07)}
 .form-input::placeholder{color:rgba(238,239,245,.22)}
-.form-submit{width:100%;background:var(--gold);color:#000;border:none;border-radius:10px;padding:13px;font-size:.9rem;font-weight:700;font-family:var(--font);cursor:pointer;transition:opacity .15s,transform .2s;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:4px}
-.form-submit:hover{opacity:.88;transform:translateY(-10px)}
+.form-submit{width:100%;background:var(--gold);color:#000;border:none;border-radius:10px;padding:12px;font-size:.88rem;font-weight:700;font-family:var(--font);cursor:pointer;transition:opacity .15s,transform .2s;display:flex;align-items:center;justify-content:center;gap:8px}
+.form-submit:hover{opacity:.88;transform:translateY(-2px)}
 .form-submit:disabled{opacity:.5;cursor:not-allowed;transform:none}
-.form-note{font-size:.68rem;font-family:var(--mono);color:rgba(238,239,245,.28);text-align:center;margin-top:10px;line-height:1.5}
-.form-success{display:none;text-align:center;padding:2rem 1rem}
+.form-note{font-size:.63rem;font-family:var(--mono);color:rgba(238,239,245,.25);text-align:center;line-height:1.5}
+.form-success{display:none;text-align:center;padding:2.5rem 1rem}
 .form-success-icon{width:52px;height:52px;border-radius:50%;background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.25);display:grid;place-items:center;margin:0 auto 1rem}
 .form-success h4{font-size:1.1rem;font-weight:600;margin-bottom:.5rem}
 .form-success p{font-size:.85rem;color:var(--muted);line-height:1.7}
+.req-star{color:#e05080}
+/* ── Multi-step Form ── */
+.msf-progress{height:2px;background:rgba(255,255,255,.07);border-radius:99px;margin-bottom:1.3rem;overflow:hidden}
+.msf-progress-bar{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:99px;width:10%;transition:width .5s cubic-bezier(.16,1,.3,1)}
+.msf-steps-wrap{position:relative;overflow:hidden;transition:height .4s cubic-bezier(.16,1,.3,1)}
+.msf-step{position:absolute;inset:0;opacity:0;pointer-events:none;transform:translateX(30px);transition:opacity .35s cubic-bezier(.16,1,.3,1),transform .35s cubic-bezier(.16,1,.3,1)}
+.msf-step.active{opacity:1;pointer-events:auto;transform:translateX(0) !important}
+.msf-step.go-left{transform:translateX(-30px);opacity:0}
+.msf-step.come-right{transform:translateX(30px);opacity:0}
+.msf-intro{font-size:.78rem;color:rgba(238,239,245,.55);line-height:1.7;margin-bottom:1rem;padding:.7rem .9rem;background:rgba(242,163,10,.05);border-left:2px solid rgba(242,163,10,.35);border-radius:0 6px 6px 0}
+.msf-q{font-size:.92rem;font-weight:500;letter-spacing:-.02em;margin-bottom:.25rem;line-height:1.4}
+.msf-sub{font-size:.68rem;color:var(--muted);margin-bottom:.85rem;font-family:var(--mono)}
+.msf-back{background:none;border:none;color:rgba(238,239,245,.3);font-family:var(--mono);font-size:.6rem;letter-spacing:.06em;cursor:pointer;padding:0;margin-bottom:.75rem;display:inline-flex;align-items:center;gap:4px;transition:color .15s}
+.msf-back:hover{color:var(--muted)}
+.msf-opts{display:flex;flex-direction:column;gap:6px;margin-top:.8rem}
+.msf-tile{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:9px;padding:10px 13px;cursor:pointer;text-align:left;transition:background .18s,border-color .18s,transform .15s;width:100%;font-family:var(--font);color:var(--text);position:relative}
+.msf-tile:hover{background:rgba(242,163,10,.06);border-color:rgba(242,163,10,.22);transform:translateX(2px)}
+.msf-tile.selected{background:rgba(242,163,10,.09);border-color:rgba(242,163,10,.38)}
+.msf-tile-icon{font-size:.95rem;opacity:.65;flex-shrink:0;width:18px;text-align:center}
+.msf-tile-label{font-size:.82rem;font-weight:500;flex:1}
+.msf-tile-badge{font-size:.48rem;font-family:var(--mono);padding:2px 6px;border-radius:99px;background:rgba(74,222,128,.12);border:1px solid rgba(74,222,128,.3);color:#4ade80;letter-spacing:.06em;position:absolute;right:11px}
+.msf-tile-sm{padding:8px 12px}
+.msf-tile-sm .msf-tile-label{font-size:.79rem}
+.msf-opts-list{gap:5px}
+.msf-row{display:flex;align-items:center;gap:9px;padding:8px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.025);cursor:pointer;transition:background .15s,border-color .15s;font-size:.8rem;color:rgba(238,239,245,.75)}
+.msf-row:hover{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12)}
+.msf-row input[type=radio]{position:absolute;opacity:0;pointer-events:none}
+.msf-radio-box{width:13px;height:13px;border-radius:50%;border:1.5px solid rgba(255,255,255,.2);flex-shrink:0;transition:border-color .15s,background .15s;position:relative}
+.msf-row:has(input:checked) .msf-radio-box{border-color:var(--gold);background:var(--gold)}
+.msf-row:has(input:checked) .msf-radio-box::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:4px;height:4px;border-radius:50%;background:#000}
+.msf-row:has(input:checked){background:rgba(242,163,10,.07);border-color:rgba(242,163,10,.28);color:var(--text)}
+.msf-next-btn{margin-top:11px;width:100%;background:rgba(242,163,10,.1);border:1px solid rgba(242,163,10,.28);color:var(--gold);font-family:var(--font);font-size:.8rem;font-weight:600;padding:9px;border-radius:8px;cursor:pointer;transition:background .2s,transform .18s;letter-spacing:.02em}
+.msf-next-btn:hover:not(:disabled){background:rgba(242,163,10,.18);transform:translateY(-1px)}
+.msf-next-btn:disabled{opacity:.3;cursor:not-allowed}
+.msf-field-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.msf-field{display:flex;flex-direction:column;gap:5px}
 
 @media(max-width:768px){
   .contact-layout{grid-template-columns:1fr;gap:28px}
@@ -1999,9 +2032,9 @@ footer{border-top:1px solid var(--b);padding:1.6rem 36px;display:flex;align-item
 <!-- ══ SECTION: CONTACT / INVEST ══════════════════════ -->
 <section class="contact-sec sec" id="contact">
   <div class="wrap">
-    <div class="tag fly">Get In Touch</div>
-    <h2 class="sh fly" style="transition-delay:.06s">Interested in the<br><strong>seed round?</strong></h2>
-    <p class="sp fly" style="transition-delay:.12s">Reach out directly and the ACME team will be in touch. We're onboarding strategic investors aligned with building the Bitcoin asset standard.</p>
+    <div class="tag fly">Interest Form</div>
+    <h2 class="sh fly" style="transition-delay:.06s">Join the<br><strong>seed round.</strong></h2>
+    <p class="sp fly" style="transition-delay:.12s">Complete the form below and the ACME team will follow up based on your preferences. We're onboarding strategic investors, advisors, and collaborators aligned with building the Bitcoin asset standard.</p>
 
     <div class="contact-layout">
 
@@ -2031,45 +2064,177 @@ footer{border-top:1px solid var(--b);padding:1.6rem 36px;display:flex;align-item
       </div>
 
       <div class="contact-form -right fly-right" style="transition-delay:.15s">
+
+        <!-- Success State -->
         <div class="form-success" id="formSuccess">
           <div class="form-success-icon">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
           </div>
-          <h4>Message sent!</h4>
-          <p>Thanks for reaching out. The ACME team will review your message and be in touch within 1–2 business days.</p>
+          <h4>Submission received!</h4>
+          <p>Thanks for your interest in ACME Protocol. The team will follow up within 1–2 business days.</p>
         </div>
-        <form id="contactForm" action="https://formspree.io/f/xnnoewqp" method="POST">
-          <div class="fly-group" style="display:flex;flex-direction:column;gap:14px">
-            <div class="form-row fly">
-              <div class="form-group">
-                <label class="form-label" for="cf-name">Full Name <span style="color:#e05080">*</span></label>
-                <input class="form-input" type="text" id="cf-name" name="name" placeholder="Satoshi Nakamoto" required>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="cf-email">Email Address <span style="color:#e05080">*</span></label>
-                <input class="form-input" type="email" id="cf-email" name="email" placeholder="you@example.com" required>
-              </div>
-            </div>
-            <div class="form-row fly">
-              <div class="form-group">
-                <label class="form-label" for="cf-x">X (Twitter) Handle</label>
-                <input class="form-input" type="text" id="cf-x" name="x_handle" placeholder="@handle">
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="cf-tg">Telegram / Discord</label>
-                <input class="form-input" type="text" id="cf-tg" name="telegram_discord" placeholder="@username or User#1234">
-              </div>
-            </div>
-            <div class="form-group full fly">
-              <label class="form-label" for="cf-msg">Message <span style="color:#e05080">*</span></label>
-              <textarea class="form-input" id="cf-msg" name="message" rows="4" placeholder="Tell us about your interest (investment opportunity, Requesting MVP Demo, Collaboration Opportunity, etc..." required style="resize:vertical;min-height:90px;font-family:var(--font);line-height:1.6"></textarea>
-            </div>
-            <button type="submit" class="form-submit" id="formSubmit">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-              Send Message
-            </button>
-            <div class="form-note">Your information is kept private and only used to follow up on your inquiry.</div>
+
+        <!-- Multi-step Form -->
+        <form id="contactForm" action="https://formspree.io/f/xnnoewqp" method="POST" autocomplete="off">
+
+          <!-- Progress Bar -->
+          <div class="msf-progress">
+            <div class="msf-progress-bar" id="msfProgressBar"></div>
           </div>
+
+          <!-- Step Wrapper (overflow hidden for slide animation) -->
+          <div class="msf-steps-wrap" id="msfStepsWrap" style="height:280px">
+
+            <!-- STEP 1: Primary Interest -->
+            <div class="msf-step active" id="step-1" data-step="1">
+              <p class="msf-intro">Thank you for your interest in ACME Protocol, the Bitcoin native meta protocol for permanent, UTXO-secured digital assets. We're currently raising our seed round and welcome strategic investors, advisors, and collaborators aligned with building durable Bitcoin infrastructure and looking forward to hearing from you.<br><br>
+              
+              -ACME </p>
+              <div class="msf-q">What are you interested in?</div>
+              <div class="msf-opts">
+                <button type="button" class="msf-tile" data-next="2a" data-field="interest" data-value="Seed Round Investment">
+                  <span class="msf-tile-icon">₿</span>
+                  <span class="msf-tile-label">Seed Round Investment</span>
+                  <span class="msf-tile-badge">Open</span>
+                </button>
+                <button type="button" class="msf-tile" data-next="2b" data-field="interest" data-value="Collaboration or Team Interest">
+                  <span class="msf-tile-icon">⬡</span>
+                  <span class="msf-tile-label">Collaboration or Team</span>
+                </button>
+                <button type="button" class="msf-tile" data-next="2c" data-field="interest" data-value="Request MVP Demo">
+                  <span class="msf-tile-icon">◈</span>
+                  <span class="msf-tile-label">Request MVP Demo</span>
+                </button>
+              </div>
+              <input type="hidden" name="interest" id="f-interest">
+            </div>
+
+            <!-- STEP 2a: Investment Range (for Seed Round) -->
+            <div class="msf-step" id="step-2a" data-step="2">
+              <button type="button" class="msf-back" data-back="1">← Back</button>
+              <div class="msf-q">Approximate investment range?</div>
+              <div class="msf-sub">In BTC equivalent</div>
+              <div class="msf-opts msf-opts-list">
+                <label class="msf-row"><input type="radio" name="investment_range" value="5+ BTC"><span class="msf-radio-box"></span><span>More than 5 BTC</span></label>
+                <label class="msf-row"><input type="radio" name="investment_range" value="1–5 BTC"><span class="msf-radio-box"></span><span>1–5 BTC</span></label>
+                <label class="msf-row"><input type="radio" name="investment_range" value="0.25–1 BTC"><span class="msf-radio-box"></span><span>0.25–1 BTC</span></label>
+                <label class="msf-row"><input type="radio" name="investment_range" value="<0.25 BTC"><span class="msf-radio-box"></span><span>Less than 0.25 BTC</span></label>
+                <label class="msf-row"><input type="radio" name="investment_range" value="TBD"><span class="msf-radio-box"></span><span>Not sure yet</span></label>
+              </div>
+              <button type="button" class="msf-next-btn" data-next="3" id="next-2a" disabled>Continue →</button>
+            </div>
+
+            <!-- STEP 2b: Role Interest (for Collaboration) -->
+            <div class="msf-step" id="step-2b" data-step="2">
+              <button type="button" class="msf-back" data-back="1">← Back</button>
+              <div class="msf-q">Which role interests you?</div>
+              <div class="msf-opts">
+                <button type="button" class="msf-tile msf-tile-sm" data-next="3" data-field="collab_role" data-value="Advisor">
+                  <span class="msf-tile-label">Advisor</span>
+                </button>
+                <button type="button" class="msf-tile msf-tile-sm" data-next="3" data-field="collab_role" data-value="Strategic Partner">
+                  <span class="msf-tile-label">Strategic Partner / Devs</span>
+                </button>
+                <button type="button" class="msf-tile msf-tile-sm" data-next="3" data-field="collab_role" data-value="Marketing / Community">
+                  <span class="msf-tile-label">Marketing / Community Managment</span>
+                </button>
+                <button type="button" class="msf-tile msf-tile-sm" data-next="3" data-field="collab_role" data-value="Business Development">
+                  <span class="msf-tile-label">Artist / Creator </span>
+                </button>
+                <button type="button" class="msf-tile msf-tile-sm" data-next="3" data-field="collab_role" data-value="Other">
+                  <span class="msf-tile-label">Other / Open to discuss</span>
+                </button>
+              </div>
+              <input type="hidden" name="collab_role" id="f-collab_role">
+            </div>
+
+            <!-- STEP 2c: MVP Demo info (for Demo request) -->
+            <div class="msf-step" id="step-2c" data-step="2">
+              <button type="button" class="msf-back" data-back="1">← Back</button>
+              <div class="msf-q">What's your primary focus?</div>
+              <div class="msf-opts">
+                <button type="button" class="msf-tile msf-tile-sm" data-next="3" data-field="demo_focus" data-value="General overview">
+                  <span class="msf-tile-label">General Overview</span>
+                </button>
+                <button type="button" class="msf-tile msf-tile-sm" data-next="3" data-field="demo_focus" data-value="General overview">
+                  <span class="msf-tile-label">Asset Creation & Management</span>
+                </button>
+                <button type="button" class="msf-tile msf-tile-sm" data-next="3" data-field="demo_focus" data-value="DEX & trading">
+                  <span class="msf-tile-label">DEX & Trading</span>
+                </button>
+                <button type="button" class="msf-tile msf-tile-sm" data-next="3" data-field="demo_focus" data-value="Generative studio & NFTs">
+                  <span class="msf-tile-label">Generative Studio & Artcore</span>
+                </button>
+                <button type="button" class="msf-tile msf-tile-sm" data-next="3" data-field="demo_focus" data-value="ACME Cortex">
+                  <span class="msf-tile-label">ACME Cortex</span>
+                </button>
+              </div>
+              <input type="hidden" name="demo_focus" id="f-demo_focus">
+            </div>
+
+            <!-- STEP 3: Preferred Follow-up -->
+            <div class="msf-step" id="step-3" data-step="3">
+              <button type="button" class="msf-back" id="back-3">← Back</button>
+              <div class="msf-q">How should we follow up?</div>
+              <div class="msf-opts">
+                <button type="button" class="msf-tile msf-tile-sm" data-next="4" data-field="followup" data-value="Schedule a call">
+                  <span class="msf-tile-icon" style="font-size:.9rem">📞</span>
+                  <span class="msf-tile-label">Schedule a call</span>
+                </button>
+                <button type="button" class="msf-tile msf-tile-sm" data-next="4" data-field="followup" data-value="Email">
+                  <span class="msf-tile-icon" style="font-size:.9rem">✉</span>
+                  <span class="msf-tile-label">Email</span>
+                </button>
+                <button type="button" class="msf-tile msf-tile-sm" data-next="4" data-field="followup" data-value="X / Discord">
+                  <span class="msf-tile-icon" style="font-size:.9rem">✦</span>
+                  <span class="msf-tile-label">X / Discord</span>
+                </button>
+                <button type="button" class="msf-tile msf-tile-sm" data-next="4" data-field="followup" data-value="Telegram">
+                  <span class="msf-tile-icon" style="font-size:.9rem">✈</span>
+                  <span class="msf-tile-label">Telegram</span>
+                </button>
+              </div>
+              <input type="hidden" name="followup_method" id="f-followup">
+            </div>
+
+            <!-- STEP 4: Contact Details -->
+            <div class="msf-step" id="step-4" data-step="4">
+              <button type="button" class="msf-back" data-back="3">← Back</button>
+              <div class="msf-q">Almost done — your details</div>
+              <div style="display:flex;flex-direction:column;gap:10px;margin-top:12px">
+                <div class="msf-field-row">
+                  <div class="msf-field">
+                    <label class="form-label" for="cf-name">Name <span class="req-star">*</span></label>
+                    <input class="form-input" type="text" id="cf-name" name="name" placeholder="Satoshi Nakamoto" required>
+                  </div>
+                  <div class="msf-field">
+                    <label class="form-label" for="cf-email">Email <span class="req-star">*</span></label>
+                    <input class="form-input" type="email" id="cf-email" name="email" placeholder="you@example.com" required>
+                  </div>
+                </div>
+                <div class="msf-field-row">
+                  <div class="msf-field">
+                    <label class="form-label" for="cf-x">X Handle</label>
+                    <input class="form-input" type="text" id="cf-x" name="x_handle" placeholder="@handle">
+                  </div>
+                  <div class="msf-field">
+                    <label class="form-label" for="cf-tg">Telegram / Discord</label>
+                    <input class="form-input" type="text" id="cf-tg" name="telegram_discord" placeholder="@username">
+                  </div>
+                </div>
+                <div class="msf-field">
+                  <label class="form-label" for="cf-msg">Anything else you'd like us to know?</label>
+                  <textarea class="form-input" id="cf-msg" name="message" rows="3" placeholder="Additional context, questions, or anything else…" style="resize:none;font-family:var(--font);line-height:1.6"></textarea>
+                </div>
+              </div>
+              <button type="submit" class="form-submit" id="formSubmit" style="margin-top:14px">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                Submit
+              </button>
+              <div class="form-note" style="margin-top:10px">Your info is kept private and used only to follow up.</div>
+            </div>
+
+          </div><!-- /msf-steps-wrap -->
         </form>
       </div>
 
@@ -2079,36 +2244,157 @@ footer{border-top:1px solid var(--b);padding:1.6rem 36px;display:flex;align-item
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 (function(){
-  const form = document.getElementById('contactForm');
-  const btn  = document.getElementById('formSubmit');
-  const success = document.getElementById('formSuccess');
-  if(!form) return;
+  var form    = document.getElementById('contactForm');
+  var bar     = document.getElementById('msfProgressBar');
+  var wrap    = document.getElementById('msfStepsWrap');
+  var success = document.getElementById('formSuccess');
+  var btn     = document.getElementById('formSubmit');
+  if(!form || !wrap) return;
+
+  var progress = {'1':'10%','2a':'38%','2b':'38%','2c':'38%','3':'68%','4':'92%'};
+  var history  = ['1'];
+  var animating = false;
+
+  function setHeight(el) {
+    wrap.style.height = el.scrollHeight + 'px';
+  }
+
+  // Init height
+  var first = document.getElementById('step-1');
+  if(first) { first.style.transform = 'translateX(0)'; setHeight(first); }
+  window.addEventListener('resize', function(){ var a=wrap.querySelector('.msf-step.active'); if(a) setHeight(a); });
+
+  function goTo(nextId, back) {
+    if(animating) return;
+    var current = wrap.querySelector('.msf-step.active');
+    var next    = document.getElementById('step-' + nextId);
+    if(!current || !next || current === next) return;
+    animating = true;
+
+    // Position next step off-screen (no transition yet)
+    next.style.transition = 'none';
+    next.style.transform  = back ? 'translateX(-30px)' : 'translateX(30px)';
+    next.style.opacity    = '0';
+    next.style.pointerEvents = 'none';
+
+    // Force reflow so the above sticks before we add transitions
+    next.getBoundingClientRect();
+
+    // Slide current out
+    current.classList.remove('active');
+    current.style.transition = 'opacity .28s ease, transform .28s ease';
+    current.style.transform  = back ? 'translateX(30px)' : 'translateX(-30px)';
+    current.style.opacity    = '0';
+    current.style.pointerEvents = 'none';
+
+    // Slide next in
+    next.style.transition = 'opacity .35s cubic-bezier(.16,1,.3,1), transform .35s cubic-bezier(.16,1,.3,1)';
+    next.style.transform  = 'translateX(0)';
+    next.style.opacity    = '1';
+    next.style.pointerEvents = 'auto';
+
+    // Resize wrap to next step's height
+    setHeight(next);
+
+    // After animation, clean up and mark active
+    setTimeout(function(){
+      next.classList.add('active');
+      // Clear inline styles so CSS class controls it going forward
+      next.style.cssText = '';
+      current.style.cssText = '';
+      animating = false;
+    }, 360);
+
+    // Progress
+    if(bar) bar.style.width = progress[nextId] || '50%';
+  }
+
+  // Tile click → auto advance
+  wrap.querySelectorAll('.msf-tile').forEach(function(tile){
+    tile.addEventListener('click', function(){
+      if(animating) return;
+      var field  = this.dataset.field;
+      var value  = this.dataset.value;
+      var nextId = this.dataset.next;
+      if(field){ var inp=document.getElementById('f-'+field); if(inp) inp.value=value; }
+      this.closest('.msf-opts').querySelectorAll('.msf-tile').forEach(function(t){ t.classList.remove('selected'); });
+      this.classList.add('selected');
+      history.push(nextId);
+      setTimeout(function(){ goTo(nextId, false); }, 150);
+    });
+  });
+
+  // Radio → enable continue
+  var radios2a = wrap.querySelectorAll('#step-2a input[type=radio]');
+  var nextBtn  = document.getElementById('next-2a');
+  radios2a.forEach(function(r){
+    r.addEventListener('change', function(){ if(nextBtn) nextBtn.disabled=false; });
+  });
+  if(nextBtn){
+    nextBtn.addEventListener('click', function(){
+      if(animating) return;
+      history.push('3');
+      goTo('3', false);
+    });
+  }
+
+  // Back buttons
+  wrap.querySelectorAll('.msf-back').forEach(function(backBtn){
+    backBtn.addEventListener('click', function(){
+      if(animating || history.length < 2) return;
+      history.pop();
+      var prevId = history[history.length - 1];
+      goTo(prevId, true);
+    });
+  });
+
+  // Submit — build FormData and ensure all hidden fields are included
   form.addEventListener('submit', async function(e){
     e.preventDefault();
     btn.disabled = true;
-    btn.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10" stroke-dasharray="31.4" stroke-dashoffset="31.4" style="animation:spin 1s linear infinite;transform-origin:center"><animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="0.8s" repeatCount="indefinite"/></circle></svg> Sending…';
-    try{
-      const res = await fetch(form.action, {
-        method:'POST',
-        body: new FormData(form),
-        headers:{'Accept':'application/json'}
-      });
+    btn.innerHTML = 'Sending…';
+
+    var fd = new FormData(form);
+
+    // Ensure all hidden tracking fields are present even if value is empty
+    var tracked = ['interest','collab_role','demo_focus','followup_method'];
+    tracked.forEach(function(key){
+      if(!fd.get(key)) {
+        var el = document.getElementById('f-' + key.replace('followup_method','followup'));
+        if(el && el.value) fd.set(key, el.value);
+      }
+    });
+
+    // Add a readable summary field for Formspree inbox clarity
+    var summary = [];
+    if(fd.get('interest'))        summary.push('Interest: ' + fd.get('interest'));
+    if(fd.get('investment_range')) summary.push('Investment range: ' + fd.get('investment_range'));
+    if(fd.get('collab_role'))     summary.push('Role: ' + fd.get('collab_role'));
+    if(fd.get('demo_focus'))      summary.push('Demo focus: ' + fd.get('demo_focus'));
+    if(fd.get('followup_method')) summary.push('Follow-up: ' + fd.get('followup_method'));
+    fd.set('_subject', 'ACME Protocol — Interest Form: ' + (fd.get('interest') || 'General'));
+    fd.set('summary', summary.join(' | '));
+
+    try {
+      var res = await fetch(form.action,{ method:'POST', body:fd, headers:{'Accept':'application/json'} });
       if(res.ok){
         form.style.display='none';
         success.style.display='block';
+        if(bar) bar.style.width='100%';
       } else {
         btn.disabled=false;
-        btn.innerHTML='<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Send Message';
-        alert('Something went wrong. Please try again or email us directly.');
+        btn.innerHTML='Submit';
+        alert('Something went wrong. Please try again.');
       }
-    }catch(err){
+    } catch(err){
       btn.disabled=false;
-      btn.innerHTML='<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Send Message';
+      btn.innerHTML='Submit';
       alert('Network error. Please try again.');
     }
   });
 })();
 </script>
+
 
 <!-- ══ CTA ════════════════════════════════════════ -->
 <section class="cta-sec">
@@ -2522,4 +2808,3 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
       cancelAnimationFrame(raf);
       raf = requestAnimationFrame(()=>{
         el.style.transform = `perspective(600px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale3d(1.025,1.025,1.025)`;
-       
