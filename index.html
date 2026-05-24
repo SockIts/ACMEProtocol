@@ -73,6 +73,10 @@ nav{
 .nav-end{display:flex;gap:9px;align-items:center}
 .btn-ghost{font-size:.8rem;padding:5px 10px;border:1px solid;border-radius:8px;transition:color .15s,border-color .15s}
 .btn-ghost:hover{color:var(--text);border-color:var(--bh);transform:translateY(-5px)}
+.btn-live-top{color:#000;background:var(--gold);border-color:var(--gold);font-weight:700;box-shadow:0 8px 24px rgba(242,163,10,.28);display:inline-flex;align-items:center;gap:7px}
+.btn-live-top:hover{opacity:.9;border-color:var(--gold2);transform:translateY(-5px)}
+.live-dot{width:8px;height:8px;border-radius:50%;background:#28e06a;box-shadow:0 0 10px rgba(40,224,106,.85);animation:liveBlink 1.2s ease-in-out infinite}
+@keyframes liveBlink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.75)}}
 .btn-cta{font-size:.8rem;font-weight:600;color:#000;background:var(--gold);padding:7px 18px;border-radius:8px;transition:opacity .15s,transform .15s}
 .btn-cta:hover{opacity:.88;transform:translateY(-5px)}
 
@@ -396,6 +400,25 @@ hr.div{border:none;border-top:1px solid var(--b);margin:0}
 .tc-cell{background:rgba(255,255,255,.04);border:1px solid var(--b);border-radius:10px;padding:.9rem}
 .tc-ck{font-size:.65rem;font-family:var(--mono);color:var(--faint);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.3rem}
 .tc-cv{font-size:.88rem;font-weight:600}
+
+/* ─────────────────────────────────────────
+   TEAM & AMBASSADORS
+───────────────────────────────────────── */
+.people-grid{margin-top:2.2rem}
+.people-card{background:transparent;border:none;padding:0}
+.people-card h3{display:none}
+.person-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.person{display:flex;flex-direction:column;align-items:center;text-align:center;gap:0;padding:0;border:1px solid var(--b);border-radius:18px;background:var(--card);color:var(--text);overflow:hidden;min-height:340px;height:auto;transition:transform .2s,border-color .2s,background .2s}
+.person:hover{transform:translateY(-6px);background:var(--card-h);border-color:rgba(242,163,10,.32)}
+.person-top{width:100%;height:74px;background:linear-gradient(135deg,rgba(242,163,10,.22) 0%,rgba(224,85,0,.16) 100%);position:relative}
+.person img{width:100px;height:100px;border-radius:22px;object-fit:cover;border:4px solid rgba(2,2,12,.9);position:relative;margin-top:-50px;box-shadow:0 8px 22px rgba(0,0,0,.24);background:#111;display:block;flex-shrink:0}
+.person-body{padding:.65rem .8rem .95rem;display:flex;flex-direction:column;flex:1;width:100%}
+.person-name{font-size:.95rem;font-weight:700;line-height:1.2;color:var(--text);min-height:2.4em;display:flex;align-items:center;justify-content:center}
+.person-role{font-size:.72rem;color:var(--gold);margin:.2rem 0 .55rem;min-height:1.4em}
+.person-desc{font-size:.7rem;color:var(--muted);line-height:1.45;min-height:72px}
+.person-link{margin-top:.55rem;font-size:.64rem;font-family:var(--mono);color:var(--gold);opacity:1}
+.person-social{margin-top:auto;display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:999px;border:1px solid rgba(242,163,10,.3);background:rgba(242,163,10,.08);color:var(--gold);align-self:center}
+.person-social svg{width:13px;height:13px;display:block}
 
 /* ─────────────────────────────────────────
    CTA
@@ -1173,6 +1196,8 @@ footer{border-top:1px solid var(--b);padding:1.6rem 36px;display:flex;align-item
   .mvp-showcase{display:block !important;width:100% !important}
   .mvp-window{width:100% !important;min-width:0 !important;max-width:100% !important}
   .mvp-screen{min-height:auto !important}
+  .people-grid{grid-template-columns:1fr !important;gap:10px !important}
+  .person-list{grid-template-columns:repeat(3,minmax(0,1fr)) !important}
 
   /* ── MVP tabs: compact, no clip ── */
   .mvp-tabs{
@@ -1327,6 +1352,13 @@ footer{border-top:1px solid var(--b);padding:1.6rem 36px;display:flex;align-item
   .pc-title,.bc-t,.rm-name{font-size:.75rem !important}
   .pc-desc,.bc-d,.rm-list li{font-size:.66rem !important}
   .exp-grid{grid-template-columns:repeat(3,1fr) !important;gap:4px !important}
+  .person-list{grid-template-columns:repeat(3,minmax(0,1fr)) !important}
+  .person-list .person:nth-child(-n+3){margin-top:10px !important}
+  .people-grid{padding-top:12px !important}
+  .person{min-height:620px !important;height:auto !important;overflow:visible !important;padding-top:12px !important}
+  .person-top{display:none !important}
+  .person img{width:78px !important;height:78px !important;border-radius:18px !important;margin:0 auto 8px !important;position:relative !important;top:auto !important}
+  .person-body{padding-top:4px !important}
 }
 
 </style>
@@ -1353,7 +1385,7 @@ footer{border-top:1px solid var(--b);padding:1.6rem 36px;display:flex;align-item
     <a href="#contact">Invest</a>
   </div>
   <div class="nav-end">
-    <a href="#contact" class="btn-ghost">Request MVP Demo</a>
+    <a href="https://testnet.acme.pics/" target="_blank" rel="noopener noreferrer" class="btn-ghost btn-live-top"><span class="live-dot"></span>Live Testnet</a>
     <a href="https://x.com/ACMEonBTC" target="_blank" rel="noopener noreferrer" class="btn-cta">Follow ↗</a>
   </div>
 </nav>
@@ -1377,6 +1409,7 @@ footer{border-top:1px solid var(--b);padding:1.6rem 36px;display:flex;align-item
     <div class="hero-btns">
       <a href="#contact" class="btn-gold">Invest in Early Round →</a>
       <a href="https://x.com/ACMEonBTC" target="_blank" rel="noopener noreferrer" class="btn-outline">Follow @ACMEonBTC</a>
+      <a href="https://t.me/acmeonbtc" target="_blank" rel="noopener noreferrer" class="btn-outline">Join Telegram</a>
     </div>
   </div>
   <div class="scroll-ind"><div class="si-text">SCROLL</div><div class="si-line"></div></div>
@@ -1399,7 +1432,7 @@ footer{border-top:1px solid var(--b);padding:1.6rem 36px;display:flex;align-item
 <!-- ══ STATS ══════════════════════════════════════ -->
 <div class="stats-strip">
   <div class="stats-inner fly-group">
-    <div class="stat"><span class="s-val" data-target="2400" data-suffix="+">—</span><span class="s-lbl">Testnet assets minted</span></div>
+    <div class="stat"><span class="s-val" data-target="2400" data-suffix="+">—</span><span class="s-lbl">Assets minted on live testnet</span></div>
     <div class="stat"><span class="s-val" data-target="4" data-suffix=" layers">—</span><span class="s-lbl">Flexible storage methods</span></div>
     <div class="stat"><span class="s-val" data-prefix="$" data-target="5" data-suffix="M FDV">—</span><span class="s-lbl">Launch valuation</span></div>
     <div class="stat"><span class="s-val" data-target="1" data-suffix="B $ACME">—</span><span class="s-lbl">Fixed token supply</span></div>
@@ -1530,7 +1563,10 @@ footer{border-top:1px solid var(--b);padding:1.6rem 36px;display:flex;align-item
   <div class="wrap">
     <div class="tag fly">Product Preview</div>
     <h2 class="sh fly" style="transition-delay:.06s">The MVP is <strong>built and running.</strong></h2>
-    <p class="sp fly" style="transition-delay:.12s">Explore the protocol interfaces live on testnet — mint assets, browse the explorer, trade on the native DEX, and create generative on-chain art in Cortex Studio.</p>
+    <p class="sp fly" style="transition-delay:.12s">Explore the live ACME testnet now — mint assets, browse the explorer, trade on the native DEX, and create generative on-chain art in Cortex Studio.</p>
+    <div class="fly" style="transition-delay:.16s;margin-top:1rem">
+      <a href="https://testnet.acme.pics/" target="_blank" rel="noopener noreferrer" class="btn-gold">Live Testnet →</a>
+    </div>
 
     <div class="mvp-tabs fly" style="transition-delay:.18s;margin-top:2.4rem">
       <button class="mvp-tab active" data-screen="explorer">Explorer</button>
@@ -2029,6 +2065,40 @@ footer{border-top:1px solid var(--b);padding:1.6rem 36px;display:flex;align-item
 
 <hr class="div">
 
+<!-- ══ SECTION: TEAM & AMBASSADORS ══════════════════════ -->
+<section class="sec" id="team">
+  <div class="wrap">
+    <div class="tag fly">People</div>
+    <h2 class="sh fly" style="transition-delay:.06s">Built by a killer core team.<br><strong>Backed by sharp ambassadors.</strong></h2>
+    <p class="sp fly" style="transition-delay:.12s">The project is led by operators and creators who live in Bitcoin culture and ship fast.</p>
+
+    <div class="people-grid fly-group">
+      <div class="person-list">
+        <a class="person" href="https://x.com/btc_socks" target="_blank" rel="noopener noreferrer">
+          <div class="person-top"></div><img src="Team%20members/socks.jpg" alt="btc_socks profile"><div class="person-body"><div class="person-name">@btc_socks</div><div class="person-role">Co-founder</div><div class="person-desc">Bitcoin maximalist and co-founder of ACME Protocol, focused on building the next revolutionary decentralized protocol for artists and creators directly on Bitcoin’s monetary engine.</div><div class="person-social"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21l-6.56 7.5L22 22h-5.95l-4.66-6.1L6.05 22H3.29l7.02-8.02L2 2h6.1l4.21 5.56L18.244 2Zm-2.09 18h1.65L7.01 3.89H5.24L16.154 20Z"/></svg></div></div>
+        </a>
+        <a class="person" href="https://x.com/HnftPepe" target="_blank" rel="noopener noreferrer">
+          <div class="person-top"></div><img src="Team%20members/hnftpepe.jpg" alt="HnftPepe profile"><div class="person-body"><div class="person-name">@hnftpepe</div><div class="person-role">Co-founder</div><div class="person-desc">Digital artist and co-founder of ACME, specializing in on-chain creativity with a strong emphasis on vector art, and pushing for deeper decentralization and permissionless markets in the Bitcoin NFT space.</div><div class="person-social"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21l-6.56 7.5L22 22h-5.95l-4.66-6.1L6.05 22H3.29l7.02-8.02L2 2h6.1l4.21 5.56L18.244 2Zm-2.09 18h1.65L7.01 3.89H5.24L16.154 20Z"/></svg></div></div>
+        </a>
+        <a class="person" href="https://x.com/lentymor" target="_blank" rel="noopener noreferrer">
+          <div class="person-top"></div><img src="Team%20members/mortylen.jpg" alt="lentymor profile"><div class="person-body"><div class="person-name">@lentymor</div><div class="person-role">Co-founder</div><div class="person-desc">Digital art alchemist and on-chain artist known for anarchic humor, experimental Bitcoin art, and pushing the boundaries of what’s possible with fully on-chain creativity.</div><div class="person-social"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21l-6.56 7.5L22 22h-5.95l-4.66-6.1L6.05 22H3.29l7.02-8.02L2 2h6.1l4.21 5.56L18.244 2Zm-2.09 18h1.65L7.01 3.89H5.24L16.154 20Z"/></svg></div></div>
+        </a>
+        <a class="person" href="https://x.com/paperbuddha" target="_blank" rel="noopener noreferrer">
+          <div class="person-top"></div><img src="Team%20members/paperbuddha.jpg" alt="paperbuddha profile"><div class="person-body"><div class="person-name">@paperbuddha</div><div class="person-role">Ambassador</div><div class="person-desc">Contemporary Buddhist artist who masterfully blends traditional Thangka art with vintage pulp comics; active as a baker on Tezos, validator on Ethereum, and AI builder.</div><div class="person-social"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21l-6.56 7.5L22 22h-5.95l-4.66-6.1L6.05 22H3.29l7.02-8.02L2 2h6.1l4.21 5.56L18.244 2Zm-2.09 18h1.65L7.01 3.89H5.24L16.154 20Z"/></svg></div></div>
+        </a>
+        <a class="person" href="https://x.com/KaneMayfield" target="_blank" rel="noopener noreferrer">
+          <div class="person-top"></div><img src="Team%20members/kane.jpg" alt="KaneMayfield profile"><div class="person-body"><div class="person-name">@kanemayfield</div><div class="person-role">Ambassador</div><div class="person-desc">Meme merchant, writer, and cultural curator — purveyor of fine liquor & fancy condiments, creator behind @FAKERARES_XCP and inscribed audio, bringing a fun, irreverent edge to Bitcoin culture.</div><div class="person-social"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21l-6.56 7.5L22 22h-5.95l-4.66-6.1L6.05 22H3.29l7.02-8.02L2 2h6.1l4.21 5.56L18.244 2Zm-2.09 18h1.65L7.01 3.89H5.24L16.154 20Z"/></svg></div></div>
+        </a>
+        <a class="person" href="https://x.com/desultor" target="_blank" rel="noopener noreferrer">
+          <div class="person-top"></div><img src="Team%20members/desultor.jpg" alt="desultor profile"><div class="person-body"><div class="person-name">@desultor</div><div class="person-role">Ambassador</div><div class="person-desc">Crunchy dystopian artist vibing in the Bitcoin art scene, known for bold, gritty, and vibrant on-chain creations with raw creative energy and a distinctive post-apocalyptic aesthetic. Long-time NFT artist (since early Tezos days) who brings anarchic, unfiltered style to ACME.</div><div class="person-social"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21l-6.56 7.5L22 22h-5.95l-4.66-6.1L6.05 22H3.29l7.02-8.02L2 2h6.1l4.21 5.56L18.244 2Zm-2.09 18h1.65L7.01 3.89H5.24L16.154 20Z"/></svg></div></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
 <!-- ══ SECTION: CONTACT / INVEST ══════════════════════ -->
 <section class="contact-sec sec" id="contact">
   <div class="wrap">
@@ -2101,9 +2171,9 @@ footer{border-top:1px solid var(--b);padding:1.6rem 36px;display:flex;align-item
                   <span class="msf-tile-icon">⬡</span>
                   <span class="msf-tile-label">Collaboration or Team</span>
                 </button>
-                <button type="button" class="msf-tile" data-next="2c" data-field="interest" data-value="Request MVP Demo">
+                <button type="button" class="msf-tile" data-next="2c" data-field="interest" data-value="Schedule a Team Call">
                   <span class="msf-tile-icon">◈</span>
-                  <span class="msf-tile-label">Request MVP Demo</span>
+                  <span class="msf-tile-label">Schedule a Team Call</span>
                 </button>
               </div>
               <input type="hidden" name="interest" id="f-interest">
@@ -2403,7 +2473,7 @@ footer{border-top:1px solid var(--b);padding:1.6rem 36px;display:flex;align-item
   <div class="cta-btns fly" style="transition-delay:.16s">
     <a href="#contact" class="btn-gold">Invest in Seed Round →</a>
     <a href="https://x.com/ACMEonBTC" target="_blank" rel="noopener noreferrer" class="btn-outline">Follow @ACMEonBTC</a>
-    <a href="#contact" class="btn-outline">Request MVP Demo</a>
+    <a href="https://testnet.acme.pics/" target="_blank" rel="noopener noreferrer" class="btn-outline">Live Testnet</a>
   </div>
 </section>
 
@@ -2808,3 +2878,44 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
       cancelAnimationFrame(raf);
       raf = requestAnimationFrame(()=>{
         el.style.transform = `perspective(600px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale3d(1.025,1.025,1.025)`;
+25)`;
+
+
+
+5)`;
+
+
+25)`;
+
+
+
+5)`;
+
+rotY}deg) scale3d(1.025,1.025,1.025)`;
+25)`;
+
+
+
+5)`;
+
+5)`;
+25)`;
+
+
+
+5)`;
+
+
+
+5)`;
+
+
+
+5)`;
+
+5)`;
+
+
+
+5)`;
+
