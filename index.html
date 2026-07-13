@@ -6,13 +6,13 @@
 <title>ACME Protocol — Assets Coded on the Monetary Engine</title>
 <meta name="description" content="ACME Protocol — Bitcoin-native meta protocol for permanent, verifiable digital assets. Combines UTXO storage, Merkle proofs, incentivized indexing, and artist-grade tooling.">
 <meta property="og:title" content="ACME Protocol — Assets Coded on the Monetary Engine">
-<meta property="og:description" content="The first Bitcoin protocol with permanent storage, trustless proofs, native DEX, and generative studio. Seed round open.">
+<meta property="og:description" content="The first Bitcoin protocol with permanent storage, trustless proofs, native DEX, and generative studio. Live on mainnet.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ACMEProtocol.com">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@ACMEonBTC">
 <meta name="twitter:title" content="ACME Protocol — Bitcoin Digital Assets, Done Right">
-<meta name="twitter:description" content="Permanent storage · Trustless proofs · Native DEX · Generative studio. Seed round open.">
+<meta name="twitter:description" content="Permanent storage · Trustless proofs · Native DEX · Generative studio. Live on mainnet.">
 <meta name="theme-color" content="#F2A30A">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2302020c'/%3E%3Crect x='4' y='4' width='24' height='24' fill='none' stroke='%23F2A30A' stroke-width='2'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='12' fill='%23F2A30A' text-anchor='middle'%3EAC%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -377,29 +377,33 @@ hr.div{border:none;border-top:1px solid var(--b);margin:0}
 .rm-now{display:inline-flex;margin-top:.65rem;padding:2px 8px;border-radius:4px;background:var(--gs);border:1px solid rgba(242,163,10,.2);font-size:.6rem;font-family:var(--mono);color:var(--gold);animation:pulse 2.5s ease-in-out infinite}
 
 /* ─────────────────────────────────────────
-   SECTION: TOKENOMICS  —  bar table + grid card
+   SECTION: TOKENOMICS  —  allocation infographic
 ───────────────────────────────────────── */
-.tok-layout{display:grid;grid-template-columns:1.2fr 1fr;gap:20px;margin-top:3rem;align-items:start}
-.tok-table{border:1px solid var(--b);border-radius:var(--r);overflow:hidden}
-.tt-head{padding:.85rem 1.4rem;background:rgba(255,255,255,.02);border-bottom:1px solid var(--b);display:grid;grid-template-columns:1.2fr 1fr 40px 110px;gap:.5rem;font-size:.64rem;font-family:var(--mono);color:var(--faint);letter-spacing:.1em;text-transform:uppercase}
-.tt-row{display:grid;grid-template-columns:1.2fr 1fr 40px 110px;gap:.5rem;align-items:center;padding:.95rem 1.4rem;border-bottom:1px solid var(--b);transition:background .18s}
-.tt-row:last-child{border-bottom:none}
-.tt-row:hover{background:var(--card)}
-.tt-name{font-size:.85rem;font-weight:500}
-.tt-track{height:5px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden}
-.tt-fill{height:100%;border-radius:3px;transition:width 1.3s cubic-bezier(.16,1,.3,1)}
-.tt-pct{font-size:.8rem;font-family:var(--mono);color:var(--muted);text-align:right}
-.tt-lock{font-size:.7rem;font-family:var(--mono);color:var(--faint);text-align:right}
-/* side card */
-.tok-card{background:linear-gradient(145deg,rgba(242,163,10,.08),rgba(224,85,0,.03));border:1px solid rgba(242,163,10,.16);border-radius:var(--r);padding:2rem;position:relative;overflow:hidden}
-.tok-card::after{content:'';position:absolute;bottom:-60px;right:-60px;width:220px;height:220px;background:radial-gradient(circle,rgba(242,163,10,.1) 0%,transparent 65%);border-radius:50%;pointer-events:none}
-.tc-label{font-size:.65rem;font-family:var(--mono);color:var(--gold);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.9rem}
-.tc-num{font-size:2.6rem;font-weight:600;letter-spacing:-.05em;margin-bottom:.15rem}
-.tc-sub{font-size:.8rem;color:var(--muted);margin-bottom:1.5rem}
-.tc-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1.8rem}
-.tc-cell{background:rgba(255,255,255,.04);border:1px solid var(--b);border-radius:10px;padding:.9rem}
-.tc-ck{font-size:.65rem;font-family:var(--mono);color:var(--faint);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.3rem}
-.tc-cv{font-size:.88rem;font-weight:600}
+.tok-infographic{display:grid;grid-template-columns:minmax(320px,.95fr) 1.55fr;gap:12px;margin-top:3rem;padding:12px;border:1px solid rgba(242,163,10,.24);border-radius:18px;background:linear-gradient(145deg,rgba(242,163,10,.1),rgba(224,85,0,.055) 42%,rgba(255,255,255,.025));box-shadow:0 28px 80px rgba(0,0,0,.24);overflow:hidden}
+.tok-map,.tok-detail-card{background:rgba(255,255,255,.025);border:1px solid rgba(247,242,204,.36);border-radius:14px;padding:1.35rem;position:relative;overflow:hidden}
+.tok-map::before,.tok-detail-card::before{content:'';position:absolute;inset:0;background:linear-gradient(rgba(247,242,204,.035) 1px,transparent 1px);background-size:100% 9px;opacity:.22;pointer-events:none}
+.tok-eyebrow{font-size:.62rem;font-family:var(--mono);color:rgba(247,242,204,.78);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.7rem}
+.tok-map-title{font-size:1.5rem;font-weight:700;letter-spacing:-.03em;margin-bottom:.7rem;color:#fff8d8}
+.tok-map-copy{font-size:.82rem;color:rgba(238,239,245,.74);line-height:1.75;margin-bottom:1.4rem;max-width:38rem}
+.tok-donut-wrap{border:1px solid rgba(247,242,204,.34);border-radius:12px;padding:1.5rem .9rem .9rem;background:radial-gradient(circle at 50% 38%,rgba(242,163,10,.16),rgba(255,255,255,.035) 45%,rgba(255,255,255,.015) 100%)}
+.tok-donut{width:min(220px,72vw);aspect-ratio:1;margin:0 auto 1.25rem;border-radius:50%;background:conic-gradient(#F2A30A 0 30%,#FFD060 30% 60%,#E05500 60% 65%,#fff2b8 65% 70%,#e05080 70% 85%,#9a6bff 85% 100%);position:relative;box-shadow:0 18px 55px rgba(242,163,10,.18)}
+.tok-donut::before{content:'';position:absolute;inset:24%;border-radius:50%;background:linear-gradient(145deg,rgba(2,2,12,.96),rgba(28,18,5,.95));box-shadow:inset 0 0 0 8px rgba(247,242,204,.14)}
+.tok-donut-label{position:absolute;inset:0;display:grid;place-items:center;text-align:center;font-weight:800;color:#fff8d8;font-size:1.1rem;letter-spacing:.03em}
+.tok-donut-label span{display:block;font-size:.48rem;font-family:var(--mono);letter-spacing:.12em;color:#f7f2cc;margin-top:.2rem}
+.tok-legend{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.tok-legend-item{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:7px;border:1px solid rgba(247,242,204,.28);border-radius:8px;padding:.48rem .55rem;background:rgba(255,255,255,.025);font-size:.62rem;font-family:var(--mono);color:#fff8d8}
+.tok-dot{width:8px;height:8px;border-radius:50%;background:var(--c)}
+.tok-legend-pct{font-weight:800;color:#fff8d8}
+.tok-detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tok-detail-card{min-height:156px;display:flex;flex-direction:column;gap:.8rem;transition:background .2s,border-color .2s,transform .25s}
+.tok-detail-card:hover{background:rgba(255,255,255,.04);border-color:rgba(247,242,204,.58);transform:translateY(-6px)}
+.tok-detail-top{display:grid;grid-template-columns:auto 1fr auto;gap:.75rem;align-items:start;position:relative;z-index:1}
+.tok-icon{width:30px;height:30px;border-radius:10px;display:grid;place-items:center;color:var(--c);background:color-mix(in srgb,var(--c) 14%,transparent);border:1px solid color-mix(in srgb,var(--c) 36%,transparent)}
+.tok-icon svg{width:14px;height:14px;stroke:currentColor}
+.tok-detail-name{font-size:.92rem;font-weight:700;color:#fff8d8;line-height:1.15}
+.tok-detail-sub{font-size:.62rem;font-family:var(--mono);color:rgba(238,239,245,.58);line-height:1.35;margin-top:.18rem}
+.tok-pill{font-size:.64rem;font-family:var(--mono);font-weight:800;color:var(--c);padding:.22rem .55rem;border-radius:999px;background:color-mix(in srgb,var(--c) 12%,transparent);border:1px solid color-mix(in srgb,var(--c) 38%,transparent)}
+.tok-detail-copy{font-size:.82rem;line-height:1.75;color:rgba(238,239,245,.78);position:relative;z-index:1}
 
 /* ─────────────────────────────────────────
    TEAM & AMBASSADORS
@@ -453,7 +457,8 @@ footer{border-top:1px solid var(--b);padding:1.6rem 36px;display:flex;align-item
   .mkt-layout{grid-template-columns:1fr 280px}
   .rm-grid{grid-template-columns:1fr 1fr}
   .rm-line{display:none}
-  .tok-layout{grid-template-columns:1fr}
+  .tok-infographic{grid-template-columns:1fr}
+  .tok-detail-grid{grid-template-columns:1fr 1fr}
   .dex-cols{grid-template-columns:220px 1fr}
   .dex-ob{display:none}
   .cortex-cols{grid-template-columns:140px 1fr}
@@ -541,18 +546,18 @@ footer{border-top:1px solid var(--b);padding:1.6rem 36px;display:flex;align-item
   .ip-btn{display:none}
 
   /* ── Tokenomics ── */
-  .tok-layout{grid-template-columns:1fr;gap:14px;margin-top:1.8rem}
-  .tok-card{padding:1.4rem}
-  .tc-num{font-size:2rem}
-  .tc-grid{grid-template-columns:1fr 1fr;gap:6px;margin-bottom:1.2rem}
-  .tc-cell{padding:.7rem}
-  .tc-cv{font-size:.82rem}
-  .tt-head{padding:.7rem 1rem;font-size:.58rem;grid-template-columns:1.2fr 1fr 36px;gap:.4rem}
-  .tt-head>:nth-child(4){display:none}
-  .tt-row{padding:.8rem 1rem;font-size:.78rem;grid-template-columns:1.2fr 1fr 36px;gap:.4rem}
-  .tt-row>:nth-child(4){display:none}
-  .tt-name{font-size:.8rem}
-  .tt-pct{font-size:.74rem}
+  .tok-infographic{grid-template-columns:1fr;gap:10px;margin-top:1.8rem;padding:8px;border-radius:14px}
+  .tok-map,.tok-detail-card{padding:1rem;border-radius:12px}
+  .tok-map-title{font-size:1.2rem}
+  .tok-map-copy{font-size:.74rem;margin-bottom:1rem}
+  .tok-donut-wrap{padding:1rem .7rem .7rem}
+  .tok-donut{width:min(170px,68vw)}
+  .tok-legend{grid-template-columns:1fr}
+  .tok-legend-item{font-size:.56rem}
+  .tok-detail-grid{grid-template-columns:1fr;gap:8px}
+  .tok-detail-card{min-height:auto}
+  .tok-detail-name{font-size:.84rem}
+  .tok-detail-copy{font-size:.74rem}
 
   /* ── CTA ── */
   .cta-sec{padding:80px 16px}
@@ -727,12 +732,12 @@ footer{border-top:1px solid var(--b);padding:1.6rem 36px;display:flex;align-item
 }
 
 /* Glass upgrade */
-.pc,.bcard,.rmc,.mc,.stat,.invest-panel,.tok-card,.tok-table{
+.pc,.bcard,.rmc,.mc,.stat,.invest-panel,.tok-map,.tok-detail-card{
   backdrop-filter:blur(18px) saturate(170%);
 }
 
 /* Premium tilt system (JS sets --rx/--ry) */
-.pc,.bcard,.rmc,.mc,.stat,.invest-panel,.tok-card{
+.pc,.bcard,.rmc,.mc,.stat,.invest-panel,.tok-map,.tok-detail-card{
   transform:translateY(var(--lift,0px)) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));
   transform-style:preserve-3d;
   will-change:transform;
@@ -761,7 +766,8 @@ footer{border-top:1px solid var(--b);padding:1.6rem 36px;display:flex;align-item
 .mc:hover .shine,
 .stat:hover .shine,
 .invest-panel:hover .shine,
-.tok-card:hover .shine{
+.tok-map:hover .shine,
+.tok-detail-card:hover .shine{
   opacity:1;
   transform:translateX(28%) rotate(25deg);
 }
@@ -793,7 +799,7 @@ footer{border-top:1px solid var(--b);padding:1.6rem 36px;display:flex;align-item
 /* Disable heavy effects on touch / mobile */
 @media(max-width:768px){
   .cursor-glow{display:none !important}
-  .pc,.bcard,.rmc,.mc,.stat,.invest-panel,.tok-card{
+  .pc,.bcard,.rmc,.mc,.stat,.invest-panel,.tok-map,.tok-detail-card{
     transform:none !important;
     transition:background .2s,border-color .2s !important;
   }
@@ -1385,10 +1391,10 @@ footer{border-top:1px solid var(--b);padding:1.6rem 36px;display:flex;align-item
     <a href="#market">Market</a>
     <a href="#mvp">MVP</a>
     <a href="#tokenomics">Token</a>
-    <a href="#contact">Invest</a>
+    <a href="#team">Community</a>
   </div>
   <div class="nav-end">
-    <a href="https://testnet.acme.pics/" target="_blank" rel="noopener noreferrer" class="btn-ghost btn-live-top"><span class="live-dot"></span>Live Testnet</a>
+    <a href="https://acme.pics/dex/tokens" target="_blank" rel="noopener noreferrer" class="btn-ghost btn-live-top"><span class="live-dot"></span>Live Mainnet</a>
     <a href="https://x.com/ACMEonBTC" target="_blank" rel="noopener noreferrer" class="btn-cta">Follow ↗</a>
   </div>
 </nav>
@@ -1410,7 +1416,7 @@ footer{border-top:1px solid var(--b);padding:1.6rem 36px;display:flex;align-item
     <h1 class="hero-h">Assets that live<br><em>forever on Bitcoin.</em></h1>
     <p class="hero-sub">ACME — Assets Coded on the Monetary Engine — solves fragmentation, verifiability, and permanence for digital assets on Bitcoin. Built for artists and developers who refuse to compromise.</p>
     <div class="hero-btns">
-      <a href="#contact" class="btn-gold">Invest in Early Round →</a>
+      <a href="https://acme.pics/dex/tokens" target="_blank" rel="noopener noreferrer" class="btn-gold">Launch Mainnet App →</a>
       <a href="https://x.com/ACMEonBTC" target="_blank" rel="noopener noreferrer" class="btn-outline">Follow @ACMEonBTC</a>
       <a href="https://t.me/acmeonbtc" target="_blank" rel="noopener noreferrer" class="btn-outline">Join Telegram</a>
     </div>
@@ -1435,9 +1441,9 @@ footer{border-top:1px solid var(--b);padding:1.6rem 36px;display:flex;align-item
 <!-- ══ STATS ══════════════════════════════════════ -->
 <div class="stats-strip">
   <div class="stats-inner fly-group">
-    <div class="stat"><span class="s-val" data-target="2400" data-suffix="+">—</span><span class="s-lbl">Assets minted on live testnet</span></div>
+    <div class="stat"><span class="s-val" data-target="2400" data-suffix="+">—</span><span class="s-lbl">Assets minted before mainnet</span></div>
     <div class="stat"><span class="s-val" data-target="4" data-suffix=" layers">—</span><span class="s-lbl">Flexible storage methods</span></div>
-    <div class="stat"><span class="s-val" data-prefix="$" data-target="5" data-suffix="M FDV">—</span><span class="s-lbl">Launch valuation</span></div>
+    <div class="stat"><span class="s-val" data-target="100" data-suffix="%">—</span><span class="s-lbl">Mainnet allocation mapped</span></div>
     <div class="stat"><span class="s-val" data-target="1" data-suffix="B $ACME">—</span><span class="s-lbl">Fixed token supply</span></div>
   </div>
 </div>
@@ -1508,7 +1514,7 @@ footer{border-top:1px solid var(--b);padding:1.6rem 36px;display:flex;align-item
         <div class="bc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#F2A30A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
         <div class="bc-t">Generative Studio</div>
         <div class="bc-d">Create generative and recursive on-chain art directly on Bitcoin. No third-party renderer. No IPFS dependency. The art and its engine live together on-chain.</div>
-        <div class="bc-stat"><div class="bc-stat-n">2400+</div><div class="bc-stat-l">assets already<br>on testnet</div></div>
+        <div class="bc-stat"><div class="bc-stat-n">Mainnet</div><div class="bc-stat-l">open mint<br>is live</div></div>
         <div style="height:1px;background:var(--b);margin:1.4rem 0"></div>
         <div class="bc-d" style="font-size:.78rem">ArtCore and Oncore curation layers let collectors browse, curate, and collect with the same polish as top Ethereum platforms.</div>
       </div>
@@ -1549,8 +1555,8 @@ footer{border-top:1px solid var(--b);padding:1.6rem 36px;display:flex;align-item
           </div>
           <div style="flex:1;min-width:160px">
             <div class="bc-icon" style="margin-bottom:.8rem"><svg viewBox="0 0 24 24" fill="none" stroke="#F2A30A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="3"/><circle cx="19" cy="5" r="3"/><circle cx="19" cy="19" r="3"/><line x1="8" y1="12" x2="16" y2="6"/><line x1="8" y1="12" x2="16" y2="18"/></svg></div>
-            <div class="bc-t">Low FDV Entry Point</div>
-            <div class="bc-d" style="font-size:.8rem">~$5M launch FDV versus hundreds of millions for comparable protocols. Early entry with maximum upside potential.</div>
+            <div class="bc-t">Fair Launch Access</div>
+            <div class="bc-d" style="font-size:.8rem">Open mint puts launch access in the hands of the community while staking, DAO, and team reserve pools keep incentives mapped for the long term.</div>
           </div>
         </div>
       </div>
@@ -1566,9 +1572,9 @@ footer{border-top:1px solid var(--b);padding:1.6rem 36px;display:flex;align-item
   <div class="wrap">
     <div class="tag fly">Product Preview</div>
     <h2 class="sh fly" style="transition-delay:.06s">The MVP is <strong>built and running.</strong></h2>
-    <p class="sp fly" style="transition-delay:.12s">Explore the live ACME testnet now — mint assets, browse the explorer, trade on the native DEX, and create generative on-chain art in Cortex Studio.</p>
+    <p class="sp fly" style="transition-delay:.12s">Explore ACME live on mainnet now — mint assets, browse the explorer, trade on the native DEX, and create generative on-chain art in Cortex Studio.</p>
     <div class="fly" style="transition-delay:.16s;margin-top:1rem">
-      <a href="https://testnet.acme.pics/" target="_blank" rel="noopener noreferrer" class="btn-gold">Live Testnet →</a>
+      <a href="https://acme.pics/dex/tokens" target="_blank" rel="noopener noreferrer" class="btn-gold">Live Mainnet →</a>
     </div>
 
     <div class="mvp-tabs fly" style="transition-delay:.18s;margin-top:2.4rem">
@@ -1641,11 +1647,11 @@ footer{border-top:1px solid var(--b);padding:1.6rem 36px;display:flex;align-item
             </div>
             <div class="exp-card">
               <div class="exp-thumb">
-                <img loading="lazy" src="https://github.com/SockIts/ACMEProtocol/blob/main/assets/Testnet.png?raw=true" alt="TESTNET.ED"><!-- add image URL here -->
-                <div class="ph"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="ph-label">TESTNET.ED</span></div>
+                <img loading="lazy" src="https://github.com/SockIts/ACMEProtocol/blob/main/assets/acme2.png?raw=true" alt="MAINNET.ED"><!-- add image URL here -->
+                <div class="ph"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="ph-label">MAINNET.ED</span></div>
               </div>
               <div class="exp-info">
-                <div class="exp-name">TESTNET.ED</div>
+                <div class="exp-name">MAINNET.ED</div>
                 <div class="exp-block">B122801:44</div>
                 <span class="exp-badge wi">WITNESS</span>
               </div>
@@ -1957,7 +1963,7 @@ footer{border-top:1px solid var(--b);padding:1.6rem 36px;display:flex;align-item
           <div class="mmc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#F2A30A" stroke-width="1.7" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div>
           <div class="mmc-title">On-Chain Explorer</div>
           <div class="mmc-desc">Browse every asset across all storage layers — UTXO, Witness, Arweave, OP_RETURN — with fully verifiable provenance.</div>
-          <div class="mmc-stat"><div class="mmc-stat-val">2,400+</div><div class="mmc-stat-lbl">assets indexed<br>on testnet</div></div>
+          <div class="mmc-stat"><div class="mmc-stat-val">2,400+</div><div class="mmc-stat-lbl">assets indexed<br>pre-mainnet</div></div>
         </div>
         <div class="mvp-mini-card fly">
           <div class="mmc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#F2A30A" stroke-width="1.7" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>
@@ -1969,7 +1975,7 @@ footer{border-top:1px solid var(--b);padding:1.6rem 36px;display:flex;align-item
           <div class="mmc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#F2A30A" stroke-width="1.7" stroke-linecap="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
           <div class="mmc-title">Cortex Studio</div>
           <div class="mmc-desc">Full generative art IDE — P5.js, Three.js, GLSL. Mint directly from the editor. Code and art live together on-chain.</div>
-          <div class="mmc-stat"><div class="mmc-stat-val">150+ FPS</div><div class="mmc-stat-lbl">live render<br>on testnet</div></div>
+          <div class="mmc-stat"><div class="mmc-stat-val">150+ FPS</div><div class="mmc-stat-lbl">live render<br>on mainnet</div></div>
         </div>
       </div>
 
@@ -2009,22 +2015,22 @@ footer{border-top:1px solid var(--b);padding:1.6rem 36px;display:flex;align-item
         <div class="mc"><div class="mc-l"><div class="mc-bar" style="background:#5a5a6a"></div><div><div class="mc-name">Ordinals / BRC-20</div><div class="mc-cap">~$224M market cap</div></div></div><div class="mc-r"><div class="mc-peak">~$1.5–6B peak</div><div class="badge-est">Established</div></div></div>
         <div class="mc"><div class="mc-l"><div class="mc-bar" style="background:#4a4a5a"></div><div><div class="mc-name">Runes</div><div class="mc-cap">~$172M market cap</div></div></div><div class="mc-r"><div class="mc-peak">~$2B+ peak</div><div class="badge-est">Established</div></div></div>
         <div class="mc"><div class="mc-l"><div class="mc-bar" style="background:#3a3a4a"></div><div><div class="mc-name">STAMPS / SRC-20</div><div class="mc-cap">~$50M market cap</div></div></div><div class="mc-r"><div class="mc-peak">~$150–300M peak</div><div class="badge-est">Established</div></div></div>
-        <div class="mc acme-mc"><div class="mc-l"><div class="mc-bar" style="background:var(--gold)"></div><div><div class="mc-name">ACME Protocol</div><div class="mc-cap" style="color:var(--gold);opacity:.8">~$5M launch FDV</div></div></div><div class="mc-r"><div class="mc-peak">30–90x+ potential</div><div class="badge-live"><span class="bl-dot"></span>Seed Open</div></div></div>
+        <div class="mc acme-mc"><div class="mc-l"><div class="mc-bar" style="background:var(--gold)"></div><div><div class="mc-name">ACME Protocol</div><div class="mc-cap" style="color:var(--gold);opacity:.8">~$650K FDV on launch</div></div></div><div class="mc-r"><div class="mc-peak">1 ACME = 1 sat</div><div class="badge-live"><span class="bl-dot"></span>Mainnet Live</div></div></div>
         <p style="font-size:.67rem;font-family:var(--mono);color:var(--faint);padding:.5rem .2rem">Data from CoinGecko, CoinMarketCap. All figures are estimates only.</p>
       </div>
 
       <div class="invest-panel -right fly-right" style="transition-delay:.1s">
-        <div class="ip-tag">Seed Round</div>
-        <div class="ip-amt" style="transition-delay:.06s">$1,000,000</div>
-        <div class="ip-sub">Accepts BTC or USD</div>
+        <div class="ip-tag">Mainnet Launch</div>
+        <div class="ip-amt" style="transition-delay:.06s">Open Mint</div>
+        <div class="ip-sub">Fair launch. No VC dumps, no presale bullshit.</div>
         <div class="ip-rows">
-          <div class="ip-r"><span class="ip-k">Allocation</span><span class="ip-v">20% of supply</span></div>
-          <div class="ip-r"><span class="ip-k">Launch FDV</span><span class="ip-v">~$5,000,000</span></div>
-          <div class="ip-r"><span class="ip-k">Vesting</span><span class="ip-v">12mo lock</span></div>
-          <div class="ip-r"><span class="ip-k">Fee share</span><span class="ip-v">50% → stakers</span></div>
-          <div class="ip-r"><span class="ip-k">Access</span><span class="ip-v">Full API access</span></div>
+          <div class="ip-r"><span class="ip-k">Open mint</span><span class="ip-v">30% supply</span></div>
+          <div class="ip-r"><span class="ip-k">Staking rewards</span><span class="ip-v">30% supply</span></div>
+          <div class="ip-r"><span class="ip-k">Airdrop</span><span class="ip-v">5% community</span></div>
+          <div class="ip-r"><span class="ip-k">Minting rewards</span><span class="ip-v">5% weekly</span></div>
+          <div class="ip-r"><span class="ip-k">Reserve pools</span><span class="ip-v">Team 15% · DAO 15%</span></div>
         </div>
-        <a href="#contact" class="btn-gold" style="width:100%;justify-content:center;margin-top:1.6rem">Contact</a>
+        <a href="https://acme.pics/dex/tokens" target="_blank" rel="noopener noreferrer" class="btn-gold" style="width:100%;justify-content:center;margin-top:1.6rem">Open Mainnet App</a>
       </div>
     </div>
   </div>
@@ -2036,31 +2042,83 @@ footer{border-top:1px solid var(--b);padding:1.6rem 36px;display:flex;align-item
 <section class="sec" id="tokenomics">
   <div class="wrap">
     <div class="tag fly">Tokenomics</div>
-    <h2 class="sh fly" style="transition-delay:.06s">1 Billion $ACME.<br><strong>Fixed supply forever.</strong></h2>
-    <p class="sp fly" style="transition-delay:.12s">Transparent distribution with locked allocations to align long-term incentives across investors, team, and community.</p>
+    <h2 class="sh fly" style="transition-delay:.06s">100% $ACME.<br><strong>Mainnet allocation map.</strong></h2>
+    <p class="sp fly" style="transition-delay:.12s">The distribution keeps launch access open, pushes a large share into staking rewards, and reserves explicit pools for community, minting activity, team lockup, and DAO growth.</p>
 
-    <div class="tok-layout">
-      <div class="tok-table -left fly-left fly-group" style="transition-delay:.05s">
-        <div class="tt-head fly"><div>Allocation</div><div>Distribution</div><div>%</div><div style="text-align:right">Lock-up</div></div>
-        <div class="tt-row fly"><div class="tt-name" style="color:var(--gold)">Seed Round</div><div class="tt-track"><div class="tt-fill" style="width:0%;background:var(--gold)" data-w="20"></div></div><div class="tt-pct" style="color:var(--gold)">20%</div><div class="tt-lock">12mo · 3mo cliff</div></div>
-        <div class="tt-row fly"><div class="tt-name">Private Round</div><div class="tt-track"><div class="tt-fill" style="width:0%;background:#E05500" data-w="20"></div></div><div class="tt-pct">20%</div><div class="tt-lock">6mo lock</div></div>
-        <div class="tt-row fly"><div class="tt-name">Team / Advisors</div><div class="tt-track"><div class="tt-fill" style="width:0%;background:#9a3f00" data-w="20"></div></div><div class="tt-pct">20%</div><div class="tt-lock">24mo lock</div></div>
-        <div class="tt-row fly"><div class="tt-name">Marketing / Dev</div><div class="tt-track"><div class="tt-fill" style="width:0%;background:#552500" data-w="20"></div></div><div class="tt-pct">20%</div><div class="tt-lock">No lock</div></div>
-        <div class="tt-row fly"><div class="tt-name">Integration / Liquidity</div><div class="tt-track"><div class="tt-fill" style="width:0%;background:#331500" data-w="10"></div></div><div class="tt-pct">10%</div><div class="tt-lock">No lock</div></div>
-        <div class="tt-row fly"><div class="tt-name">Public Round</div><div class="tt-track"><div class="tt-fill" style="width:0%;background:#1e0d00" data-w="10" style="border:1px solid #442200"></div></div><div class="tt-pct">10%</div><div class="tt-lock">No lock</div></div>
+    <div class="tok-infographic fly-group">
+      <div class="tok-map -left fly-left" style="transition-delay:.05s">
+        <div class="tok-eyebrow">ACME Token Supply</div>
+        <div class="tok-map-title">100% allocation map</div>
+        <p class="tok-map-copy">The distribution keeps launch access open, pushes a large share into staking rewards, and reserves explicit pools for community, minting activity, team lockup, and DAO growth.</p>
+        <div class="tok-donut-wrap">
+          <div class="tok-donut" aria-label="ACME token supply allocation chart">
+            <div class="tok-donut-label">ACME<span>SUPPLY</span></div>
+          </div>
+          <div class="tok-legend">
+            <div class="tok-legend-item" style="--c:#F2A30A"><span class="tok-dot"></span><span>Open Mint</span><span class="tok-legend-pct">30%</span></div>
+            <div class="tok-legend-item" style="--c:#FFD060"><span class="tok-dot"></span><span>Staking Rewards</span><span class="tok-legend-pct">30%</span></div>
+            <div class="tok-legend-item" style="--c:#E05500"><span class="tok-dot"></span><span>Community Airdrop</span><span class="tok-legend-pct">5%</span></div>
+            <div class="tok-legend-item" style="--c:#fff2b8"><span class="tok-dot"></span><span>Minting Rewards</span><span class="tok-legend-pct">5%</span></div>
+            <div class="tok-legend-item" style="--c:#e05080"><span class="tok-dot"></span><span>Team Reserve</span><span class="tok-legend-pct">15%</span></div>
+            <div class="tok-legend-item" style="--c:#9a6bff"><span class="tok-dot"></span><span>DAO Reserve</span><span class="tok-legend-pct">15%</span></div>
+          </div>
+        </div>
       </div>
 
-      <div class="tok-card -right fly-right fly-group" style="transition-delay:.1s">
-        <div class="tc-label">Token Overview</div>
-        <div class="tc-num">1B $ACME</div>
-        <div class="tc-sub">Fixed supply · No inflation</div>
-        <div class="tc-grid">
-          <div class="tc-cell fly" style="transition-delay:0.08s"><div class="tc-ck">Launch FDV</div><div class="tc-cv">~$5M</div></div>
-          <div class="tc-cell fly" style="transition-delay:0.16s"><div class="tc-ck">BTC Rewards</div><div class="tc-cv" style="font-size:.82rem">50% fees<br>to stakers</div></div>
-          <div class="tc-cell fly" style="transition-delay:0.24s"><div class="tc-ck">Utility</div><div class="tc-cv" style="font-size:.82rem">Gov · Staking<br>· Validator</div></div>
-          <div class="tc-cell fly" style="transition-delay:0.32s"><div class="tc-ck">Enterprise</div><div class="tc-cv" style="font-size:.82rem">API credits<br>+ discounts</div></div>
+      <div class="tok-detail-grid -right fly-right" style="transition-delay:.1s">
+        <div class="tok-detail-card fly" style="--c:#F2A30A;transition-delay:.08s">
+          <div class="tok-detail-top">
+            <div class="tok-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4"/><path d="m8 7 4-4 4 4"/><circle cx="12" cy="14" r="5"/><path d="M12 11v3l2 1"/></svg></div>
+            <div><div class="tok-detail-name">Open Mint</div><div class="tok-detail-sub">Fair launch. No VC dumps, no presale bullshit.</div></div>
+            <div class="tok-pill">30%</div>
+          </div>
+          <div class="tok-detail-copy">Mint at 1 sat on a first-come, first-served basis. So early birds get the worm... we all are early.</div>
         </div>
-        <a href="#contact" class="btn-gold" style="width:100%;justify-content:center">Seed Round →</a>
+
+        <div class="tok-detail-card fly" style="--c:#FFD060;transition-delay:.14s">
+          <div class="tok-detail-top">
+            <div class="tok-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="16" height="11" rx="2"/><path d="M8 11h8"/><path d="M8 14h5"/><path d="M9 7V5h6v2"/></svg></div>
+            <div><div class="tok-detail-name">Staking Rewards</div><div class="tok-detail-sub">Massive 2-year rewards program.</div></div>
+            <div class="tok-pill">30%</div>
+          </div>
+          <div class="tok-detail-copy">18% unlocks in Year 1 and 12% in Year 2. Staking goes live when the open mint phase ends at 30% supply minted.</div>
+        </div>
+
+        <div class="tok-detail-card fly" style="--c:#E05500;transition-delay:.2s">
+          <div class="tok-detail-top">
+            <div class="tok-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-7"/><path d="M2 7h20v5H2z"/><path d="M12 22V7"/><path d="M12 7H8.5a2.5 2.5 0 1 1 2.5-2.5V7Z"/><path d="M12 7h3.5A2.5 2.5 0 1 0 13 4.5V7Z"/></svg></div>
+            <div><div class="tok-detail-name">Community Airdrop</div><div class="tok-detail-sub">For the real OGs.</div></div>
+            <div class="tok-pill">5%</div>
+          </div>
+          <div class="tok-detail-copy">Allocated to long-time participants across the Stamps, Counterparty, and Ordinals communities.</div>
+        </div>
+
+        <div class="tok-detail-card fly" style="--c:#fff2b8;transition-delay:.26s">
+          <div class="tok-detail-top">
+            <div class="tok-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m13 2-8 12h7l-1 8 8-12h-7l1-8Z"/></svg></div>
+            <div><div class="tok-detail-name">Minting Rewards</div><div class="tok-detail-sub">Weekly reward calculation.</div></div>
+            <div class="tok-pill">5%</div>
+          </div>
+          <div class="tok-detail-copy">Minting rewards will be calculated on a weekly basis according to fees paid.</div>
+        </div>
+
+        <div class="tok-detail-card fly" style="--c:#e05080;transition-delay:.32s">
+          <div class="tok-detail-top">
+            <div class="tok-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div>
+            <div><div class="tok-detail-name">Team Reserve</div><div class="tok-detail-sub">Locked for 2 years.</div></div>
+            <div class="tok-pill">15%</div>
+          </div>
+          <div class="tok-detail-copy">Full skin in the game. The team reserve is staked and participates in governance.</div>
+        </div>
+
+        <div class="tok-detail-card fly" style="--c:#9a6bff;transition-delay:.38s">
+          <div class="tok-detail-top">
+            <div class="tok-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M9 20v-6"/><path d="M15 20v-6"/><path d="M8 10h8"/></svg></div>
+            <div><div class="tok-detail-name">DAO Reserve</div><div class="tok-detail-sub">Governance and ecosystem growth.</div></div>
+            <div class="tok-pill">15%</div>
+          </div>
+          <div class="tok-detail-copy">Reserved to power future governance decisions and long-term ecosystem development.</div>
+        </div>
       </div>
     </div>
   </div>
@@ -2103,383 +2161,14 @@ footer{border-top:1px solid var(--b);padding:1.6rem 36px;display:flex;align-item
   </div>
 </section>
 
-<hr class="div">
-
-<!-- ══ SECTION: CONTACT / INVEST ══════════════════════ -->
-<section class="contact-sec sec" id="contact">
-  <div class="wrap">
-    <div class="tag fly">Interest Form</div>
-    <h2 class="sh fly" style="transition-delay:.06s">Join the<br><strong>seed round.</strong></h2>
-    <p class="sp fly" style="transition-delay:.12s">Complete the form below and the ACME team will follow up based on your preferences. We're onboarding strategic investors, advisors, and collaborators aligned with building the Bitcoin asset standard.</p>
-
-    <div class="contact-layout">
-
-      <div class="contact-info -left fly-left" style="transition-delay:.1s">
-        <h3>Let's build together.</h3>
-        <p style="transition-delay:.08s">ACME Protocol is raising its seed round to fund protocol development, security audits, and market expansion. If you're looking to invest in the foundational infrastructure for Bitcoin digital assets, we'd love to connect.</p>
-        <div class="contact-detail">
-          <div class="cd-item fly" style="transition-delay:.0s">
-            <div class="cd-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#F2A30A" stroke-width="1.7" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            </div>
-            <span><a href="/cdn-cgi/l/email-protection#e48d8a92819790a48587898194968b908b878b88ca878b89"><span class="__cf_email__" data-cfemail="1c75726a796f685c7d7f71796c6e7368737f7370327f7371">[email&#160;protected]</span></a></span>
-          </div>
-          <div class="cd-item fly" style="transition-delay:.1s">
-            <div class="cd-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#F2A30A" stroke-width="1.7" stroke-linecap="round"><path d="M22 4s-1 2-3 3c1-2 1-4 1-4s-2 1-4 3c-1-3-4-3-6-2C7 6 5 9 6 13c-3-2-5-5-5-5s1 5 5 7c-2 0-3-1-3-1s1 3 5 4c-2 1-5 1-5 1s4 2 9 1c7-2 10-8 9-13z"/></svg>
-            </div>
-            <span>@ACMEonBTC on X</span>
-          </div>
-          <div class="cd-item fly" style="transition-delay:.2s">
-            <div class="cd-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#F2A30A" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-            </div>
-            <span>ACMEProtocol.com</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="contact-form -right fly-right" style="transition-delay:.15s">
-
-        <!-- Success State -->
-        <div class="form-success" id="formSuccess">
-          <div class="form-success-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-          </div>
-          <h4>Submission received!</h4>
-          <p>Thanks for your interest in ACME Protocol. The team will follow up within 1–2 business days.</p>
-        </div>
-
-        <!-- Multi-step Form -->
-        <form id="contactForm" action="https://formspree.io/f/xnnoewqp" method="POST" autocomplete="off">
-
-          <!-- Progress Bar -->
-          <div class="msf-progress">
-            <div class="msf-progress-bar" id="msfProgressBar"></div>
-          </div>
-
-          <!-- Step Wrapper (overflow hidden for slide animation) -->
-          <div class="msf-steps-wrap" id="msfStepsWrap" style="height:280px">
-
-            <!-- STEP 1: Primary Interest -->
-            <div class="msf-step active" id="step-1" data-step="1">
-              <p class="msf-intro">Thank you for your interest in ACME Protocol, the Bitcoin native meta protocol for permanent, UTXO-secured digital assets. We're currently raising our seed round and welcome strategic investors, advisors, and collaborators aligned with building durable Bitcoin infrastructure and looking forward to hearing from you.<br><br>
-              
-              -ACME </p>
-              <div class="msf-q">What are you interested in?</div>
-              <div class="msf-opts">
-                <button type="button" class="msf-tile" data-next="2a" data-field="interest" data-value="Seed Round Investment">
-                  <span class="msf-tile-icon">₿</span>
-                  <span class="msf-tile-label">Seed Round Investment</span>
-                  <span class="msf-tile-badge">Open</span>
-                </button>
-                <button type="button" class="msf-tile" data-next="2b" data-field="interest" data-value="Collaboration or Team Interest">
-                  <span class="msf-tile-icon">⬡</span>
-                  <span class="msf-tile-label">Collaboration or Team</span>
-                </button>
-                <button type="button" class="msf-tile" data-next="2c" data-field="interest" data-value="Schedule a Team Call">
-                  <span class="msf-tile-icon">◈</span>
-                  <span class="msf-tile-label">Schedule a Team Call</span>
-                </button>
-              </div>
-              <input type="hidden" name="interest" id="f-interest">
-            </div>
-
-            <!-- STEP 2a: Investment Range (for Seed Round) -->
-            <div class="msf-step" id="step-2a" data-step="2">
-              <button type="button" class="msf-back" data-back="1">← Back</button>
-              <div class="msf-q">Approximate investment range?</div>
-              <div class="msf-sub">In BTC equivalent</div>
-              <div class="msf-opts msf-opts-list">
-                <label class="msf-row"><input type="radio" name="investment_range" value="5+ BTC"><span class="msf-radio-box"></span><span>More than 5 BTC</span></label>
-                <label class="msf-row"><input type="radio" name="investment_range" value="1–5 BTC"><span class="msf-radio-box"></span><span>1–5 BTC</span></label>
-                <label class="msf-row"><input type="radio" name="investment_range" value="0.25–1 BTC"><span class="msf-radio-box"></span><span>0.25–1 BTC</span></label>
-                <label class="msf-row"><input type="radio" name="investment_range" value="<0.25 BTC"><span class="msf-radio-box"></span><span>Less than 0.25 BTC</span></label>
-                <label class="msf-row"><input type="radio" name="investment_range" value="TBD"><span class="msf-radio-box"></span><span>Not sure yet</span></label>
-              </div>
-              <button type="button" class="msf-next-btn" data-next="3" id="next-2a" disabled>Continue →</button>
-            </div>
-
-            <!-- STEP 2b: Role Interest (for Collaboration) -->
-            <div class="msf-step" id="step-2b" data-step="2">
-              <button type="button" class="msf-back" data-back="1">← Back</button>
-              <div class="msf-q">Which role interests you?</div>
-              <div class="msf-opts">
-                <button type="button" class="msf-tile msf-tile-sm" data-next="3" data-field="collab_role" data-value="Advisor">
-                  <span class="msf-tile-label">Advisor</span>
-                </button>
-                <button type="button" class="msf-tile msf-tile-sm" data-next="3" data-field="collab_role" data-value="Strategic Partner">
-                  <span class="msf-tile-label">Strategic Partner / Devs</span>
-                </button>
-                <button type="button" class="msf-tile msf-tile-sm" data-next="3" data-field="collab_role" data-value="Marketing / Community">
-                  <span class="msf-tile-label">Marketing / Community Managment</span>
-                </button>
-                <button type="button" class="msf-tile msf-tile-sm" data-next="3" data-field="collab_role" data-value="Business Development">
-                  <span class="msf-tile-label">Artist / Creator </span>
-                </button>
-                <button type="button" class="msf-tile msf-tile-sm" data-next="3" data-field="collab_role" data-value="Other">
-                  <span class="msf-tile-label">Other / Open to discuss</span>
-                </button>
-              </div>
-              <input type="hidden" name="collab_role" id="f-collab_role">
-            </div>
-
-            <!-- STEP 2c: MVP Demo info (for Demo request) -->
-            <div class="msf-step" id="step-2c" data-step="2">
-              <button type="button" class="msf-back" data-back="1">← Back</button>
-              <div class="msf-q">What's your primary focus?</div>
-              <div class="msf-opts">
-                <button type="button" class="msf-tile msf-tile-sm" data-next="3" data-field="demo_focus" data-value="General overview">
-                  <span class="msf-tile-label">General Overview</span>
-                </button>
-                <button type="button" class="msf-tile msf-tile-sm" data-next="3" data-field="demo_focus" data-value="General overview">
-                  <span class="msf-tile-label">Asset Creation & Management</span>
-                </button>
-                <button type="button" class="msf-tile msf-tile-sm" data-next="3" data-field="demo_focus" data-value="DEX & trading">
-                  <span class="msf-tile-label">DEX & Trading</span>
-                </button>
-                <button type="button" class="msf-tile msf-tile-sm" data-next="3" data-field="demo_focus" data-value="Generative studio & NFTs">
-                  <span class="msf-tile-label">Generative Studio & Artcore</span>
-                </button>
-                <button type="button" class="msf-tile msf-tile-sm" data-next="3" data-field="demo_focus" data-value="ACME Cortex">
-                  <span class="msf-tile-label">ACME Cortex</span>
-                </button>
-              </div>
-              <input type="hidden" name="demo_focus" id="f-demo_focus">
-            </div>
-
-            <!-- STEP 3: Preferred Follow-up -->
-            <div class="msf-step" id="step-3" data-step="3">
-              <button type="button" class="msf-back" id="back-3">← Back</button>
-              <div class="msf-q">What is your prefer form of communication?</div>
-              <div class="msf-opts">
-                <button type="button" class="msf-tile msf-tile-sm" data-next="4" data-field="followup" data-value="Schedule a call">
-                  <span class="msf-tile-icon" style="font-size:.9rem">📞</span>
-                  <span class="msf-tile-label">Schedule a team call </span>
-                </button>
-                <button type="button" class="msf-tile msf-tile-sm" data-next="4" data-field="followup" data-value="Email">
-                  <span class="msf-tile-icon" style="font-size:.9rem">✉</span>
-                  <span class="msf-tile-label">Email</span>
-                </button>
-                <button type="button" class="msf-tile msf-tile-sm" data-next="4" data-field="followup" data-value="X / Discord">
-                  <span class="msf-tile-icon" style="font-size:.9rem">✦</span>
-                  <span class="msf-tile-label">X / Discord</span>
-                </button>
-                <button type="button" class="msf-tile msf-tile-sm" data-next="4" data-field="followup" data-value="Telegram">
-                  <span class="msf-tile-icon" style="font-size:.9rem">✈</span>
-                  <span class="msf-tile-label">Telegram</span>
-                </button>
-              </div>
-              <input type="hidden" name="followup_method" id="f-followup">
-            </div>
-
-            <!-- STEP 4: Contact Details -->
-            <div class="msf-step" id="step-4" data-step="4">
-              <button type="button" class="msf-back" data-back="3">← Back</button>
-              <div class="msf-q">Almost done — your details</div>
-              <div style="display:flex;flex-direction:column;gap:10px;margin-top:12px">
-                <div class="msf-field-row">
-                  <div class="msf-field">
-                    <label class="form-label" for="cf-name">Name <span class="req-star">*</span></label>
-                    <input class="form-input" type="text" id="cf-name" name="name" placeholder="Satoshi Nakamoto" required>
-                  </div>
-                  <div class="msf-field">
-                    <label class="form-label" for="cf-email">Email <span class="req-star">*</span></label>
-                    <input class="form-input" type="email" id="cf-email" name="email" placeholder="you@example.com" required>
-                  </div>
-                </div>
-                <div class="msf-field-row">
-                  <div class="msf-field">
-                    <label class="form-label" for="cf-x">X Handle</label>
-                    <input class="form-input" type="text" id="cf-x" name="x_handle" placeholder="@handle">
-                  </div>
-                  <div class="msf-field">
-                    <label class="form-label" for="cf-tg">Telegram / Discord</label>
-                    <input class="form-input" type="text" id="cf-tg" name="telegram_discord" placeholder="@username">
-                  </div>
-                </div>
-                <div class="msf-field">
-                  <label class="form-label" for="cf-msg">Anything else you'd like us to know?</label>
-                  <textarea class="form-input" id="cf-msg" name="message" rows="3" placeholder="Additional context, questions, or anything else…" style="resize:none;font-family:var(--font);line-height:1.6"></textarea>
-                </div>
-              </div>
-              <button type="submit" class="form-submit" id="formSubmit" style="margin-top:14px">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-                Submit
-              </button>
-              <div class="form-note" style="margin-top:10px">Your info is kept private and used only to follow up.</div>
-            </div>
-
-          </div><!-- /msf-steps-wrap -->
-        </form>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-(function(){
-  var form    = document.getElementById('contactForm');
-  var bar     = document.getElementById('msfProgressBar');
-  var wrap    = document.getElementById('msfStepsWrap');
-  var success = document.getElementById('formSuccess');
-  var btn     = document.getElementById('formSubmit');
-  if(!form || !wrap) return;
-
-  var progress = {'1':'10%','2a':'38%','2b':'38%','2c':'38%','3':'68%','4':'92%'};
-  var history  = ['1'];
-  var animating = false;
-
-  function setHeight(el) {
-    wrap.style.height = el.scrollHeight + 'px';
-  }
-
-  // Init height
-  var first = document.getElementById('step-1');
-  if(first) { first.style.transform = 'translateX(0)'; setHeight(first); }
-  window.addEventListener('resize', function(){ var a=wrap.querySelector('.msf-step.active'); if(a) setHeight(a); });
-
-  function goTo(nextId, back) {
-    if(animating) return;
-    var current = wrap.querySelector('.msf-step.active');
-    var next    = document.getElementById('step-' + nextId);
-    if(!current || !next || current === next) return;
-    animating = true;
-
-    // Position next step off-screen (no transition yet)
-    next.style.transition = 'none';
-    next.style.transform  = back ? 'translateX(-30px)' : 'translateX(30px)';
-    next.style.opacity    = '0';
-    next.style.pointerEvents = 'none';
-
-    // Force reflow so the above sticks before we add transitions
-    next.getBoundingClientRect();
-
-    // Slide current out
-    current.classList.remove('active');
-    current.style.transition = 'opacity .28s ease, transform .28s ease';
-    current.style.transform  = back ? 'translateX(30px)' : 'translateX(-30px)';
-    current.style.opacity    = '0';
-    current.style.pointerEvents = 'none';
-
-    // Slide next in
-    next.style.transition = 'opacity .35s cubic-bezier(.16,1,.3,1), transform .35s cubic-bezier(.16,1,.3,1)';
-    next.style.transform  = 'translateX(0)';
-    next.style.opacity    = '1';
-    next.style.pointerEvents = 'auto';
-
-    // Resize wrap to next step's height
-    setHeight(next);
-
-    // After animation, clean up and mark active
-    setTimeout(function(){
-      next.classList.add('active');
-      // Clear inline styles so CSS class controls it going forward
-      next.style.cssText = '';
-      current.style.cssText = '';
-      animating = false;
-    }, 360);
-
-    // Progress
-    if(bar) bar.style.width = progress[nextId] || '50%';
-  }
-
-  // Tile click → auto advance
-  wrap.querySelectorAll('.msf-tile').forEach(function(tile){
-    tile.addEventListener('click', function(){
-      if(animating) return;
-      var field  = this.dataset.field;
-      var value  = this.dataset.value;
-      var nextId = this.dataset.next;
-      if(field){ var inp=document.getElementById('f-'+field); if(inp) inp.value=value; }
-      this.closest('.msf-opts').querySelectorAll('.msf-tile').forEach(function(t){ t.classList.remove('selected'); });
-      this.classList.add('selected');
-      history.push(nextId);
-      setTimeout(function(){ goTo(nextId, false); }, 150);
-    });
-  });
-
-  // Radio → enable continue
-  var radios2a = wrap.querySelectorAll('#step-2a input[type=radio]');
-  var nextBtn  = document.getElementById('next-2a');
-  radios2a.forEach(function(r){
-    r.addEventListener('change', function(){ if(nextBtn) nextBtn.disabled=false; });
-  });
-  if(nextBtn){
-    nextBtn.addEventListener('click', function(){
-      if(animating) return;
-      history.push('3');
-      goTo('3', false);
-    });
-  }
-
-  // Back buttons
-  wrap.querySelectorAll('.msf-back').forEach(function(backBtn){
-    backBtn.addEventListener('click', function(){
-      if(animating || history.length < 2) return;
-      history.pop();
-      var prevId = history[history.length - 1];
-      goTo(prevId, true);
-    });
-  });
-
-  // Submit — build FormData and ensure all hidden fields are included
-  form.addEventListener('submit', async function(e){
-    e.preventDefault();
-    btn.disabled = true;
-    btn.innerHTML = 'Sending…';
-
-    var fd = new FormData(form);
-
-    // Ensure all hidden tracking fields are present even if value is empty
-    var tracked = ['interest','collab_role','demo_focus','followup_method'];
-    tracked.forEach(function(key){
-      if(!fd.get(key)) {
-        var el = document.getElementById('f-' + key.replace('followup_method','followup'));
-        if(el && el.value) fd.set(key, el.value);
-      }
-    });
-
-    // Add a readable summary field for Formspree inbox clarity
-    var summary = [];
-    if(fd.get('interest'))        summary.push('Interest: ' + fd.get('interest'));
-    if(fd.get('investment_range')) summary.push('Investment range: ' + fd.get('investment_range'));
-    if(fd.get('collab_role'))     summary.push('Role: ' + fd.get('collab_role'));
-    if(fd.get('demo_focus'))      summary.push('Demo focus: ' + fd.get('demo_focus'));
-    if(fd.get('followup_method')) summary.push('Follow-up: ' + fd.get('followup_method'));
-    fd.set('_subject', 'ACME Protocol — Interest Form: ' + (fd.get('interest') || 'General'));
-    fd.set('summary', summary.join(' | '));
-
-    try {
-      var res = await fetch(form.action,{ method:'POST', body:fd, headers:{'Accept':'application/json'} });
-      if(res.ok){
-        form.style.display='none';
-        success.style.display='block';
-        if(bar) bar.style.width='100%';
-      } else {
-        btn.disabled=false;
-        btn.innerHTML='Submit';
-        alert('Something went wrong. Please try again.');
-      }
-    } catch(err){
-      btn.disabled=false;
-      btn.innerHTML='Submit';
-      alert('Network error. Please try again.');
-    }
-  });
-})();
-</script>
-
-
 <!-- ══ CTA ════════════════════════════════════════ -->
 <section class="cta-sec">
-  <h2 class="fly">The window is<br><strong>open now.</strong></h2>
-  <p class="fly" style="transition-delay:.08s">The next protocol delivering permanent, verifiable Bitcoin assets will own the standard — forever.</p>
+  <h2 class="fly">Mainnet is<br><strong>open now.</strong></h2>
+  <p class="fly" style="transition-delay:.08s">Mint, trade, and build with permanent, verifiable Bitcoin assets on the live ACME protocol.</p>
   <div class="cta-btns fly" style="transition-delay:.16s">
-    <a href="#contact" class="btn-gold">Invest in Seed Round →</a>
+    <a href="https://acme.pics/dex/tokens" target="_blank" rel="noopener noreferrer" class="btn-gold">Launch Mainnet App →</a>
     <a href="https://x.com/ACMEonBTC" target="_blank" rel="noopener noreferrer" class="btn-outline">Follow @ACMEonBTC</a>
-    <a href="https://testnet.acme.pics/" target="_blank" rel="noopener noreferrer" class="btn-outline">Live Testnet</a>
+    <a href="https://acme.pics/faq" target="_blank" rel="noopener noreferrer" class="btn-outline">Mainnet FAQ</a>
   </div>
 </section>
 
@@ -2684,22 +2373,6 @@ const sb = document.querySelector('.stats-inner');
 if(sb) statsObs.observe(sb);
 
 /* ════════════════════════════════════════
-   TOKEN BAR ANIMATION
-════════════════════════════════════════ */
-const barObs = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if(!e.isIntersecting) return;
-    e.target.querySelectorAll('.tt-fill').forEach((bar,i)=>{
-      setTimeout(() => { bar.style.width = bar.dataset.w + '%'; }, i*110);
-    });
-    barObs.unobserve(e.target);
-  });
-}, { threshold: .3 });
-const tokEl = document.querySelector('.tok-table');
-if(tokEl) barObs.observe(tokEl);
-
-
-/* ════════════════════════════════════════
    ACTIVE NAV HIGHLIGHTING ON SCROLL
 ════════════════════════════════════════ */
 (function(){
@@ -2863,7 +2536,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   requestAnimationFrame(step);
 
   // Premium tilt + injected shine overlays
-  const tiltables = document.querySelectorAll('.pc,.bcard,.rmc,.mc,.stat,.invest-panel,.tok-card');
+  const tiltables = document.querySelectorAll('.pc,.bcard,.rmc,.mc,.stat,.invest-panel,.tok-map,.tok-detail-card');
   tiltables.forEach(el=>{
     if(!el.querySelector('.shine')){
       const s = document.createElement('div');
@@ -2924,4 +2597,3 @@ rotY}deg) scale3d(1.025,1.025,1.025)`;
 
 
 5)`;
-
